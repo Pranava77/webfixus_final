@@ -503,6 +503,8 @@
 .outro h3 {
   width: 50%;
   text-align: center;
+  font-size: 4rem;
+  font-weight: 700;
 }
 
 .outro .outro-strips {
@@ -682,6 +684,7 @@
 
   .outro h3 {
     width: 90%;
+    font-size: 2.5rem;
   }
 
   .outro .outro-strips {
