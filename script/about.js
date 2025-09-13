@@ -221,7 +221,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const startX =
         Math.random() * (containerRect.width - objRect.width) +
         objRect.width / 2;
-      const startY = -500 - index * 200;
+      const startY = -500 - index * 100;
       const startRotation = (Math.random() - 0.5) * Math.PI;
 
       const body = Matter.Bodies.rectangle(
@@ -238,6 +238,14 @@ document.addEventListener("DOMContentLoaded", () => {
           slop: 0.02,
         }
       );
+
+      // Add initial downward velocity for objects that start higher
+      if (index > 7) {
+        Matter.Body.setVelocity(body, {
+          x: (Math.random() - 0.5) * 2,
+          y: Math.random() * 3 + 2
+        });
+      }
 
       Matter.Body.setAngle(body, startRotation);
 
@@ -308,7 +316,7 @@ document.addEventListener("DOMContentLoaded", () => {
         );
         const y = clamp(
           body.position.y - height / 2,
-          -height * 3,
+          -height * 5,
           containerRect.height - height - floorOffset
         );
 
