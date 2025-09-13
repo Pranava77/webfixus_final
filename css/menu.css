@@ -47,8 +47,8 @@
 
 .calendly-menu-btn {
   position: relative;
-  background: none;
-  border: none;
+  background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+  border: 2px solid var(--base-100);
   cursor: pointer;
   padding: 0.5rem;
   display: flex;
@@ -56,23 +56,40 @@
   align-items: center;
   width: 28px;
   height: 28px;
-  border-radius: 6px;
+  border-radius: 8px;
   transition: all 0.3s ease;
   color: var(--base-100);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  animation: calendly-pulse 2s ease-in-out infinite;
 }
 
 .calendly-menu-btn:hover {
-  background-color: var(--base-100);
-  color: var(--base-300);
-  transform: scale(1.05);
+  background: linear-gradient(135deg, var(--accent-2), var(--accent-3));
+  color: var(--base-100);
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+  animation: none;
 }
 
 .calendly-menu-btn svg {
   transition: all 0.3s ease;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
 }
 
 .calendly-menu-btn:hover svg {
-  transform: scale(1.1);
+  transform: scale(1.15);
+  filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.4));
+}
+
+@keyframes calendly-pulse {
+  0%, 100% {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 6px 20px rgba(245, 224, 189, 0.4);
+    transform: scale(1.02);
+  }
 }
 
 .menu-toggle {
