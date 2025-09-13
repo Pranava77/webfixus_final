@@ -717,6 +717,7 @@
     left: 50%;
     transform: translateX(-50%);
     z-index: 10;
+    margin: 0;
   }
 
   .hero .hero-cards {
@@ -740,6 +741,7 @@
     left: 50%;
     transform: translateX(-50%);
     z-index: 10;
+    margin: 0;
   }
 
   .hero .hero-cards {
@@ -763,6 +765,7 @@
     left: 50%;
     transform: translateX(-50%);
     z-index: 10;
+    margin: 0;
   }
 
   .hero .hero-cards {
@@ -801,6 +804,7 @@
     left: 50%;
     transform: translateX(-50%);
     z-index: 10;
+    margin: 0;
   }
 
   .hero .hero-cards {
@@ -882,7 +886,7 @@
   position: relative;
   width: fit-content;
   min-width: 180px;
-  margin: 0 auto;
+  margin: 2rem auto 0;
   transition: all 0.3s ease;
 }
 
@@ -923,7 +927,7 @@
   width: 6px;
   height: 6px;
   transform: translate(-50%, -50%);
-  background-color: var(--accent-3);
+  background-color: #666666;
   border-radius: 100%;
 }
 
@@ -937,16 +941,16 @@
   height: 33px;
   background-color: transparent;
   border-radius: 12px 22px 2px 2px;
-  border-right: solid 2px var(--accent-3);
+  border-right: solid 2px #666666;
   border-top: solid 2px transparent;
 }
 
 .icon .text-icon {
-  color: var(--accent-3);
+  color: #000000;
   position: absolute;
   font-size: 12px;
-  left: -37px;
-  top: -38px;
+  left: -50px;
+  top: -50px;
 }
 
 .icon svg {
@@ -964,7 +968,7 @@
   position: absolute;
   width: 20px;
   height: 2px;
-  background-color: var(--accent-3);
+  background-color: #666666;
   left: 0;
   top: 50%;
   transform: translateY(-50%);
@@ -974,7 +978,7 @@
   content: "";
   width: 2px;
   height: 10px;
-  background-color: var(--accent-3);
+  background-color: #666666;
   position: absolute;
   left: 0;
   top: 50%;
@@ -985,7 +989,7 @@
   content: "";
   width: 2px;
   height: 10px;
-  background-color: var(--accent-3);
+  background-color: #666666;
   position: absolute;
   right: 0;
   top: 50%;
@@ -996,7 +1000,7 @@
   position: absolute;
   width: 30px;
   height: 2px;
-  background-color: var(--accent-3);
+  background-color: #666666;
   left: -24px;
   top: 11px;
   transform: rotate(-50deg);
@@ -1010,25 +1014,25 @@
   width: 6px;
   height: 6px;
   transform: translate(-50%, -50%);
-  background-color: var(--accent-3);
+  background-color: #666666;
   border-radius: 100%;
 }
 
 .meeting-duration-text {
-  color: var(--accent-3);
+  color: #000000;
   font-size: 12px;
   position: absolute;
   white-space: nowrap;
   transform: rotate(50deg);
-  bottom: 30px;
-  left: -67px;
+  bottom: 20px;
+  left: -50px;
 }
 
 .meeting-type {
   position: absolute;
   width: 20px;
   height: 2px;
-  background-color: var(--accent-3);
+  background-color: #666666;
   right: 0;
   top: 50%;
   transform: translateY(-50%);
@@ -1038,7 +1042,7 @@
   content: "";
   width: 2px;
   height: 10px;
-  background-color: var(--accent-3);
+  background-color: #666666;
   position: absolute;
   left: 0;
   top: 50%;
@@ -1049,7 +1053,7 @@
   content: "";
   width: 2px;
   height: 10px;
-  background-color: var(--accent-3);
+  background-color: #666666;
   position: absolute;
   right: 0;
   top: 50%;
@@ -1060,7 +1064,7 @@
   position: absolute;
   width: 30px;
   height: 2px;
-  background-color: var(--accent-3);
+  background-color: #666666;
   right: -24px;
   top: 11px;
   transform: rotate(50deg);
@@ -1074,18 +1078,18 @@
   width: 6px;
   height: 6px;
   transform: translate(-50%, -50%);
-  background-color: var(--accent-3);
+  background-color: #666666;
   border-radius: 100%;
 }
 
 .meeting-type-text {
-  color: var(--accent-3);
+  color: #000000;
   font-size: 12px;
   position: absolute;
   white-space: nowrap;
   transform: rotate(-50deg);
-  bottom: 33px;
-  left: 18px;
+  bottom: 5px;
+  left: 12px;
 }
 
 .background {
@@ -1101,7 +1105,7 @@
   height: 53px;
   background-color: transparent;
   border-radius: 0px 0px 22px 22px;
-  border-right: solid 2px var(--accent-3);
+  border-right: solid 2px #666666;
   border-bottom: solid 2px transparent;
 }
 
@@ -1112,16 +1116,16 @@
   bottom: -20px;
   width: 6px;
   height: 6px;
-  background-color: var(--accent-3);
+  background-color: #666666;
   border-radius: 100%;
 }
 
 .background-text {
   position: absolute;
-  color: var(--accent-3);
+  color: #000000;
   font-size: 12px;
-  bottom: -70px;
-  left: -115px;
+  bottom: -60px;
+  left: -95px;
 }
 
 .border {
@@ -1134,7 +1138,7 @@
   content: "";
   width: 15px;
   height: 15px;
-  border: solid 2px var(--accent-3);
+  border: solid 2px #666666;
   position: absolute;
   right: 0%;
   top: 0;
@@ -1146,7 +1150,7 @@
   content: "";
   width: 2px;
   height: 25px;
-  background-color: var(--accent-3);
+  background-color: #666666;
   position: absolute;
   right: -10px;
   top: -15px;
@@ -1155,10 +1159,10 @@
 
 .border .border-text {
   position: absolute;
-  color: var(--accent-3);
+  color: #000000;
   font-size: 12px;
-  right: -112px;
-  top: -30px;
+  right: -75px;
+  top: -15px;
   white-space: nowrap;
 }
 
