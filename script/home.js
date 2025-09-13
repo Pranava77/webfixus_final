@@ -293,6 +293,64 @@ document.addEventListener("DOMContentLoaded", () => {
         });
       },
     });
+  } else {
+    // Mobile home-services animation - simpler version
+    ScrollTrigger.create({
+      trigger: ".home-services",
+      start: "top bottom",
+      end: "bottom top",
+      onEnter: () => {
+        // Animate the cards in with a staggered entrance
+        gsap.fromTo(".home-services .cards .card",
+          {
+            opacity: 0,
+            y: 50,
+            scale: 0.8
+          },
+          {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            duration: 0.8,
+            stagger: 0.2,
+            ease: "back.out(1.7)"
+          }
+        );
+      }
+    });
+
+    // Mobile-specific card hover animations
+    document.querySelectorAll(".home-services .cards .card").forEach((card, index) => {
+      const innerCard = card.querySelector(".flip-card-inner");
+      
+      card.addEventListener("mouseenter", () => {
+        gsap.to(card, {
+          scale: 1.05,
+          duration: 0.3,
+          ease: "power2.out"
+        });
+        
+        gsap.to(innerCard, {
+          rotationY: 180,
+          duration: 0.6,
+          ease: "power2.out"
+        });
+      });
+      
+      card.addEventListener("mouseleave", () => {
+        gsap.to(card, {
+          scale: 1,
+          duration: 0.3,
+          ease: "power2.out"
+        });
+        
+        gsap.to(innerCard, {
+          rotationY: 0,
+          duration: 0.6,
+          ease: "power2.out"
+        });
+      });
+    });
   }
 
   const spotlightImages = document.querySelector(".home-spotlight-images");
