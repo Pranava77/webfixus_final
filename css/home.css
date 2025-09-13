@@ -24,7 +24,7 @@
 }
 
 .hero .hero-content .hero-header h1 {
-  font-size: 16vw;
+  font-size: 12vw;
 }
 
 .hero .hero-content .hero-footer {
@@ -583,7 +583,7 @@
   }
 
   .hero .hero-content .hero-header h1 {
-    font-size: 15vw;
+    font-size: 11vw;
   }
 
   .hero .hero-cards {
@@ -597,7 +597,7 @@
   }
 
   .hero .hero-content .hero-header h1 {
-    font-size: 20vw;
+    font-size: 16vw;
   }
 
   .hero .hero-cards {
@@ -607,7 +607,7 @@
 
 @media (max-width: 1000px) {
   .hero .hero-content .hero-header h1 {
-    font-size: 22.5vw;
+    font-size: 18vw;
   }
 
   .hero .hero-content .hero-header {
@@ -708,7 +708,7 @@
 
 @media (max-width: 600px) {
   .hero .hero-content .hero-header h1 {
-    font-size: 20vw;
+    font-size: 16vw;
   }
 
   .hero .hero-cards {
@@ -723,7 +723,7 @@
 
 @media (max-width: 500px) {
   .hero .hero-content .hero-header h1 {
-    font-size: 20vw;
+    font-size: 14vw;
   }
 
   .hero .hero-cards {
@@ -733,7 +733,7 @@
 
 @media (max-width: 400px) {
   .hero .hero-content .hero-header h1 {
-    font-size: 20vw;
+    font-size: 14vw;
     line-height: 0.9;
   }
 
@@ -768,7 +768,7 @@
 
 @media (max-width: 350px) {
   .hero .hero-content .hero-header h1 {
-    font-size: 20vw;
+    font-size: 14vw;
   }
 
   .hero .hero-cards {
