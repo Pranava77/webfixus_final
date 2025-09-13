@@ -1,16 +1,15 @@
-import { defineConfig } from "vite";
-import { resolve } from "path";
-import { fileURLToPath, URL } from "node:url";
+const { defineConfig } = require("vite");
+const { resolve } = require("path");
 
-export default defineConfig({
+module.exports = defineConfig({
   build: {
     rollupOptions: {
       input: {
-        main: resolve(fileURLToPath(new URL(".", import.meta.url)), "index.html"),
-        about: resolve(fileURLToPath(new URL(".", import.meta.url)), "about.html"),
-        work: resolve(fileURLToPath(new URL(".", import.meta.url)), "work.html"),
-        project: resolve(fileURLToPath(new URL(".", import.meta.url)), "project.html"),
-        contact: resolve(fileURLToPath(new URL(".", import.meta.url)), "contact.html"),
+        main: resolve(__dirname, "index.html"),
+        about: resolve(__dirname, "about.html"),
+        work: resolve(__dirname, "work.html"),
+        project: resolve(__dirname, "project.html"),
+        contact: resolve(__dirname, "contact.html"),
       },
     },
     assetsInclude: [
