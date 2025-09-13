@@ -465,7 +465,9 @@ document.addEventListener("DOMContentLoaded", () => {
   // Calendly popup functionality
   const calendlyBtn = document.querySelector(".calendly-menu-btn");
   if (calendlyBtn) {
-    calendlyBtn.addEventListener("click", function() {
+    calendlyBtn.addEventListener("click", function(e) {
+      e.preventDefault();
+      e.stopPropagation();
       if (typeof Calendly !== 'undefined') {
         Calendly.initPopupWidget({
           url: 'https://calendly.com/unknwngod8/30min?hide_event_type_details=1&hide_gdpr_banner=1&background_color=000000&text_color=d3eace&primary_color=f5e0bd'
