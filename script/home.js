@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   gsap.set(".hero .hero-cards .card", { transformOrigin: "center center" });
 
+  // Initial card animation - works on all screen sizes
   gsap.to(".hero .hero-cards .card", {
     scale: 1,
     duration: 0.75,
@@ -24,6 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const smoothStep = (p) => p * p * (3 - 2 * p);
 
+  // Desktop scroll animation
   if (window.innerWidth > 1000) {
     ScrollTrigger.create({
       trigger: ".hero",
@@ -94,7 +96,81 @@ document.addEventListener("DOMContentLoaded", () => {
         );
       },
     });
+  } else {
+    // Mobile scroll animation - simpler version
+    ScrollTrigger.create({
+      trigger: ".hero",
+      start: "top top",
+      end: "50% top",
+      scrub: 1,
+      onUpdate: (self) => {
+        const progress = self.progress;
 
+        const heroCardsContainerOpacity = gsap.utils.interpolate(
+          1,
+          0.3,
+          smoothStep(progress)
+        );
+        gsap.set(".hero-cards", {
+          opacity: heroCardsContainerOpacity,
+        });
+
+        ["#hero-card-1", "#hero-card-2", "#hero-card-3"].forEach(
+          (cardId, index) => {
+            const delay = index * 0.3;
+            const cardProgress = gsap.utils.clamp(
+              0,
+              1,
+              (progress - delay * 0.2) / (1 - delay * 0.2)
+            );
+
+            const y = gsap.utils.interpolate(
+              "0%",
+              "200%",
+              smoothStep(cardProgress)
+            );
+            const scale = gsap.utils.interpolate(
+              1,
+              0.6,
+              smoothStep(cardProgress)
+            );
+
+            gsap.set(cardId, {
+              y: y,
+              scale: scale,
+            });
+          }
+        );
+      },
+    });
+
+    // Mobile-specific card entrance animation
+    ScrollTrigger.create({
+      trigger: ".hero",
+      start: "top bottom",
+      end: "bottom top",
+      onEnter: () => {
+        gsap.fromTo(".hero .hero-cards .card", 
+          { 
+            scale: 0,
+            opacity: 0,
+            y: 50
+          },
+          {
+            scale: 1,
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            stagger: 0.2,
+            ease: "back.out(1.7)"
+          }
+        );
+      }
+    });
+  }
+
+  // Home services scroll animation - desktop only
+  if (window.innerWidth > 1000) {
     ScrollTrigger.create({
       trigger: ".home-services",
       start: "top top",

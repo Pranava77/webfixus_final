@@ -18,6 +18,9 @@
   margin: 0 auto;
   text-align: center;
   padding-top: 15svh;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 }
 
 .hero .hero-content .hero-header h1 {
@@ -71,6 +74,11 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  transition: transform 0.3s ease;
+}
+
+.hero .hero-cards .card:hover .hero-card-inner {
+  transform: translate(-50%, -50%) scale(1.05);
 }
 
 .hero .hero-cards .card#hero-card-1 .hero-card-inner {
@@ -600,6 +608,10 @@
     font-size: 22.5vw;
   }
 
+  .hero .hero-content .hero-header {
+    gap: 1.5rem;
+  }
+
   .hero .hero-content .hero-footer-copy {
     display: none;
   }
@@ -607,6 +619,8 @@
   .hero .hero-content .hero-footer-tags {
     width: 100%;
     justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
   }
 
   .hero .hero-cards .card p {
@@ -691,22 +705,81 @@
 
 @media (max-width: 600px) {
   .hero .hero-content .hero-header h1 {
-    font-size: 25vw;
+    font-size: 20vw;
   }
 
   .hero .hero-cards {
-    top: 65%;
+    top: 60%;
     width: 75%;
+  }
+
+  .hero .hero-content .hero-footer {
+    padding-bottom: 2rem;
   }
 }
 
 @media (max-width: 500px) {
   .hero .hero-content .hero-header h1 {
-    font-size: 30vw;
+    font-size: 20vw;
   }
 
   .hero .hero-cards {
     width: 85%;
+  }
+}
+
+@media (max-width: 400px) {
+  .hero .hero-content .hero-header h1 {
+    font-size: 20vw;
+    line-height: 0.9;
+  }
+
+  .hero .hero-content .hero-header {
+    gap: 1rem;
+  }
+
+  .hero .hero-cards {
+    width: 90%;
+    gap: 0.5rem;
+    top: 55%;
+  }
+
+  .hero .hero-cards .card p {
+    font-size: 0.6rem;
+  }
+
+  .hero .hero-content .hero-footer {
+    padding-bottom: 3rem;
+  }
+
+  .hero .hero-content .hero-footer-tags {
+    gap: 1rem;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero .hero-content .hero-footer-tags p.mono {
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 350px) {
+  .hero .hero-content .hero-header h1 {
+    font-size: 20vw;
+  }
+
+  .hero .hero-cards {
+    width: 95%;
+    gap: 0.25rem;
+    top: 50%;
+  }
+
+  .hero .hero-cards .card p {
+    font-size: 0.5rem;
+  }
+
+  .hero .hero-content .hero-footer {
+    padding-bottom: 4rem;
   }
 }
 
