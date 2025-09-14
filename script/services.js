@@ -150,7 +150,7 @@ function initAnimations() {
     );
   });
 
-  // Service section hover animations
+  // Service section hover animations with dynamic border
   serviceSections.forEach((section) => {
     const icon = section.querySelector('.service-icon-large');
     
@@ -160,6 +160,36 @@ function initAnimations() {
     
     section.addEventListener('mouseleave', () => {
       gsap.to(icon, { scale: 1, duration: 0.3, ease: "power2.out" });
+    });
+
+    // Dynamic border effect
+    section.addEventListener('mousemove', (e) => {
+      const rect = section.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      
+      const deltaX = x - centerX;
+      const deltaY = y - centerY;
+      
+      const angle = Math.atan2(deltaY, deltaX) * (180 / Math.PI);
+      
+      // Calculate distance from center for intensity
+      const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+      const maxDistance = Math.sqrt(centerX * centerX + centerY * centerY);
+      const intensity = Math.min(distance / maxDistance, 1);
+      
+      // Update the gradient angle and intensity based on mouse position
+      const gradient = `linear-gradient(${angle + 90}deg, 
+        rgba(153, 167, 153, ${0.3 + intensity * 0.7}), 
+        rgba(173, 194, 169, ${0.5 + intensity * 0.5}))`;
+      section.style.setProperty('--hover-gradient', gradient);
+      
+      // Add subtle glow effect
+      const glowIntensity = intensity * 0.3;
+      section.style.setProperty('--glow-opacity', glowIntensity);
     });
   });
 

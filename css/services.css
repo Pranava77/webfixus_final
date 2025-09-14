@@ -94,14 +94,38 @@
   top: 0;
   left: 0;
   right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, var(--accent-1), var(--accent-2));
+  bottom: 0;
+  border: 2px solid transparent;
+  border-radius: 24px;
+  background: linear-gradient(var(--base-300), var(--base-300)) padding-box,
+              var(--hover-gradient, linear-gradient(135deg, var(--accent-1), var(--accent-2))) border-box;
   opacity: 0;
   transition: opacity 0.3s ease;
+  pointer-events: none;
 }
 
 .service-section:hover::before {
   opacity: 1;
+}
+
+.service-section::after {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border-radius: 26px;
+  background: var(--hover-gradient, linear-gradient(135deg, var(--accent-1), var(--accent-2)));
+  opacity: var(--glow-opacity, 0);
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: -1;
+  filter: blur(8px);
+}
+
+.service-section:hover::after {
+  opacity: calc(var(--glow-opacity, 0) + 0.1);
 }
 
 .service-section-header {
