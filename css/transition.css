@@ -28,8 +28,8 @@
   top: 120%;
   left: 50%;
   transform: translateX(-50%);
-  width: 100px;
-  height: 100px;
+  width: 150px;
+  height: 150px;
   opacity: 0;
   will-change: transform, opacity;
 }
