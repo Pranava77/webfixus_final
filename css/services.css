@@ -18,7 +18,8 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  min-height: 80vh;
+  height: 100vh;
+  width: 100%;
 }
 
 .services-hero-header {
@@ -30,6 +31,20 @@
   font-size: 12rem;
   line-height: 0.85;
   letter-spacing: -0.02rem;
+  margin-bottom: 2rem;
+}
+
+.services-hero-header p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: var(--base-300);
+  margin-bottom: 1.5rem;
+  max-width: 800px;
+}
+
+.services-hero-header p.md {
+  font-size: 1.3rem;
+  line-height: 1.7;
   margin-bottom: 2rem;
 }
 
