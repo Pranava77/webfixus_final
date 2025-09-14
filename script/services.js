@@ -176,12 +176,12 @@ function initAnimations() {
     const number = card.querySelector('.service-number');
     
     card.addEventListener('mouseenter', () => {
-      gsap.to(icon, { scale: 1.1, rotation: 5, duration: 0.3, ease: "power2.out" });
+      gsap.to(icon, { scale: 1.1, duration: 0.3, ease: "power2.out" });
       gsap.to(number, { scale: 1.1, duration: 0.3, ease: "power2.out" });
     });
     
     card.addEventListener('mouseleave', () => {
-      gsap.to(icon, { scale: 1, rotation: 0, duration: 0.3, ease: "power2.out" });
+      gsap.to(icon, { scale: 1, duration: 0.3, ease: "power2.out" });
       gsap.to(number, { scale: 1, duration: 0.3, ease: "power2.out" });
     });
   });
@@ -191,11 +191,11 @@ function initAnimations() {
     const stepNumber = step.querySelector('.step-number');
     
     step.addEventListener('mouseenter', () => {
-      gsap.to(stepNumber, { scale: 1.1, rotation: 5, duration: 0.3, ease: "power2.out" });
+      gsap.to(stepNumber, { scale: 1.1, duration: 0.3, ease: "power2.out" });
     });
     
     step.addEventListener('mouseleave', () => {
-      gsap.to(stepNumber, { scale: 1, rotation: 0, duration: 0.3, ease: "power2.out" });
+      gsap.to(stepNumber, { scale: 1, duration: 0.3, ease: "power2.out" });
     });
   });
 }
