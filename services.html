@@ -318,21 +318,29 @@
           </h2>
         </div>
         <div class="process-timeline">
-          <div class="timeline-spiral">
+          <div class="timeline-octagon">
             <svg viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
               <defs>
-                <pattern id="dotted-spiral" x="0" y="0" width="8" height="8" patternUnits="userSpaceOnUse">
+                <pattern id="dotted-octagon" x="0" y="0" width="8" height="8" patternUnits="userSpaceOnUse">
                   <circle cx="4" cy="4" r="1.5" fill="currentColor" opacity="0.4"/>
                 </pattern>
               </defs>
-              <!-- Spiral path -->
-              <path d="M300,50 Q400,50 450,150 Q450,250 350,300 Q250,350 200,250 Q150,150 250,100 Q350,50 300,50 Q250,50 200,100 Q150,150 200,200 Q250,250 300,200 Q350,150 300,100 Q250,150 250,200 Q250,250 300,250" 
-                    stroke="url(#dotted-spiral)" 
+              <!-- Octagonal path -->
+              <path d="M300,50 L450,150 L450,300 L300,400 L150,300 L150,150 Z" 
+                    stroke="url(#dotted-octagon)" 
                     stroke-width="3" 
                     fill="none" 
-                    stroke-linecap="round"/>
+                    stroke-linecap="round"
+                    stroke-linejoin="round"/>
               <!-- Center circle -->
               <circle cx="300" cy="300" r="8" fill="currentColor" opacity="0.6"/>
+              <!-- Connection lines to center -->
+              <line x1="300" y1="50" x2="300" y2="300" stroke="url(#dotted-octagon)" stroke-width="2" opacity="0.3"/>
+              <line x1="450" y1="150" x2="300" y2="300" stroke="url(#dotted-octagon)" stroke-width="2" opacity="0.3"/>
+              <line x1="450" y1="300" x2="300" y2="300" stroke="url(#dotted-octagon)" stroke-width="2" opacity="0.3"/>
+              <line x1="300" y1="400" x2="300" y2="300" stroke="url(#dotted-octagon)" stroke-width="2" opacity="0.3"/>
+              <line x1="150" y1="300" x2="300" y2="300" stroke="url(#dotted-octagon)" stroke-width="2" opacity="0.3"/>
+              <line x1="150" y1="150" x2="300" y2="300" stroke="url(#dotted-octagon)" stroke-width="2" opacity="0.3"/>
             </svg>
           </div>
           
@@ -495,10 +503,6 @@
 
     <footer>
       <div class="container">
-        <div class="footer-top">
-          <div class="footer-col"></div>
-          <div class="footer-col"></div>
-        </div>
         <div class="footer-bottom">
           <div class="footer-col">
             <div class="footer-logo">
