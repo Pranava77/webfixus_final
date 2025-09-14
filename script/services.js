@@ -85,21 +85,21 @@ function initAnimations() {
     );
   });
 
-  // Service cards stagger animation
-  const serviceCards = document.querySelectorAll('.service-card');
-  if (serviceCards.length > 0) {
+  // Service sections stagger animation
+  const serviceSections = document.querySelectorAll('.service-section');
+  if (serviceSections.length > 0) {
     gsap.fromTo(
-      serviceCards,
-      { opacity: 0, y: 60, scale: 0.9 },
+      serviceSections,
+      { opacity: 0, y: 60, scale: 0.95 },
       {
         opacity: 1,
         y: 0,
         scale: 1,
         duration: 0.8,
-        stagger: 0.2,
+        stagger: 0.3,
         ease: "power2.out",
         scrollTrigger: {
-          trigger: '.services-grid-container',
+          trigger: '.services-content',
           start: "top 80%",
           toggleActions: "play none none reverse",
         },
@@ -107,62 +107,42 @@ function initAnimations() {
     );
   }
 
-  // Process steps stagger animation
-  const processSteps = document.querySelectorAll('.process-step');
-  if (processSteps.length > 0) {
+  // Process items stagger animation
+  const processItems = document.querySelectorAll('.process-item');
+  if (processItems.length > 0) {
     gsap.fromTo(
-      processSteps,
-      { opacity: 0, x: -60 },
+      processItems,
+      { opacity: 0, y: 40, scale: 0.9 },
+      {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        duration: 0.6,
+        stagger: 0.1,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: '.process-grid',
+          start: "top 85%",
+          toggleActions: "play none none reverse",
+        },
+      }
+    );
+  }
+
+  // CTA list items animation
+  const ctaListItems = document.querySelectorAll('.cta-list li');
+  ctaListItems.forEach((item, index) => {
+    gsap.fromTo(
+      item,
+      { opacity: 0, x: -20 },
       {
         opacity: 1,
         x: 0,
-        duration: 0.8,
-        stagger: 0.15,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: '.process-timeline',
-          start: "top 80%",
-          toggleActions: "play none none reverse",
-        },
-      }
-    );
-  }
-
-  // Timeline dots animation
-  const stepDots = document.querySelectorAll('.step-dot');
-  stepDots.forEach((dot, index) => {
-    gsap.fromTo(
-      dot,
-      { scale: 0, opacity: 0 },
-      {
-        scale: 1,
-        opacity: 1,
-        duration: 0.6,
-        delay: index * 0.2 + 0.5,
-        ease: "back.out(1.7)",
-        scrollTrigger: {
-          trigger: dot.closest('.process-step'),
-          start: "top 85%",
-          toggleActions: "play none none reverse",
-        },
-      }
-    );
-  });
-
-  // Step tags animation
-  const stepTags = document.querySelectorAll('.tag');
-  stepTags.forEach((tag, index) => {
-    gsap.fromTo(
-      tag,
-      { opacity: 0, y: 20 },
-      {
-        opacity: 1,
-        y: 0,
         duration: 0.5,
-        delay: index * 0.1 + 0.8,
+        delay: index * 0.1,
         ease: "power2.out",
         scrollTrigger: {
-          trigger: tag.closest('.process-step'),
+          trigger: item.closest('.service-cta-box'),
           start: "top 85%",
           toggleActions: "play none none reverse",
         },
@@ -170,32 +150,29 @@ function initAnimations() {
     );
   });
 
-  // Service card hover animations
-  serviceCards.forEach((card) => {
-    const icon = card.querySelector('.service-icon');
-    const number = card.querySelector('.service-number');
+  // Service section hover animations
+  serviceSections.forEach((section) => {
+    const icon = section.querySelector('.service-icon-large');
     
-    card.addEventListener('mouseenter', () => {
-      gsap.to(icon, { scale: 1.1, duration: 0.3, ease: "power2.out" });
-      gsap.to(number, { scale: 1.1, duration: 0.3, ease: "power2.out" });
+    section.addEventListener('mouseenter', () => {
+      gsap.to(icon, { scale: 1.05, duration: 0.3, ease: "power2.out" });
     });
     
-    card.addEventListener('mouseleave', () => {
+    section.addEventListener('mouseleave', () => {
       gsap.to(icon, { scale: 1, duration: 0.3, ease: "power2.out" });
-      gsap.to(number, { scale: 1, duration: 0.3, ease: "power2.out" });
     });
   });
 
-  // Process step hover animations
-  processSteps.forEach((step) => {
-    const stepNumber = step.querySelector('.step-number');
+  // Process item hover animations
+  processItems.forEach((item) => {
+    const icon = item.querySelector('.process-icon');
     
-    step.addEventListener('mouseenter', () => {
-      gsap.to(stepNumber, { scale: 1.1, duration: 0.3, ease: "power2.out" });
+    item.addEventListener('mouseenter', () => {
+      gsap.to(icon, { scale: 1.1, duration: 0.3, ease: "power2.out" });
     });
     
-    step.addEventListener('mouseleave', () => {
-      gsap.to(stepNumber, { scale: 1, duration: 0.3, ease: "power2.out" });
+    item.addEventListener('mouseleave', () => {
+      gsap.to(icon, { scale: 1, duration: 0.3, ease: "power2.out" });
     });
   });
 }
@@ -239,7 +216,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // Parallax effect for hero section
-  const heroSection = document.querySelector('.services-hero');
+  const heroSection = document.querySelector('.hero');
   if (heroSection) {
     gsap.to(heroSection, {
       yPercent: -50,
@@ -252,25 +229,4 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   }
-
-  // Smooth reveal for service features
-  const serviceFeatures = document.querySelectorAll('.service-features li');
-  serviceFeatures.forEach((feature, index) => {
-    gsap.fromTo(
-      feature,
-      { opacity: 0, x: -20 },
-      {
-        opacity: 1,
-        x: 0,
-        duration: 0.5,
-        delay: index * 0.1,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: feature.closest('.service-card'),
-          start: "top 70%",
-          toggleActions: "play none none reverse",
-        },
-      }
-    );
-  });
 });
