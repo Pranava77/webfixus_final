@@ -1184,8 +1184,8 @@
   
   .icon .text-icon {
     font-size: 11px;
-    left: -35px;
-    top: -36px;
+    left: -50px;
+    top: -50px;
   }
   
   .meeting-duration-text,
@@ -1193,6 +1193,53 @@
   .background-text,
   .border .border-text {
     font-size: 11px;
+    color: #000000;
+  }
+  
+  .icon .text-icon {
+    color: #000000;
+  }
+  
+  /* Meeting Duration Elements - Grey Strings */
+  .meeting-duration,
+  .meeting-duration:before,
+  .meeting-duration:after,
+  .meeting-duration-line,
+  .meeting-duration-line::before {
+    background-color: #666666;
+  }
+  
+  /* Meeting Type Elements - Grey Strings */
+  .meeting-type,
+  .meeting-type:before,
+  .meeting-type:after,
+  .meeting-type-line,
+  .meeting-type-line::before {
+    background-color: #666666;
+  }
+  
+  /* Background Elements - Grey Strings */
+  .background::before {
+    border-right-color: #666666;
+  }
+  .background::after {
+    background-color: #666666;
+  }
+  
+  /* Border Elements - Grey Strings */
+  .border:before {
+    border-color: #666666;
+  }
+  .border:after {
+    background-color: #666666;
+  }
+  
+  /* Icon Elements - Grey Strings */
+  .icon::before {
+    background-color: #666666;
+  }
+  .icon::after {
+    border-right-color: #666666;
   }
 }
 
@@ -1213,8 +1260,8 @@
   
   .icon .text-icon {
     font-size: 10px;
-    left: -32px;
-    top: -34px;
+    left: -50px;
+    top: -50px;
   }
   
   .meeting-duration-text,
@@ -1222,6 +1269,53 @@
   .background-text,
   .border .border-text {
     font-size: 10px;
+    color: #000000;
+  }
+  
+  .icon .text-icon {
+    color: #000000;
+  }
+  
+  /* Meeting Duration Elements - Grey Strings */
+  .meeting-duration,
+  .meeting-duration:before,
+  .meeting-duration:after,
+  .meeting-duration-line,
+  .meeting-duration-line::before {
+    background-color: #666666;
+  }
+  
+  /* Meeting Type Elements - Grey Strings */
+  .meeting-type,
+  .meeting-type:before,
+  .meeting-type:after,
+  .meeting-type-line,
+  .meeting-type-line::before {
+    background-color: #666666;
+  }
+  
+  /* Background Elements - Grey Strings */
+  .background::before {
+    border-right-color: #666666;
+  }
+  .background::after {
+    background-color: #666666;
+  }
+  
+  /* Border Elements - Grey Strings */
+  .border:before {
+    border-color: #666666;
+  }
+  .border:after {
+    background-color: #666666;
+  }
+  
+  /* Icon Elements - Grey Strings */
+  .icon::before {
+    background-color: #666666;
+  }
+  .icon::after {
+    border-right-color: #666666;
   }
   
   .meeting-duration-line,
@@ -1230,23 +1324,23 @@
   }
   
   .meeting-duration-text {
-    left: -60px;
-    bottom: 25px;
+    left: -50px;
+    bottom: 20px;
   }
   
   .meeting-type-text {
-    left: 15px;
-    bottom: 28px;
+    left: 24px;
+    bottom: 8px;
   }
   
   .background-text {
-    left: -100px;
-    bottom: -65px;
+    left: -95px;
+    bottom: -60px;
   }
   
   .border .border-text {
-    right: -100px;
-    top: -25px;
+    right: -75px;
+    top: -15px;
   }
 }
 
@@ -1267,8 +1361,8 @@
   
   .icon .text-icon {
     font-size: 9px;
-    left: -28px;
-    top: -30px;
+    left: -50px;
+    top: -50px;
   }
   
   .meeting-duration-text,
@@ -1276,6 +1370,53 @@
   .background-text,
   .border .border-text {
     font-size: 9px;
+    color: #000000;
+  }
+  
+  .icon .text-icon {
+    color: #000000;
+  }
+  
+  /* Meeting Duration Elements - Grey Strings */
+  .meeting-duration,
+  .meeting-duration:before,
+  .meeting-duration:after,
+  .meeting-duration-line,
+  .meeting-duration-line::before {
+    background-color: #666666;
+  }
+  
+  /* Meeting Type Elements - Grey Strings */
+  .meeting-type,
+  .meeting-type:before,
+  .meeting-type:after,
+  .meeting-type-line,
+  .meeting-type-line::before {
+    background-color: #666666;
+  }
+  
+  /* Background Elements - Grey Strings */
+  .background::before {
+    border-right-color: #666666;
+  }
+  .background::after {
+    background-color: #666666;
+  }
+  
+  /* Border Elements - Grey Strings */
+  .border:before {
+    border-color: #666666;
+  }
+  .border:after {
+    background-color: #666666;
+  }
+  
+  /* Icon Elements - Grey Strings */
+  .icon::before {
+    background-color: #666666;
+  }
+  .icon::after {
+    border-right-color: #666666;
   }
   
   .meeting-duration-line,
@@ -1289,17 +1430,17 @@
   }
   
   .meeting-type-text {
-    left: 12px;
-    bottom: 23px;
+    left: 2px;
+    bottom: 8px;
   }
   
   .background-text {
-    left: -85px;
+    left: -95px;
     bottom: -60px;
   }
   
   .border .border-text {
-    right: -85px;
-    top: -20px;
+    right: -75px;
+    top: -15px;
   }
 }
