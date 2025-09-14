@@ -525,7 +525,8 @@ document.addEventListener("DOMContentLoaded", () => {
   // Calendly popup functionality
   const calendlyBtn = document.querySelector(".calendly-menu-btn");
   if (calendlyBtn) {
-    calendlyBtn.addEventListener("click", function(e) {
+    // Handle both click and touch events for better mobile compatibility
+    const handleMenuCalendlyClick = function(e) {
       e.preventDefault();
       e.stopPropagation();
       if (typeof Calendly !== 'undefined') {
@@ -536,6 +537,32 @@ document.addEventListener("DOMContentLoaded", () => {
         // Fallback: open in new tab if Calendly script hasn't loaded
         window.open('https://calendly.com/unknwngod8/30min', '_blank');
       }
-    });
+    };
+
+    // Add event listeners for both click and touch events
+    calendlyBtn.addEventListener("click", handleMenuCalendlyClick);
+    calendlyBtn.addEventListener("touchend", handleMenuCalendlyClick);
+  }
+
+  // Hero Calendly button functionality
+  const heroCalendlyBtn = document.querySelector("#hero-calendly-btn");
+  if (heroCalendlyBtn) {
+    // Handle both click and touch events for better mobile compatibility
+    const handleCalendlyClick = function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      if (typeof Calendly !== 'undefined') {
+        Calendly.initPopupWidget({
+          url: 'https://calendly.com/unknwngod8/30min?hide_event_type_details=1&hide_gdpr_banner=1&background_color=000000&text_color=d3eace&primary_color=f5e0bd'
+        });
+      } else {
+        // Fallback: open in new tab if Calendly script hasn't loaded
+        window.open('https://calendly.com/unknwngod8/30min', '_blank');
+      }
+    };
+
+    // Add event listeners for both click and touch events
+    heroCalendlyBtn.addEventListener("click", handleCalendlyClick);
+    heroCalendlyBtn.addEventListener("touchend", handleCalendlyClick);
   }
 });
