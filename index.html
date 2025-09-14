@@ -88,7 +88,7 @@
             <p>
               We don’t just build websites—we engineer AI-powered growth engines. From SaaS to strategy, we fuse code, creativity, and intelligence to scale your brand.
             </p>
-            <button class="button">
+            <button class="button" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/unknwngod8/30min?hide_event_type_details=1&hide_gdpr_banner=1&background_color=000000&text_color=d3eace&primary_color=f5e0bd'});">
               <div class="icon">
                 <span class="text-icon hide">Meeting</span>
                 <svg
@@ -689,5 +689,14 @@
     <script type="module" src="/script/transition.js"></script>
     <script type="module" src="/script/menu.js"></script>
     <script type="module" src="/script/home.js"></script>
+    
+    <!-- Calendly Integration -->
+    <script>
+      // Initialize Calendly when the page loads
+      window.addEventListener('load', function() {
+        // Calendly is already loaded via the external script in the head
+        console.log('Calendly loaded and ready');
+      });
+    </script>
   </body>
 </html>
