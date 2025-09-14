@@ -13,6 +13,7 @@ export default defineConfig({
         work: resolve(__dirname, "work.html"),
         project: resolve(__dirname, "project.html"),
         contact: resolve(__dirname, "contact.html"),
+        services: resolve(__dirname, "services.html"),
       },
     },
     assetsInclude: [
