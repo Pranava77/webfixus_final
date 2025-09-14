@@ -13,7 +13,7 @@
 }
 
 .contact .container .contact-header {
-  width: 50%;
+  width: 40%;
   display: flex;
   flex-direction: column;
   gap: 2rem;
@@ -25,12 +25,25 @@
   right: 2rem;
   transform: translateY(-50%);
   z-index: 0;
-  width: 45%;
+  width: 55%;
   aspect-ratio: 5/3.5;
-  border-radius: 8px;
+  border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-  border: 2px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 
+    0 12px 40px rgba(0, 0, 0, 0.4),
+    0 4px 16px rgba(0, 0, 0, 0.2),
+    inset 0 2px 4px rgba(255, 255, 255, 0.1);
+  border: 3px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+.contact .contact-map:hover {
+  transform: translateY(-50%) scale(1.02);
+  box-shadow: 
+    0 16px 50px rgba(0, 0, 0, 0.5),
+    0 6px 20px rgba(0, 0, 0, 0.3),
+    inset 0 2px 4px rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
 }
 
 .contact .contact-map iframe {
@@ -38,12 +51,28 @@
   height: 100%;
   border: none;
   border-radius: 6px;
-  filter: grayscale(100%) contrast(1.2) brightness(0.8) sepia(0.1);
-  transition: filter 0.3s ease;
+  filter: 
+    grayscale(60%) 
+    contrast(1.4) 
+    brightness(1.1) 
+    saturate(1.3) 
+    hue-rotate(15deg) 
+    sepia(0.2) 
+    drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+  transition: all 0.3s ease;
+  transform: scale(1);
 }
 
 .contact .contact-map:hover iframe {
-  filter: grayscale(80%) contrast(1.1) brightness(0.9) sepia(0.05);
+  filter: 
+    grayscale(40%) 
+    contrast(1.6) 
+    brightness(1.2) 
+    saturate(1.5) 
+    hue-rotate(20deg) 
+    sepia(0.3) 
+    drop-shadow(0 6px 12px rgba(0, 0, 0, 0.4));
+  transform: scale(1.02);
 }
 
 .home-spotlight-top-bar {
