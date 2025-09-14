@@ -42,8 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Calendly popup functionality
   const calendlyBtn = document.querySelector(".calendly-menu-btn");
   if (calendlyBtn) {
-    // Handle both click and touch events for better mobile compatibility
-    const handleCalendlyClick = function(e) {
+    calendlyBtn.addEventListener("click", function(e) {
       e.preventDefault();
       e.stopPropagation();
       if (typeof Calendly !== 'undefined') {
@@ -54,10 +53,6 @@ document.addEventListener("DOMContentLoaded", () => {
         // Fallback: open in new tab if Calendly script hasn't loaded
         window.open('https://calendly.com/unknwngod8/30min', '_blank');
       }
-    };
-
-    // Add event listeners for both click and touch events
-    calendlyBtn.addEventListener("click", handleCalendlyClick);
-    calendlyBtn.addEventListener("touchend", handleCalendlyClick);
+    });
   }
 });
