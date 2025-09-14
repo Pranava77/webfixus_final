@@ -45,14 +45,17 @@
   top: 0;
   left: 0;
   right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, var(--accent-1), var(--accent-2));
-  transform: scaleX(0);
-  transition: transform 0.3s ease;
+  bottom: 0;
+  border: 2px solid transparent;
+  border-radius: 12px;
+  background: linear-gradient(var(--base-400), var(--base-400)) padding-box,
+              linear-gradient(135deg, var(--accent-1), var(--accent-2)) border-box;
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
 .service-card:hover::before {
-  transform: scaleX(1);
+  opacity: 1;
 }
 
 .service-card:hover {
@@ -154,6 +157,7 @@
   bottom: 0;
   width: 4px;
   z-index: 1;
+  transform: translateX(-50%);
 }
 
 .timeline-line svg {
@@ -174,7 +178,8 @@
 .step-connector {
   position: absolute;
   left: -2rem;
-  top: 3rem;
+  top: 50%;
+  transform: translate(-50%, -50%);
   z-index: 2;
   display: flex;
   align-items: center;
@@ -371,6 +376,7 @@
 
   .timeline-line {
     left: 1rem;
+    transform: translateX(-50%);
   }
 
   .process-step {
@@ -382,6 +388,8 @@
 
   .step-connector {
     left: -1rem;
+    top: 50%;
+    transform: translate(-50%, -50%);
   }
 
   .step-content {
