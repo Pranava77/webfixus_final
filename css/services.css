@@ -1,5 +1,37 @@
 /* Services Page Styles */
 
+.services-hero {
+  position: relative;
+  width: 100vw;
+  min-height: 100svh;
+  background-color: var(--base-100);
+  color: var(--base-300);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.services-hero-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 80vh;
+}
+
+.services-hero-header {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.services-hero-header h1 {
+  font-size: 12rem;
+  line-height: 0.85;
+  letter-spacing: -0.02rem;
+  margin-bottom: 2rem;
+}
 
 .services-grid {
   position: relative;
@@ -244,6 +276,10 @@
 
 /* Mobile Responsive */
 @media (max-width: 1000px) {
+  .services-hero-header h1 {
+    font-size: 6rem;
+  }
+
   .services-grid-header h2,
   .services-process-header h2,
   .cta-content h2 {
