@@ -52,12 +52,12 @@
   border: none;
   border-radius: 6px;
   filter: 
-    grayscale(20%) 
-    contrast(1.6) 
-    brightness(1.2) 
-    saturate(1.8) 
-    hue-rotate(10deg) 
-    sepia(0.1) 
+    grayscale(0%) 
+    contrast(1.4) 
+    brightness(1.1) 
+    saturate(1.6) 
+    hue-rotate(5deg) 
+    sepia(0.05) 
     drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
   transition: all 0.3s ease;
   transform: scale(1);
