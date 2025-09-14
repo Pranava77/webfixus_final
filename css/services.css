@@ -1,5 +1,38 @@
 /* Services Page Styles */
 
+.services-hero {
+  position: relative;
+  width: 100vw;
+  min-height: 100svh;
+  background-color: var(--base-100);
+  color: var(--base-300);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.services-hero-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 80vh;
+}
+
+.services-hero-header {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.services-hero-header h1 {
+  font-size: 12rem;
+  line-height: 0.85;
+  letter-spacing: -0.02rem;
+  margin-bottom: 2rem;
+}
+
 .services-grid {
   position: relative;
   width: 100vw;
@@ -31,10 +64,10 @@
 }
 
 .service-section {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.05));
+  background: linear-gradient(135deg, rgba(173, 194, 169, 0.05), rgba(153, 167, 153, 0.08));
   border-radius: 24px;
   padding: 4rem;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(173, 194, 169, 0.15);
   backdrop-filter: blur(20px);
   position: relative;
   overflow: hidden;
@@ -70,22 +103,22 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--base-300);
+  color: var(--base-100);
   margin: 0 auto 2rem;
-  box-shadow: 0 8px 32px rgba(245, 224, 189, 0.2);
+  box-shadow: 0 8px 32px rgba(153, 167, 153, 0.3);
   transition: all 0.3s ease;
 }
 
 .service-section:hover .service-icon-large {
   transform: scale(1.05);
-  box-shadow: 0 12px 40px rgba(245, 224, 189, 0.3);
+  box-shadow: 0 12px 40px rgba(153, 167, 153, 0.4);
 }
 
 .service-section-header h2 {
   font-size: 4rem;
   line-height: 1.1;
   margin-bottom: 2rem;
-  color: var(--base-100);
+  color: var(--base-300);
   font-weight: 700;
 }
 
@@ -98,7 +131,7 @@
 .service-description p {
   font-size: 1.2rem;
   line-height: 1.7;
-  color: var(--base-200);
+  color: var(--base-300);
   margin-bottom: 1.5rem;
 }
 
@@ -110,10 +143,10 @@
 }
 
 .process-item {
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(173, 194, 169, 0.08);
   border-radius: 16px;
   padding: 2rem;
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(173, 194, 169, 0.15);
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
@@ -126,7 +159,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(135deg, rgba(245, 224, 189, 0.05), rgba(245, 224, 189, 0.02));
+  background: linear-gradient(135deg, rgba(153, 167, 153, 0.1), rgba(173, 194, 169, 0.05));
   opacity: 0;
   transition: opacity 0.3s ease;
 }
@@ -137,8 +170,8 @@
 
 .process-item:hover {
   transform: translateY(-8px);
-  border-color: rgba(245, 224, 189, 0.2);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  border-color: rgba(153, 167, 153, 0.3);
+  box-shadow: 0 20px 40px rgba(10, 10, 10, 0.3);
 }
 
 .process-icon {
@@ -149,7 +182,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--base-300);
+  color: var(--base-100);
   margin-bottom: 1.5rem;
   transition: all 0.3s ease;
 }
@@ -161,7 +194,7 @@
 .process-item h3 {
   font-size: 1.5rem;
   margin-bottom: 1rem;
-  color: var(--base-100);
+  color: var(--base-300);
   font-weight: 600;
 }
 
@@ -169,20 +202,21 @@
   font-size: 1rem;
   line-height: 1.6;
   color: var(--base-300);
+  opacity: 0.8;
 }
 
 .service-cta-box {
-  background: linear-gradient(135deg, rgba(245, 224, 189, 0.08), rgba(245, 224, 189, 0.03));
+  background: linear-gradient(135deg, rgba(153, 167, 153, 0.1), rgba(173, 194, 169, 0.05));
   border-radius: 16px;
   padding: 2.5rem;
-  border: 1px solid rgba(245, 224, 189, 0.15);
+  border: 1px solid rgba(153, 167, 153, 0.2);
   position: relative;
 }
 
 .service-cta-box h3 {
   font-size: 1.8rem;
   margin-bottom: 1.5rem;
-  color: var(--base-100);
+  color: var(--base-300);
   font-weight: 600;
 }
 
@@ -194,11 +228,12 @@
 
 .cta-list li {
   padding: 0.8rem 0;
-  color: var(--base-200);
+  color: var(--base-300);
   position: relative;
   padding-left: 2rem;
   font-size: 1.1rem;
   line-height: 1.6;
+  opacity: 0.9;
 }
 
 .cta-list li::before {
