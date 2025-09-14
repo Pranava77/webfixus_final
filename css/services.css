@@ -52,10 +52,17 @@
               linear-gradient(135deg, var(--accent-1), var(--accent-2)) border-box;
   opacity: 0;
   transition: opacity 0.3s ease;
+  z-index: 1;
 }
 
 .service-card:hover::before {
   opacity: 1;
+}
+
+.service-card-header,
+.service-card-content {
+  position: relative;
+  z-index: 2;
 }
 
 .service-card:hover {
