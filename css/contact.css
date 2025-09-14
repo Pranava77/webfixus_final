@@ -19,7 +19,7 @@
   gap: 2rem;
 }
 
-.contact .contact-gif {
+.contact .contact-map {
   position: absolute;
   top: 50%;
   right: 2rem;
@@ -27,6 +27,23 @@
   z-index: 0;
   width: 31%;
   aspect-ratio: 5/3.5;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.contact .contact-map iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 6px;
+  filter: grayscale(100%) contrast(1.2) brightness(0.8) sepia(0.1);
+  transition: filter 0.3s ease;
+}
+
+.contact .contact-map:hover iframe {
+  filter: grayscale(80%) contrast(1.1) brightness(0.9) sepia(0.05);
 }
 
 .home-spotlight-top-bar {
@@ -50,7 +67,7 @@
 }
 
 @media (max-width: 1000px) {
-  .contact .contact-gif {
+  .contact .contact-map {
     right: unset;
     top: 35svh;
     width: calc(100% - 4rem);
