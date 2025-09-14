@@ -120,13 +120,55 @@ function initAnimations() {
         stagger: 0.15,
         ease: "power2.out",
         scrollTrigger: {
-          trigger: '.process-steps',
+          trigger: '.process-timeline',
           start: "top 80%",
           toggleActions: "play none none reverse",
         },
       }
     );
   }
+
+  // Timeline dots animation
+  const stepDots = document.querySelectorAll('.step-dot');
+  stepDots.forEach((dot, index) => {
+    gsap.fromTo(
+      dot,
+      { scale: 0, opacity: 0 },
+      {
+        scale: 1,
+        opacity: 1,
+        duration: 0.6,
+        delay: index * 0.2 + 0.5,
+        ease: "back.out(1.7)",
+        scrollTrigger: {
+          trigger: dot.closest('.process-step'),
+          start: "top 85%",
+          toggleActions: "play none none reverse",
+        },
+      }
+    );
+  });
+
+  // Step tags animation
+  const stepTags = document.querySelectorAll('.tag');
+  stepTags.forEach((tag, index) => {
+    gsap.fromTo(
+      tag,
+      { opacity: 0, y: 20 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.5,
+        delay: index * 0.1 + 0.8,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: tag.closest('.process-step'),
+          start: "top 85%",
+          toggleActions: "play none none reverse",
+        },
+      }
+    );
+  });
 
   // Service card hover animations
   serviceCards.forEach((card) => {
