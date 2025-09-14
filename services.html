@@ -326,21 +326,35 @@
                 </pattern>
               </defs>
               <!-- Octagonal path -->
-              <path d="M300,50 L450,150 L450,300 L300,400 L150,300 L150,150 Z" 
+              <!-- Main pentagon shape -->
+              <path d="M300,50 L500,200 L400,400 L200,400 L100,200 Z" 
                     stroke="url(#dotted-octagon)" 
-                    stroke-width="3" 
+                    stroke-width="2" 
                     fill="none" 
                     stroke-linecap="round"
                     stroke-linejoin="round"/>
+              <!-- Inner pentagon -->
+              <path d="M300,150 L400,250 L350,350 L250,350 L200,250 Z" 
+                    stroke="url(#dotted-octagon)" 
+                    stroke-width="1" 
+                    fill="none" 
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    opacity="0.5"/>
               <!-- Center circle -->
-              <circle cx="300" cy="300" r="8" fill="currentColor" opacity="0.6"/>
-              <!-- Connection lines to center -->
-              <line x1="300" y1="50" x2="300" y2="300" stroke="url(#dotted-octagon)" stroke-width="2" opacity="0.3"/>
-              <line x1="450" y1="150" x2="300" y2="300" stroke="url(#dotted-octagon)" stroke-width="2" opacity="0.3"/>
-              <line x1="450" y1="300" x2="300" y2="300" stroke="url(#dotted-octagon)" stroke-width="2" opacity="0.3"/>
-              <line x1="300" y1="400" x2="300" y2="300" stroke="url(#dotted-octagon)" stroke-width="2" opacity="0.3"/>
-              <line x1="150" y1="300" x2="300" y2="300" stroke="url(#dotted-octagon)" stroke-width="2" opacity="0.3"/>
-              <line x1="150" y1="150" x2="300" y2="300" stroke="url(#dotted-octagon)" stroke-width="2" opacity="0.3"/>
+              <circle cx="300" cy="250" r="8" fill="currentColor" opacity="0.6"/>
+              <!-- Connection lines -->
+              <line x1="300" y1="50" x2="300" y2="150" stroke="url(#dotted-octagon)" stroke-width="1" opacity="0.3"/>
+              <line x1="500" y1="200" x2="400" y2="250" stroke="url(#dotted-octagon)" stroke-width="1" opacity="0.3"/>
+              <line x1="400" y1="400" x2="350" y2="350" stroke="url(#dotted-octagon)" stroke-width="1" opacity="0.3"/>
+              <line x1="200" y1="400" x2="250" y2="350" stroke="url(#dotted-octagon)" stroke-width="1" opacity="0.3"/>
+              <line x1="100" y1="200" x2="200" y2="250" stroke="url(#dotted-octagon)" stroke-width="1" opacity="0.3"/>
+              <!-- Step dots -->
+              <circle cx="300" cy="50" r="4" fill="currentColor" opacity="0.4"/>
+              <circle cx="500" cy="200" r="4" fill="currentColor" opacity="0.4"/>
+              <circle cx="400" cy="400" r="4" fill="currentColor" opacity="0.4"/>
+              <circle cx="200" cy="400" r="4" fill="currentColor" opacity="0.4"/>
+              <circle cx="100" cy="200" r="4" fill="currentColor" opacity="0.4"/>
             </svg>
           </div>
           
