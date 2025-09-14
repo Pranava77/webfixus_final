@@ -48,6 +48,22 @@ function initAnimations() {
     );
   });
 
+  // Reveal animation (for hero h1)
+  const revealElements = document.querySelectorAll('[data-animate-type="reveal"]');
+  revealElements.forEach((element) => {
+    gsap.fromTo(
+      element,
+      { opacity: 0, y: 50 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1.2,
+        delay: element.dataset.animateDelay || 0,
+        ease: "power3.out",
+      }
+    );
+  });
+
   // Fade up animation
   const fadeUpElements = document.querySelectorAll('[data-animate-type="fade-up"]');
   fadeUpElements.forEach((element) => {
