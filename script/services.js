@@ -216,7 +216,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // Parallax effect for hero section
-  const heroSection = document.querySelector('.services-hero');
+  const heroSection = document.querySelector('.hero');
   if (heroSection) {
     gsap.to(heroSection, {
       yPercent: -50,
