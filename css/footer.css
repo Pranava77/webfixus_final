@@ -200,6 +200,66 @@ footer .footer-bottom .footer-col:nth-child(2) {
   display: flex;
 }
 
+/* Footer Navigation */
+.footer-nav ul {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.footer-nav a {
+  color: var(--base-300);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.footer-nav a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: var(--base-300);
+  transition: width 0.3s ease;
+}
+
+.footer-nav a:hover::after {
+  width: 100%;
+}
+
+.footer-nav a:hover {
+  opacity: 0.8;
+}
+
+/* Mobile Responsive */
+@media (max-width: 1000px) {
+  .footer-nav ul {
+    gap: 1.5rem;
+  }
+  
+  .footer-nav a {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .footer-nav ul {
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+  }
+  
+  .footer-nav a {
+    font-size: 0.8rem;
+  }
+}
+
 footer .footer-logo {
   width: 150px;
 }
