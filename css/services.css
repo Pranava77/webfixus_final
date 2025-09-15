@@ -313,6 +313,19 @@
   letter-spacing: -0.02rem;
 }
 
+/* Button styles for dark background */
+.services-cta .button {
+  color: var(--base-100);
+  background-image: linear-gradient(var(--accent-2), var(--accent-1));
+  border-color: var(--accent-1);
+}
+
+.services-cta .button:hover {
+  background-image: linear-gradient(var(--accent-1), var(--accent-2));
+  border-color: var(--accent-2);
+  color: var(--base-100);
+}
+
 /* Mobile Responsive */
 @media (max-width: 1000px) {
   .services-hero-header h1 {
