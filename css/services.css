@@ -299,22 +299,22 @@
 }
 
 .services-cta .button {
-  background-image: linear-gradient(var(--base-100), var(--base-200));
+  background-image: linear-gradient(var(--accent-2), var(--accent-1));
   color: var(--base-300);
-  border-color: var(--base-100);
-  box-shadow: 0 4px 20px rgba(229, 239, 225, 0.2);
+  border-color: var(--accent-1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .services-cta .button:hover {
-  background-image: linear-gradient(var(--base-200), var(--base-100));
-  border-color: var(--base-200);
+  background-image: linear-gradient(var(--accent-1), var(--accent-2));
+  border-color: var(--accent-2);
   transform: translateY(-2px);
-  box-shadow: 0 8px 30px rgba(229, 239, 225, 0.3);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .services-cta .button:active {
-  background-image: linear-gradient(var(--base-200), var(--base-100));
-  border-color: var(--base-100);
+  background-image: linear-gradient(var(--accent-1), var(--accent-2));
+  border-color: var(--accent-1);
   transform: translateY(0);
 }
 
