@@ -20,9 +20,23 @@ footer .container > div {
   gap: 2rem;
 }
 
-footer .container .footer-col,
+footer .container .footer-col {
+  flex: 1;
+}
+
 footer .container .footer-sub-col {
   flex: 1;
+}
+
+/* Footer bottom specific layout */
+footer .footer-bottom .footer-col:first-child {
+  flex: 0 0 50%;
+  max-width: 50%;
+}
+
+footer .footer-bottom .footer-col:last-child {
+  flex: 0 0 50%;
+  max-width: 50%;
 }
 
 
@@ -273,7 +287,8 @@ footer .footer-bottom .footer-col:nth-child(2) {
 }
 
 footer .footer-logo {
-  width: 150px;
+  width: 200px;
+  max-width: 100%;
 }
 
 footer .footer-bottom .footer-col:nth-child(2) p.mono {
@@ -366,6 +381,23 @@ footer a {
   footer .footer-bottom .footer-col:nth-child(2) {
     flex-direction: column;
     gap: 4rem;
+  }
+
+  /* Mobile footer bottom layout */
+  footer .footer-bottom .footer-col:first-child {
+    flex: 0 0 100%;
+    max-width: 100%;
+    margin-bottom: 2rem;
+  }
+
+  footer .footer-bottom .footer-col:last-child {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+
+  /* Mobile logo sizing */
+  footer .footer-logo {
+    width: 180px;
   }
 
   footer .footer-copyright .footer-col:nth-child(1) {
