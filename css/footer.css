@@ -201,12 +201,18 @@ footer .footer-bottom .footer-col:nth-child(2) {
 }
 
 /* Footer Navigation */
+.footer-nav {
+  display: block;
+  width: 100%;
+}
+
 .footer-nav ul {
   display: flex;
   gap: 2rem;
   list-style: none;
   margin: 0;
   padding: 0;
+  justify-content: flex-start;
 }
 
 .footer-nav a {
@@ -300,6 +306,8 @@ footer .footer-bottom .footer-col:nth-child(2) p.mono {
 footer .footer-copyright {
   display: flex;
   gap: 2rem;
+  align-items: center;
+  justify-content: space-between;
 }
 
 footer .footer-copyright .footer-col {
@@ -353,7 +361,10 @@ footer a {
   }
 
   footer .footer-copyright .footer-col:nth-child(1) {
-    display: none;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 1rem;
   }
 
   footer .footer-copyright .footer-col:nth-child(2) {
