@@ -313,7 +313,7 @@
 }
 
 .services-cta .button:active {
-  background-image: linear-gradient(var(--accent-1), var(--accent-2));
+  background-image: linear-gradient(var(--accent-1), var(--accent-1));
   border-color: var(--accent-1);
   transform: translateY(0);
 }
