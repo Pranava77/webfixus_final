@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   const animeTextContainers = document.querySelectorAll(
-    ".anime-text-container"
+    ".anime-text"
   );
 
   animeTextContainers.forEach((container) => {
