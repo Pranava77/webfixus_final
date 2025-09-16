@@ -37,11 +37,11 @@
   padding-top: 1rem;
 }
 
-.contact .contact-calendly iframe {
+.contact .contact-calendly .calendly-inline-widget {
   width: 100%;
   height: 100%;
-  border: none;
   border-radius: 8px;
+  overflow: hidden;
 }
 
 .home-spotlight-top-bar {
