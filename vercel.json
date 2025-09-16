@@ -12,5 +12,16 @@
     { "source": "/project", "destination": "/project.html" },
     { "source": "/contact", "destination": "/contact.html" },
     { "source": "/services", "destination": "/services.html" }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        }
+      ]
+    }
   ]
 }

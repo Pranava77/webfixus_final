@@ -5,6 +5,7 @@ import { fileURLToPath, URL } from "node:url";
 const __dirname = fileURLToPath(new URL(".", import.meta.url));
 
 export default defineConfig({
+  base: '/',
   build: {
     rollupOptions: {
       input: {
