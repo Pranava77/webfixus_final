@@ -47,11 +47,11 @@ document.addEventListener("DOMContentLoaded", () => {
       e.stopPropagation();
       if (typeof Calendly !== 'undefined') {
         Calendly.initPopupWidget({
-          url: 'https://calendly.com/unknwngod8/30min?hide_event_type_details=1&hide_gdpr_banner=1&background_color=000000&text_color=d3eace&primary_color=f5e0bd'
+          url: 'https://calendly.com/webfixus/30min?hide_event_type_details=1&hide_gdpr_banner=1&background_color=000000&text_color=d3eace&primary_color=f5e0bd'
         });
       } else {
         // Fallback: open in new tab if Calendly script hasn't loaded
-        window.open('https://calendly.com/unknwngod8/30min', '_blank');
+        window.open('https://calendly.com/webfixus/30min', '_blank');
       }
     });
   }
