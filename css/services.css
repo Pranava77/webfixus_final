@@ -35,17 +35,21 @@
 }
 
 .services-hero-header p {
-  font-size: 1.1rem;
+  font-size: 1.3rem;
   line-height: 1.6;
   color: var(--base-300);
   margin-bottom: 1.5rem;
   max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .services-hero-header p.md {
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   line-height: 1.7;
   margin-bottom: 2rem;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .services-grid {
@@ -168,11 +172,15 @@
 }
 
 .service-description p {
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   line-height: 1.7;
   color: var(--base-100);
   margin-bottom: 1.5rem;
   opacity: 0.9;
+  text-align: center;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .process-grid {
@@ -239,10 +247,11 @@
 }
 
 .process-item p {
-  font-size: 1rem;
+  font-size: 1.1rem;
   line-height: 1.6;
   color: var(--base-100);
   opacity: 0.8;
+  text-align: center;
 }
 
 .service-cta-box {
@@ -368,7 +377,7 @@
   }
 
   .service-description p {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
   }
 
   .process-grid {
