@@ -108,40 +108,41 @@
   background: linear-gradient(135deg, rgba(173, 194, 169, 0.1), rgba(153, 167, 153, 0.15));
   border-radius: 24px;
   padding: 2rem 2rem;
-  border: 2px solid transparent;
+  border: 2px dotted var(--accent-2);
   backdrop-filter: blur(20px);
   position: relative;
-  overflow: hidden;
   cursor: pointer;
   transition: all 0.3s ease;
+  background-clip: padding-box;
 }
 
 .service-card::before {
   content: '';
   position: absolute;
-  top: -2px;
-  left: -2px;
-  right: -2px;
-  bottom: -2px;
-  background: repeating-linear-gradient(
-    90deg,
-    var(--accent-2) 0px,
-    var(--accent-2) 8px,
-    transparent 8px,
-    transparent 16px
-  );
-  background-size: 32px 2px;
+  inset: -4px;
+  padding: 4px;
   border-radius: 24px;
+  background: 
+    linear-gradient(90deg, var(--accent-2) 50%, transparent 50%) 0 0,
+    linear-gradient(90deg, var(--accent-2) 50%, transparent 50%) 0 100%,
+    linear-gradient(0deg, var(--accent-2) 50%, transparent 50%) 0 0,
+    linear-gradient(0deg, var(--accent-2) 50%, transparent 50%) 100% 0;
+  background-size: 16px 2px, 16px 2px, 2px 16px, 2px 16px;
+  background-repeat: repeat-x, repeat-x, repeat-y, repeat-y;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
   z-index: -1;
-  animation: dottedBorderMove 4s linear infinite;
+  animation: dottedBorderMove 3s linear infinite;
+  pointer-events: none;
 }
 
 @keyframes dottedBorderMove {
   0% {
-    background-position: 0 0;
+    background-position: 0 0, 0 100%, 0 0, 100% 0;
   }
   100% {
-    background-position: 32px 0;
+    background-position: 16px 0, 16px 100%, 0 16px, 100% 16px;
   }
 }
 
@@ -150,7 +151,7 @@
 }
 
 .service-card:hover::before {
-  animation-duration: 2s;
+  animation-duration: 1.5s;
 }
 
 .service-card-header {
