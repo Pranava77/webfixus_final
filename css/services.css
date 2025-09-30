@@ -86,6 +86,7 @@
   background-color: var(--base-300);
   color: var(--base-100);
   overflow: hidden;
+  padding: 8rem 0;
 }
 
 .services-content {
@@ -333,6 +334,10 @@
     font-size: 1.125rem;
   }
 
+  .services-grid {
+    padding: 6rem 0;
+  }
+
   .services-content {
     padding: 2rem;
   }
@@ -415,6 +420,10 @@
 
   .services-hero-header p.md {
     font-size: 1rem;
+  }
+
+  .services-grid {
+    padding: 4rem 0;
   }
 
   .services-content {
@@ -513,6 +522,10 @@
 
   .services-hero-header p.md {
     font-size: 0.95rem;
+  }
+
+  .services-grid {
+    padding: 3rem 0;
   }
 
   .services-content {
