@@ -101,8 +101,8 @@
 .anime-text-container .anime-text .word span.keyword.strategy::before,
 .anime-text-container .anime-text .word span.keyword.full-stack::before,
 .anime-text-container .anime-text .word span.keyword.design::before {
-  background-color: rgba(255, 223, 186, 0.3); /* Soft peach */
-  border: 1px solid rgba(255, 223, 186, 0.5);
+  background-color: rgba(40, 75, 45, 0.25);  /* Deep forest green */
+  border: 1px solid rgba(40, 75, 45, 0.4);
   opacity: var(--bg-opacity, 0);
 }
 
@@ -111,8 +111,8 @@
 .anime-text-container .anime-text .word span.keyword.marketing::before,
 .anime-text-container .anime-text .word span.keyword.excellence::before,
 .anime-text-container .anime-text .word span.keyword.precision::before {
-  background-color: rgba(211, 228, 205, 0.4); /* Soft sage */
-  border: 1px solid rgba(211, 228, 205, 0.6);
+  background-color: rgba(53, 94, 59, 0.25);   /* Rich emerald green */
+  border: 1px solid rgba(53, 94, 59, 0.4);
   opacity: var(--bg-opacity, 0);
 }
 
@@ -121,8 +121,8 @@
 .anime-text-container .anime-text .word span.keyword.transformative::before,
 .anime-text-container .anime-text .word span.keyword.development::before,
 .anime-text-container .anime-text .word span.keyword.limitless::before {
-  background-color: rgba(153, 167, 153, 0.3); /* Muted green */
-  border: 1px solid rgba(153, 167, 153, 0.5);
+  background-color: rgba(69, 122, 77, 0.25);  /* Deep sage green */
+  border: 1px solid rgba(69, 122, 77, 0.4);
   opacity: var(--bg-opacity, 0);
 }
 
