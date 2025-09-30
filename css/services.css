@@ -123,24 +123,34 @@
   left: -2px;
   right: -2px;
   bottom: -2px;
-  background: repeating-linear-gradient(
-    90deg,
-    var(--accent-2) 0px,
-    var(--accent-2) 8px,
-    transparent 8px,
-    transparent 16px
-  );
+  background: 
+    repeating-linear-gradient(0deg, transparent, transparent 2px, var(--accent-2) 2px, var(--accent-2) 4px),
+    repeating-linear-gradient(90deg, transparent, transparent 2px, var(--accent-2) 2px, var(--accent-2) 4px),
+    repeating-linear-gradient(180deg, transparent, transparent 2px, var(--accent-2) 2px, var(--accent-2) 4px),
+    repeating-linear-gradient(270deg, transparent, transparent 2px, var(--accent-2) 2px, var(--accent-2) 4px);
+  background-size: 100% 2px, 2px 100%, 100% 2px, 2px 100%;
+  background-position: 0 0, 100% 0, 100% 100%, 0 100%;
+  background-repeat: no-repeat;
   border-radius: 24px;
   z-index: -1;
-  animation: dottedBorderMove 3s linear infinite;
+  animation: dottedBorderMove 4s linear infinite;
 }
 
 @keyframes dottedBorderMove {
   0% {
-    background-position: 0 0;
+    background-position: 0 0, 100% 0, 100% 100%, 0 100%;
+  }
+  25% {
+    background-position: 100% 0, 100% 100%, 0 100%, 0 0;
+  }
+  50% {
+    background-position: 100% 100%, 0 100%, 0 0, 100% 0;
+  }
+  75% {
+    background-position: 0 100%, 0 0, 100% 0, 100% 100%;
   }
   100% {
-    background-position: 32px 0;
+    background-position: 0 0, 100% 0, 100% 100%, 0 100%;
   }
 }
 
@@ -149,14 +159,12 @@
 }
 
 .service-card:hover::before {
-  background: repeating-linear-gradient(
-    90deg,
-    #4ade80 0px,
-    #4ade80 8px,
-    transparent 8px,
-    transparent 16px
-  );
-  animation-duration: 1.5s;
+  background: 
+    repeating-linear-gradient(0deg, transparent, transparent 2px, #4ade80 2px, #4ade80 4px),
+    repeating-linear-gradient(90deg, transparent, transparent 2px, #4ade80 2px, #4ade80 4px),
+    repeating-linear-gradient(180deg, transparent, transparent 2px, #4ade80 2px, #4ade80 4px),
+    repeating-linear-gradient(270deg, transparent, transparent 2px, #4ade80 2px, #4ade80 4px);
+  animation-duration: 2s;
 }
 
 .service-card-header {
