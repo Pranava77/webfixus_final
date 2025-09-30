@@ -8,6 +8,8 @@
   text-align: center;
   margin-left: auto;
   margin-right: auto;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 .about-hero {
@@ -60,7 +62,7 @@
   color: var(--base-300);
   text-align: center;
   margin-bottom: 2rem;
-  margin-top: 2rem;
+  margin-top: 3rem;
   margin-left: auto;
   margin-right: auto;
   font-size: 2rem;
@@ -292,7 +294,8 @@
 
   .anime-text-container .anime-text p {
     font-size: 1rem;
-    margin-top: 3rem;
+    margin-top: 4rem;
+    margin-bottom: 2rem;
     text-align: center;
     margin-left: auto;
     margin-right: auto;
@@ -315,6 +318,8 @@
     text-align: center;
     margin-left: auto;
     margin-right: auto;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
   }
 
   .anime-text-container .anime-text .word {
@@ -407,6 +412,8 @@
     text-align: center;
     margin-left: auto;
     margin-right: auto;
+    margin-top: 2rem;
+    margin-bottom: 1.5rem;
   }
 }
 
@@ -432,6 +439,8 @@
     text-align: center;
     margin-left: auto;
     margin-right: auto;
+    margin-top: 2.5rem;
+    margin-bottom: 1.5rem;
   }
 }
 
@@ -453,6 +462,8 @@
     text-align: center;
     margin-left: auto;
     margin-right: auto;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
     max-width: 1200px;
   }
 
@@ -481,6 +492,8 @@
     text-align: center;
     margin-left: auto;
     margin-right: auto;
+    margin-top: 2.5rem;
+    margin-bottom: 2.5rem;
     max-width: 1000px;
   }
 
