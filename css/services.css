@@ -427,11 +427,12 @@
   }
 
   .services-content {
-    padding: 0 0.5rem;
+    padding: 0 0.25rem;
+    max-width: 100%;
   }
 
   .service-card {
-    padding: 1.25rem 1rem;
+    padding: 1.25rem 0.75rem;
   }
 
   .service-card-header {
@@ -529,11 +530,12 @@
   }
 
   .services-content {
-    padding: 0 0.25rem;
+    padding: 0 0.125rem;
+    max-width: 100%;
   }
 
   .service-card {
-    padding: 1rem 0.75rem;
+    padding: 1rem 0.5rem;
     border-radius: 16px;
   }
 
