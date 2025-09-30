@@ -100,7 +100,9 @@
 .anime-text-container .anime-text .word span.keyword.technology::before,
 .anime-text-container .anime-text .word span.keyword.strategy::before,
 .anime-text-container .anime-text .word span.keyword.full-stack::before,
-.anime-text-container .anime-text .word span.keyword.design::before {
+.anime-text-container .anime-text .word span.keyword.design::before,
+.anime-text-container .anime-text .word span.keyword.cutting-edge::before,
+.anime-text-container .anime-text .word span.keyword.seamlessly::before {
   background-color: rgba(50, 205, 50, 0.45);  /* Lime Green */
   border: 2px dotted rgba(0, 0, 0, 0.9);
   opacity: var(--bg-opacity, 0);
@@ -110,7 +112,11 @@
 .anime-text-container .anime-text .word span.keyword.data::before,
 .anime-text-container .anime-text .word span.keyword.marketing::before,
 .anime-text-container .anime-text .word span.keyword.excellence::before,
-.anime-text-container .anime-text .word span.keyword.precision::before {
+.anime-text-container .anime-text .word span.keyword.precision::before,
+.anime-text-container .anime-text .word span.keyword.digital::before,
+.anime-text-container .anime-text .word span.keyword.ecosystems::before,
+.anime-text-container .anime-text .word span.keyword.perform::before,
+.anime-text-container .anime-text .word span.keyword.scale::before {
   background-color: rgba(0, 255, 127, 0.45);   /* Spring Green */
   border: 2px dotted rgba(0, 0, 0, 0.9);
   opacity: var(--bg-opacity, 0);
@@ -120,7 +126,11 @@
 .anime-text-container .anime-text .word span.keyword.vision::before,
 .anime-text-container .anime-text .word span.keyword.transformative::before,
 .anime-text-container .anime-text .word span.keyword.development::before,
-.anime-text-container .anime-text .word span.keyword.limitless::before {
+.anime-text-container .anime-text .word span.keyword.limitless::before,
+.anime-text-container .anime-text .word span.keyword.ambitious::before,
+.anime-text-container .anime-text .word span.keyword.impactful::before,
+.anime-text-container .anime-text .word span.keyword.innovators::before,
+.anime-text-container .anime-text .word span.keyword.inspire::before {
   background-color: rgba(60, 179, 113, 0.45);  /* Medium Sea Green */
   border: 2px dotted rgba(0, 0, 0, 0.9);
   opacity: var(--bg-opacity, 0);

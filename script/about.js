@@ -12,21 +12,36 @@ document.addEventListener("DOMContentLoaded", () => {
   const wordHighlightBgColor = "191, 188, 180";
 
   const keywords = [
+    // Group 1 - Core Capabilities
     "artistry",
     "technology",
     "strategy",
     "full-stack",
     "design",
+    "cutting-edge",
+    "seamlessly",
+    
+    // Group 2 - Technical & Services
     "AI",
     "data",
     "marketing",
     "excellence",
     "precision",
+    "digital",
+    "ecosystems",
+    "perform",
+    "scale",
+    
+    // Group 3 - Vision & Impact
     "creativity",
     "vision",
     "transformative",
     "development",
-    "limitless"
+    "limitless",
+    "ambitious",
+    "impactful",
+    "innovators",
+    "inspire"
   ];
 
   animeTextParagraphs.forEach((paragraph) => {
