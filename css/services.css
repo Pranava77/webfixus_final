@@ -1,14 +1,5 @@
 /* Services Page Styles */
 
-/* Center all p tags across all screen sizes */
-.services-hero p,
-.services-grid p,
-.services-cta p {
-  text-align: center;
-  margin-left: auto;
-  margin-right: auto;
-}
-
 .services-hero {
   position: relative;
   width: 100vw;
@@ -386,7 +377,6 @@
 
   .service-description p {
     font-size: 1.1rem;
-    text-align: center;
   }
 
   .process-grid {
@@ -399,7 +389,6 @@
   }
 
   .process-item p {
-    text-align: center;
   }
 
   .service-cta-box {
@@ -412,17 +401,8 @@
 
   .cta-list li {
     font-size: 1rem;
-    text-align: center;
   }
 
-  /* Ensure all p tags remain centered on mobile */
-  .services-hero p,
-  .services-grid p,
-  .services-cta p {
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-  }
 
 }
 
@@ -459,10 +439,8 @@
   }
 
   .process-item p {
-    text-align: center;
   }
 
   .cta-list li {
-    text-align: center;
   }
 }
