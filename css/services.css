@@ -151,7 +151,7 @@
 }
 
 .service-card:hover::before {
-  animation-duration: 1.5s;
+  animation-play-state: paused;
 }
 
 .service-card-header {
