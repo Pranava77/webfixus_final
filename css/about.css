@@ -279,12 +279,7 @@
   margin-right: auto;
 }
 
-@media (max-width: 1000px) {
-  .about-sticky-cards .gallery-card {
-    width: 75%;
-  }
-}
-
+/* Mobile Responsive - All screen sizes below 1000px */
 @media (max-width: 1000px) {
   .anime-text-container .copy-container h1 {
     width: 90%;
@@ -303,13 +298,20 @@
     margin-right: auto;
   }
 
-  /* Ensure all p tags remain centered on mobile */
+  .about-sticky-cards .gallery-card {
+    width: 75%;
+  }
+
+  /* Ensure ALL p tags remain centered on mobile */
   .about-hero p,
   .anime-text-container p,
   .about-skills p,
   .about-gallery p,
   .outro p,
-  .footer p {
+  .footer p,
+  .about-skills .object-container .object p,
+  .about-sticky-cards .gallery-card-content p,
+  .about-skills-callout p {
     text-align: center;
     margin-left: auto;
     margin-right: auto;
@@ -380,5 +382,124 @@
 
   .about-sticky-cards .sticky-cards-header {
     width: 90%;
+  }
+}
+
+/* Small Mobile Screens (768px and below) */
+@media (max-width: 768px) {
+  /* Ensure ALL p tags remain centered on small mobile */
+  .about-hero p,
+  .anime-text-container p,
+  .about-skills p,
+  .about-gallery p,
+  .outro p,
+  .footer p,
+  .about-skills .object-container .object p,
+  .about-sticky-cards .gallery-card-content p,
+  .about-skills-callout p {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .anime-text-container .anime-text p {
+    font-size: 0.9rem;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* Extra Small Mobile Screens (480px and below) */
+@media (max-width: 480px) {
+  /* Ensure ALL p tags remain centered on extra small mobile */
+  .about-hero p,
+  .anime-text-container p,
+  .about-skills p,
+  .about-gallery p,
+  .outro p,
+  .footer p,
+  .about-skills .object-container .object p,
+  .about-sticky-cards .gallery-card-content p,
+  .about-skills-callout p {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .anime-text-container .anime-text p {
+    font-size: 0.8rem;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* Extra Large Screens (2560px and above) */
+@media (min-width: 2560px) {
+  /* Ensure all p tags remain centered on extra large screens */
+  .about-hero p,
+  .anime-text-container p,
+  .about-skills p,
+  .about-gallery p,
+  .outro p,
+  .footer p {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .anime-text-container .anime-text p {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1200px;
+  }
+
+  .about-skills .object-container .object p {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .about-sticky-cards .gallery-card-content p.mono {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* Ultra-wide screens (3440x1440 and similar) */
+@media (min-width: 3440px) {
+  .anime-text-container .anime-text {
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .anime-text-container .anime-text p {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1000px;
+  }
+
+  /* Ensure proper centering for ultra-wide layouts */
+  .about-hero .about-header {
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Center all paragraph content on ultra-wide screens */
+  .about-hero p,
+  .anime-text-container p,
+  .about-skills p,
+  .about-gallery p,
+  .outro p,
+  .footer p {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
