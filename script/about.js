@@ -102,7 +102,8 @@ document.addEventListener("DOMContentLoaded", () => {
             const backgroundFadeStart =
               wordProgress >= 0.9 ? (wordProgress - 0.9) / 0.1 : 0;
             const backgroundOpacity = Math.max(0, 1 - backgroundFadeStart);
-            word.style.backgroundColor = `rgba(${wordHighlightBgColor}, ${backgroundOpacity})`;
+            // Use CSS custom property for background opacity instead of inline style
+            word.style.setProperty('--bg-opacity', backgroundOpacity);
 
             const textRevealThreshold = 0.9;
             const textRevealProgress =
@@ -143,10 +144,10 @@ document.addEventListener("DOMContentLoaded", () => {
             if (reverseWordProgress > 0) {
               wordText.style.opacity =
                 targetTextOpacity * (1 - reverseWordProgress);
-              word.style.backgroundColor = `rgba(${wordHighlightBgColor}, ${reverseWordProgress})`;
+              word.style.setProperty('--bg-opacity', reverseWordProgress);
             } else {
               wordText.style.opacity = targetTextOpacity;
-              word.style.backgroundColor = `rgba(${wordHighlightBgColor}, 0)`;
+              word.style.setProperty('--bg-opacity', 0);
             }
           }
         });

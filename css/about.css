@@ -93,24 +93,28 @@
   border-radius: 8px;
   z-index: -1;
   border: 1px dashed var(--base-300);
+  opacity: var(--bg-opacity, 0);
 }
 
 .anime-text-container .anime-text .word span.keyword.corner::before,
 .anime-text-container .anime-text .word span.keyword.learnings::before,
 .anime-text-container .anime-text .word span.keyword.deploy::before {
   background-color: var(--accent-1);
+  opacity: var(--bg-opacity, 0);
 }
 
 .anime-text-container .anime-text .word span.keyword.scroll::before,
 .anime-text-container .anime-text .word span.keyword.rhythm::before,
 .anime-text-container .anime-text .word span.keyword.caffeine::before {
   background-color: var(--accent-2);
+  opacity: var(--bg-opacity, 0);
 }
 
 .anime-text-container .anime-text .word span.keyword.archive::before,
 .anime-text-container .anime-text .word span.keyword.detail::before,
 .anime-text-container .anime-text .word span.keyword.messing::before {
   background-color: var(--accent-3);
+  opacity: var(--bg-opacity, 0);
 }
 
 .anime-text-container .anime-text .word,
