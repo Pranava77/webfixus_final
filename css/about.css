@@ -256,6 +256,12 @@
   font-size: 0.8rem;
 }
 
+@media (max-width: 1440px) and (min-width: 1001px) {
+  .anime-text-container .anime-text p {
+    font-size: 1.8rem;
+  }
+}
+
 @media (max-width: 1000px) {
   .about-sticky-cards .gallery-card {
     width: 75%;
