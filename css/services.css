@@ -432,3 +432,49 @@
     margin-top: 10rem;
   }
 }
+
+@media (min-width: 2560px) {
+  .services-hero-header {
+    max-width: 1400px;
+  }
+  
+  .services-hero-header h1 {
+    font-size: 16rem;
+  }
+  
+  .services-hero-header p {
+    font-size: 1.6rem;
+    max-width: 1000px;
+  }
+  
+  .services-hero-header p.md {
+    font-size: 1.8rem;
+  }
+  
+  .service-description {
+    max-width: 1200px;
+  }
+  
+  .service-description p {
+    font-size: 1.6rem;
+    max-width: 1100px;
+  }
+  
+  .container {
+    max-width: 1600px;
+  }
+  
+  .services-grid {
+    padding: 0 4rem;
+  }
+  
+  .service-section {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  
+  .process-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+}
