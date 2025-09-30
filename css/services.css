@@ -150,21 +150,22 @@
   transform: rotate(90deg) translateX(-6px);
 }
 
-.service-card.open .expand-icon span:first-child {
+.service-card.expanded .expand-icon span:first-child {
   transform: rotate(45deg) translateX(0);
 }
 
-.service-card.open .expand-icon span:last-child {
+.service-card.expanded .expand-icon span:last-child {
   transform: rotate(-45deg) translateX(0);
 }
 
 .service-card-content {
-  display: none;
+  display: block;
   padding-top: 1rem;
   border-top: 1px solid var(--accent-2);
+  overflow: hidden;
 }
 
-.service-card.open .service-card-content {
+.service-card.expanded .service-card-content {
   display: block;
 }
 
