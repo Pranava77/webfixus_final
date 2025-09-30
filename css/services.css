@@ -1,5 +1,38 @@
 /* Services Page Styles */
 
+.home-spotlight-top-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1;
+}
+
+.home-spotlight-bottom-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1;
+}
+
+.home-spotlight-top-bar .container,
+.home-spotlight-bottom-bar .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.symbols-container {
+  display: flex;
+  gap: 1rem;
+}
+
+.symbol {
+  width: 40px;
+  height: 40px;
+}
+
 .services-hero {
   position: relative;
   width: 100vw;
@@ -285,32 +318,75 @@
 }
 
 /* Responsive Styles */
+
+/* Tablet and below */
 @media (max-width: 1000px) {
   .services-hero-header h1 {
     font-size: 6rem;
+  }
+
+  .services-hero-header p {
+    font-size: 1rem;
   }
 
   .services-hero-header p.md {
     font-size: 1.125rem;
   }
 
+  .services-content {
+    padding: 2rem;
+  }
+
   .service-card {
-    padding: 1.5rem 2rem;
+    padding: 1.5rem;
   }
 
   .service-card-header {
-    flex-direction: column;
-    align-items: flex-start;
     gap: 1rem;
-    padding: 1.5rem 0;
+    padding: 1rem 0;
   }
 
   .service-card-header h3 {
-    font-size: 2rem;
+    font-size: 2.5rem;
+  }
+
+  .service-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .expand-icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .service-card-content p.md {
+    font-size: 1.1rem;
+  }
+
+  .service-details p.md {
+    font-size: 1rem;
   }
 
   .service-features {
     grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .feature {
+    padding: 1.25rem;
+  }
+
+  .feature h4 {
+    font-size: 1.3rem;
+  }
+
+  .service-checklist {
+    padding: 1.5rem;
+  }
+
+  .service-checklist h4 {
+    font-size: 1.5rem;
   }
 
   .services-cta h2 {
@@ -319,5 +395,215 @@
 
   .services-cta p.md {
     font-size: 1.25rem;
+  }
+
+  .symbol {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .services-hero-header h1 {
+    font-size: 4rem;
+  }
+
+  .services-hero-header p {
+    font-size: 0.9rem;
+  }
+
+  .services-hero-header p.md {
+    font-size: 1rem;
+  }
+
+  .services-content {
+    padding: 1.5rem;
+  }
+
+  .service-card {
+    padding: 1.25rem;
+  }
+
+  .service-card-header {
+    gap: 0.75rem;
+    padding: 0.75rem 0;
+  }
+
+  .service-card-header h3 {
+    font-size: 1.8rem;
+  }
+
+  .service-icon {
+    width: 32px;
+    height: 32px;
+  }
+
+  .expand-icon {
+    width: 18px;
+    height: 18px;
+  }
+
+  .service-card-content p.md {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .service-details p.md {
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .service-features {
+    gap: 1.25rem;
+    margin-bottom: 2rem;
+  }
+
+  .feature {
+    padding: 1rem;
+  }
+
+  .feature h4 {
+    font-size: 1.2rem;
+  }
+
+  .feature p {
+    font-size: 0.85rem;
+  }
+
+  .service-checklist {
+    padding: 1.25rem;
+  }
+
+  .service-checklist h4 {
+    font-size: 1.3rem;
+  }
+
+  .service-checklist li {
+    font-size: 0.9rem;
+  }
+
+  .services-cta {
+    padding: 4rem 0;
+  }
+
+  .services-cta h2 {
+    font-size: 3.5rem;
+  }
+
+  .services-cta p.md {
+    font-size: 1.1rem;
+  }
+
+  .symbol {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+/* Small mobile */
+@media (max-width: 480px) {
+  .services-hero-header h1 {
+    font-size: 3rem;
+  }
+
+  .services-hero-header p {
+    font-size: 0.85rem;
+  }
+
+  .services-hero-header p.md {
+    font-size: 0.95rem;
+  }
+
+  .services-content {
+    padding: 1rem;
+  }
+
+  .service-card {
+    padding: 1rem;
+    border-radius: 16px;
+  }
+
+  .service-card-header {
+    gap: 0.5rem;
+    padding: 0.5rem 0;
+  }
+
+  .service-card-header h3 {
+    font-size: 1.5rem;
+  }
+
+  .service-icon {
+    width: 28px;
+    height: 28px;
+  }
+
+  .expand-icon {
+    width: 16px;
+    height: 16px;
+  }
+
+  .service-card-content p.md {
+    font-size: 0.95rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .service-details p.md {
+    font-size: 0.9rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .service-features {
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .feature {
+    padding: 0.875rem;
+    border-radius: 8px;
+  }
+
+  .feature h4 {
+    font-size: 1.1rem;
+  }
+
+  .feature p {
+    font-size: 0.8rem;
+  }
+
+  .service-checklist {
+    padding: 1rem;
+    border-radius: 8px;
+  }
+
+  .service-checklist h4 {
+    font-size: 1.2rem;
+  }
+
+  .service-checklist li {
+    font-size: 0.85rem;
+    padding-left: 1.25rem;
+  }
+
+  .services-cta {
+    padding: 3rem 0;
+  }
+
+  .services-cta h2 {
+    font-size: 2.5rem;
+  }
+
+  .services-cta p.md {
+    font-size: 1rem;
+  }
+
+  .symbol {
+    width: 20px;
+    height: 20px;
+  }
+
+  .home-spotlight-top-bar .container,
+  .home-spotlight-bottom-bar .container {
+    padding: 1.5rem;
   }
 }
