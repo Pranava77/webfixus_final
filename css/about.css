@@ -96,23 +96,29 @@
   opacity: var(--bg-opacity, 0);
 }
 
-.anime-text-container .anime-text .word span.keyword.corner::before,
-.anime-text-container .anime-text .word span.keyword.learnings::before,
-.anime-text-container .anime-text .word span.keyword.deploy::before {
+.anime-text-container .anime-text .word span.keyword.artistry::before,
+.anime-text-container .anime-text .word span.keyword.technology::before,
+.anime-text-container .anime-text .word span.keyword.strategy::before,
+.anime-text-container .anime-text .word span.keyword.full-stack::before,
+.anime-text-container .anime-text .word span.keyword.design::before {
   background-color: var(--accent-1);
   opacity: var(--bg-opacity, 0);
 }
 
-.anime-text-container .anime-text .word span.keyword.scroll::before,
-.anime-text-container .anime-text .word span.keyword.rhythm::before,
-.anime-text-container .anime-text .word span.keyword.caffeine::before {
+.anime-text-container .anime-text .word span.keyword.AI::before,
+.anime-text-container .anime-text .word span.keyword.data::before,
+.anime-text-container .anime-text .word span.keyword.marketing::before,
+.anime-text-container .anime-text .word span.keyword.excellence::before,
+.anime-text-container .anime-text .word span.keyword.precision::before {
   background-color: var(--accent-2);
   opacity: var(--bg-opacity, 0);
 }
 
-.anime-text-container .anime-text .word span.keyword.archive::before,
-.anime-text-container .anime-text .word span.keyword.detail::before,
-.anime-text-container .anime-text .word span.keyword.messing::before {
+.anime-text-container .anime-text .word span.keyword.creativity::before,
+.anime-text-container .anime-text .word span.keyword.vision::before,
+.anime-text-container .anime-text .word span.keyword.transformative::before,
+.anime-text-container .anime-text .word span.keyword.development::before,
+.anime-text-container .anime-text .word span.keyword.limitless::before {
   background-color: var(--accent-3);
   opacity: var(--bg-opacity, 0);
 }
