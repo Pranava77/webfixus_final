@@ -5,7 +5,7 @@
   overflow: hidden;
   background-color: var(--base-300);
   color: var(--base-100);
-  padding: 5rem 0; /* creates breathing room from top/bottom spotlight bars */
+  padding: 6rem 0; /* breathing room from top/bottom spotlight bars */
 }
 
 .contact .container {
@@ -27,11 +27,8 @@
 }
 
 .contact .contact-calendly {
-  position: absolute;
-  top: 50%;
-  right: 2rem;
-  transform: translateY(-50%);
-  z-index: 0;
+  position: static;
+  z-index: 1;
   width: 55%;
   height: min(70svh, 640px);
   border-radius: 12px;
@@ -51,6 +48,7 @@
   top: 0;
   left: 0;
   width: 100%;
+  z-index: 0;
 }
 
 .home-spotlight-bottom-bar {
@@ -58,6 +56,7 @@
   bottom: 0;
   left: 0;
   width: 100%;
+  z-index: 0;
 }
 
 .home-spotlight-top-bar .container,
@@ -99,5 +98,22 @@
   .contact .home-spotlight-bottom-bar p:nth-child(2),
   .contact .home-spotlight-bottom-bar p:nth-child(3) {
     display: none;
+  }
+}
+
+@media (min-width: 1001px) {
+  .contact .container {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .contact .container .contact-header {
+    width: 40%;
+    z-index: 1;
+  }
+
+  .contact .contact-calendly {
+    width: 55%;
+    margin-left: auto;
   }
 }
