@@ -1,7 +1,7 @@
 .contact {
   position: relative;
   width: 100vw;
-  height: 100svh;
+  min-height: 100svh;
   overflow: hidden;
   background-color: var(--base-300);
   color: var(--base-100);
@@ -31,7 +31,7 @@
   transform: translateY(-50%);
   z-index: 0;
   width: 55%;
-  height: 600px;
+  height: min(70svh, 640px);
   border-radius: 12px;
   overflow: hidden;
   padding-top: 1rem;
@@ -65,21 +65,28 @@
 }
 
 @media (max-width: 1000px) {
+  .contact {
+    overflow-y: auto;
+  }
+
   .contact .contact-calendly {
-    right: unset;
-    top: 35svh;
-    width: calc(100% - 4rem);
-    height: 500px;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    max-width: 400px;
+    position: static;
+    transform: none;
+    right: auto;
+    left: auto;
+    top: auto;
+    width: min(100%, 480px);
+    height: min(70svh, 560px);
+    margin: 2rem auto 3rem;
+    max-width: 100%;
   }
 
   .contact .container .contact-header {
-    position: absolute;
-    bottom: 6rem;
+    position: static;
+    bottom: auto;
     z-index: 1;
-    width: 90%;
+    width: 100%;
+    padding: 2rem 0 0;
   }
 
   .contact .home-spotlight-bottom-bar p:nth-child(2),
