@@ -108,9 +108,9 @@ gsap.registerPlugin(ScrollTrigger);
   });
 
   // Initialize Calendly buttons
-  const calendlyBtn = document.getElementById('services-calendly-btn');
-  if (calendlyBtn) {
-    calendlyBtn.addEventListener('click', function(e) {
+  const heroCalendlyBtn = document.getElementById('hero-calendly-btn');
+  if (heroCalendlyBtn) {
+    heroCalendlyBtn.addEventListener('click', function(e) {
       e.preventDefault();
       e.stopPropagation();
       if (typeof Calendly !== 'undefined') {
