@@ -1,5 +1,582 @@
 /* Services Page Styles */
 
+/* Meeting Button Styles */
+.button {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 14px;
+  background-image: linear-gradient(var(--accent-2), var(--accent-1));
+  color: var(--base-300);
+  border: solid 2px var(--accent-1);
+  height: 45px;
+  padding: 0px 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  position: relative;
+  width: fit-content;
+  min-width: 180px;
+  margin: 2rem auto 0;
+  transition: all 0.3s ease;
+}
+
+.button:not(:hover) .hide,
+.button:not(:hover) .icon::before,
+.button:not(:hover) .icon::after {
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(1.4);
+}
+
+.hide {
+  transition: all 0.2s ease;
+}
+
+.button:hover {
+  background-image: linear-gradient(var(--accent-1), var(--accent-2));
+  border-color: var(--accent-2);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.button:active {
+  background-image: linear-gradient(var(--accent-1), var(--accent-2));
+  border-color: var(--accent-1);
+  transform: translateY(0);
+}
+
+.icon {
+  position: relative;
+}
+
+.icon::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 6px;
+  height: 6px;
+  transform: translate(-50%, -50%);
+  background-color: #666666;
+  border-radius: 100%;
+}
+
+.icon::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  transform: translate(-19%, -60%);
+  width: 100px;
+  height: 33px;
+  background-color: transparent;
+  border-radius: 12px 22px 2px 2px;
+  border-right: solid 2px #666666;
+  border-top: solid 2px transparent;
+}
+
+.icon .text-icon {
+  color: #000000;
+  position: absolute;
+  font-size: 12px;
+  left: -50px;
+  top: -50px;
+}
+
+.icon svg {
+  width: 20px;
+  height: 20px;
+  border: solid 2px transparent;
+  display: flex;
+}
+
+.button:hover .icon svg {
+  border: solid 2px rgba(211, 228, 205, 0.7);
+}
+
+.meeting-duration {
+  position: absolute;
+  width: 20px;
+  height: 2px;
+  background-color: #666666;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.meeting-duration:before {
+  content: "";
+  width: 2px;
+  height: 10px;
+  background-color: #666666;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.meeting-duration:after {
+  content: "";
+  width: 2px;
+  height: 10px;
+  background-color: #666666;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.meeting-duration-line {
+  position: absolute;
+  width: 30px;
+  height: 2px;
+  background-color: #666666;
+  left: -24px;
+  top: 11px;
+  transform: rotate(-50deg);
+}
+
+.meeting-duration-line::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 6px;
+  height: 6px;
+  transform: translate(-50%, -50%);
+  background-color: #666666;
+  border-radius: 100%;
+}
+
+.meeting-duration-text {
+  color: #000000;
+  font-size: 12px;
+  position: absolute;
+  white-space: nowrap;
+  transform: rotate(50deg);
+  bottom: 20px;
+  left: -50px;
+}
+
+.meeting-type {
+  position: absolute;
+  width: 20px;
+  height: 2px;
+  background-color: #666666;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.meeting-type:before {
+  content: "";
+  width: 2px;
+  height: 10px;
+  background-color: #666666;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.meeting-type:after {
+  content: "";
+  width: 2px;
+  height: 10px;
+  background-color: #666666;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.meeting-type-line {
+  position: absolute;
+  width: 30px;
+  height: 2px;
+  background-color: #666666;
+  right: -24px;
+  top: 11px;
+  transform: rotate(50deg);
+}
+
+.meeting-type-line::before {
+  content: "";
+  position: absolute;
+  left: 30px;
+  top: 0;
+  width: 6px;
+  height: 6px;
+  transform: translate(-50%, -50%);
+  background-color: #666666;
+  border-radius: 100%;
+}
+
+.meeting-type-text {
+  color: #000000;
+  font-size: 12px;
+  position: absolute;
+  white-space: nowrap;
+  transform: rotate(-50deg);
+  bottom: 5px;
+  left: 12px;
+}
+
+.background {
+  position: absolute;
+}
+
+.background::before {
+  content: "";
+  position: absolute;
+  right: 27px;
+  bottom: -70px;
+  width: 100px;
+  height: 53px;
+  background-color: transparent;
+  border-radius: 0px 0px 22px 22px;
+  border-right: solid 2px #666666;
+  border-bottom: solid 2px transparent;
+}
+
+.background::after {
+  content: "";
+  position: absolute;
+  right: 25px;
+  bottom: -20px;
+  width: 6px;
+  height: 6px;
+  background-color: #666666;
+  border-radius: 100%;
+}
+
+.background-text {
+  position: absolute;
+  color: #000000;
+  font-size: 12px;
+  bottom: -60px;
+  left: -95px;
+}
+
+.border {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.border:before {
+  content: "";
+  width: 15px;
+  height: 15px;
+  border: solid 2px #666666;
+  position: absolute;
+  right: 0%;
+  top: 0;
+  transform: translate(50%, -50%);
+  border-radius: 100%;
+}
+
+.border:after {
+  content: "";
+  width: 2px;
+  height: 25px;
+  background-color: #666666;
+  position: absolute;
+  right: -10px;
+  top: -15px;
+  transform: translate(50%, -50%) rotate(60deg);
+}
+
+.border .border-text {
+  position: absolute;
+  color: #000000;
+  font-size: 12px;
+  right: -75px;
+  top: -15px;
+  white-space: nowrap;
+}
+
+/* Responsive Design for Button */
+@media (max-width: 1000px) {
+  .button {
+    min-width: 160px;
+    height: 42px;
+    font-size: 13px;
+    padding: 0px 14px;
+    gap: 6px;
+    margin: 0 auto;
+  }
+  
+  .icon svg {
+    width: 18px;
+    height: 18px;
+  }
+  
+  .icon .text-icon {
+    font-size: 11px;
+    left: -50px;
+    top: -50px;
+  }
+  
+  .meeting-duration-text,
+  .meeting-type-text,
+  .background-text,
+  .border .border-text {
+    font-size: 11px;
+    color: #000000;
+  }
+  
+  .icon .text-icon {
+    color: #000000;
+  }
+  
+  /* Meeting Duration Elements - Grey Strings */
+  .meeting-duration,
+  .meeting-duration:before,
+  .meeting-duration:after,
+  .meeting-duration-line,
+  .meeting-duration-line::before {
+    background-color: #666666;
+  }
+  
+  /* Meeting Type Elements - Grey Strings */
+  .meeting-type,
+  .meeting-type:before,
+  .meeting-type:after,
+  .meeting-type-line,
+  .meeting-type-line::before {
+    background-color: #666666;
+  }
+  
+  /* Background Elements - Grey Strings */
+  .background::before {
+    border-right-color: #666666;
+  }
+  .background::after {
+    background-color: #666666;
+  }
+  
+  /* Border Elements - Grey Strings */
+  .border:before {
+    border-color: #666666;
+  }
+  .border:after {
+    background-color: #666666;
+  }
+  
+  /* Icon Elements - Grey Strings */
+  .icon::before {
+    background-color: #666666;
+  }
+  .icon::after {
+    border-right-color: #666666;
+  }
+}
+
+@media (max-width: 600px) {
+  .button {
+    min-width: 140px;
+    height: 40px;
+    font-size: 12px;
+    padding: 0px 12px;
+    gap: 5px;
+    margin: 0 auto;
+  }
+  
+  .icon svg {
+    width: 16px;
+    height: 16px;
+  }
+  
+  .icon .text-icon {
+    font-size: 10px;
+    left: -50px;
+    top: -50px;
+  }
+  
+  .meeting-duration-text,
+  .meeting-type-text,
+  .background-text,
+  .border .border-text {
+    font-size: 10px;
+    color: #000000;
+  }
+  
+  .icon .text-icon {
+    color: #000000;
+  }
+  
+  /* Meeting Duration Elements - Grey Strings */
+  .meeting-duration,
+  .meeting-duration:before,
+  .meeting-duration:after,
+  .meeting-duration-line,
+  .meeting-duration-line::before {
+    background-color: #666666;
+  }
+  
+  /* Meeting Type Elements - Grey Strings */
+  .meeting-type,
+  .meeting-type:before,
+  .meeting-type:after,
+  .meeting-type-line,
+  .meeting-type-line::before {
+    background-color: #666666;
+  }
+  
+  /* Background Elements - Grey Strings */
+  .background::before {
+    border-right-color: #666666;
+  }
+  .background::after {
+    background-color: #666666;
+  }
+  
+  /* Border Elements - Grey Strings */
+  .border:before {
+    border-color: #666666;
+  }
+  .border:after {
+    background-color: #666666;
+  }
+  
+  /* Icon Elements - Grey Strings */
+  .icon::before {
+    background-color: #666666;
+  }
+  .icon::after {
+    border-right-color: #666666;
+  }
+  
+  .meeting-duration-line,
+  .meeting-type-line {
+    width: 25px;
+  }
+  
+  .meeting-duration-text {
+    left: -50px;
+    bottom: 20px;
+  }
+  
+  .meeting-type-text {
+    left: 24px;
+    bottom: 8px;
+  }
+  
+  .background-text {
+    left: -95px;
+    bottom: -60px;
+  }
+  
+  .border .border-text {
+    right: -75px;
+    top: -15px;
+  }
+}
+
+@media (max-width: 400px) {
+  .button {
+    min-width: 120px;
+    height: 38px;
+    font-size: 11px;
+    padding: 0px 10px;
+    gap: 4px;
+    margin: 0 auto;
+  }
+  
+  .icon svg {
+    width: 14px;
+    height: 14px;
+  }
+  
+  .icon .text-icon {
+    font-size: 9px;
+    left: -50px;
+    top: -50px;
+  }
+  
+  .meeting-duration-text,
+  .meeting-type-text,
+  .background-text,
+  .border .border-text {
+    font-size: 9px;
+    color: #000000;
+  }
+  
+  .icon .text-icon {
+    color: #000000;
+  }
+  
+  /* Meeting Duration Elements - Grey Strings */
+  .meeting-duration,
+  .meeting-duration:before,
+  .meeting-duration:after,
+  .meeting-duration-line,
+  .meeting-duration-line::before {
+    background-color: #666666;
+  }
+  
+  /* Meeting Type Elements - Grey Strings */
+  .meeting-type,
+  .meeting-type:before,
+  .meeting-type:after,
+  .meeting-type-line,
+  .meeting-type-line::before {
+    background-color: #666666;
+  }
+  
+  /* Background Elements - Grey Strings */
+  .background::before {
+    border-right-color: #666666;
+  }
+  .background::after {
+    background-color: #666666;
+  }
+  
+  /* Border Elements - Grey Strings */
+  .border:before {
+    border-color: #666666;
+  }
+  .border:after {
+    background-color: #666666;
+  }
+  
+  /* Icon Elements - Grey Strings */
+  .icon::before {
+    background-color: #666666;
+  }
+  .icon::after {
+    border-right-color: #666666;
+  }
+  
+  .meeting-duration-line,
+  .meeting-type-line {
+    width: 20px;
+  }
+  
+  .meeting-duration-text {
+    left: -50px;
+    bottom: 20px;
+  }
+  
+  .meeting-type-text {
+    left: 2px;
+    bottom: 8px;
+  }
+  
+  .background-text {
+    left: -95px;
+    bottom: -60px;
+  }
+  
+  .border .border-text {
+    right: -75px;
+    top: -15px;
+  }
+}
+
 .home-spotlight-top-bar {
   position: absolute;
   top: 0;
@@ -53,8 +630,10 @@
 }
 
 .services-hero-header {
-  max-width: 1000px;
+  width: 90%;
   margin: 0 auto;
+  text-align: center;
+  padding-top: 15svh;
   display: flex;
   flex-direction: column;
   gap: 2rem;
@@ -662,6 +1241,15 @@
 
   .services-calendly {
     height: min(70svh, 480px);
+  }
+
+  .services-hero-header .button {
+    position: absolute;
+    bottom: 10rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    margin: 0;
   }
 
   .symbol {
