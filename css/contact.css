@@ -9,11 +9,13 @@
 
 .contact .container {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2rem;
 }
 
 .contact .container .contact-header {
-  width: 40%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 2rem;
@@ -25,16 +27,17 @@
 }
 
 .contact .contact-calendly {
-  position: absolute;
-  top: 50%;
-  right: 2rem;
-  transform: translateY(-50%);
+  position: static;
+  top: auto;
+  right: auto;
+  transform: none;
   z-index: 0;
-  width: 55%;
+  width: 100%;
+  max-width: 980px;
   height: min(70svh, 640px);
   border-radius: 12px;
   overflow: hidden;
-  padding-top: 1rem;
+  padding-top: 0.5rem;
 }
 
 .contact .contact-calendly .calendly-inline-widget {
@@ -70,15 +73,10 @@
   }
 
   .contact .contact-calendly {
-    position: static;
-    transform: none;
-    right: auto;
-    left: auto;
-    top: auto;
-    width: min(100%, 480px);
+    width: 100%;
+    max-width: 720px;
     height: min(70svh, 560px);
-    margin: 2rem auto 3rem;
-    max-width: 100%;
+    margin: 0;
   }
 
   .contact .container .contact-header {
@@ -86,7 +84,7 @@
     bottom: auto;
     z-index: 1;
     width: 100%;
-    padding: 2rem 0 0;
+    padding: 1rem 0 0;
   }
 
   .contact .home-spotlight-bottom-bar p:nth-child(2),
