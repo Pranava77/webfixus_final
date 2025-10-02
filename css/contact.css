@@ -127,7 +127,7 @@
 
   .home-spotlight-top-bar .container .symbols-container,
   .home-spotlight-bottom-bar .container .symbols-container {
-    flex: 1;
+    flex: 0 0 50%;
     display: flex;
   }
 
@@ -176,5 +176,6 @@
   .contact .contact-calendly {
     width: 55%;
     margin-left: auto;
+    height: min(75svh, 680px);
   }
 }
