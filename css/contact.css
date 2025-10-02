@@ -179,3 +179,26 @@
     height: min(75svh, 680px);
   }
 }
+
+/* Optimize for common 13" laptop viewports */
+@media (min-width: 1001px) and (max-width: 1366px) {
+  .contact {
+    padding: 5rem 0;
+  }
+
+  .contact .container .contact-header {
+    width: 46%;
+  }
+
+  .contact .contact-calendly {
+    width: 54%;
+    height: min(70svh, 620px);
+  }
+}
+
+/* If the available height is short on laptops, trim Calendly height further */
+@media (min-width: 1001px) and (max-height: 820px) {
+  .contact .contact-calendly {
+    height: min(68svh, 580px);
+  }
+}
