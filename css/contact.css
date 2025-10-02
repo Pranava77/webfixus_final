@@ -30,7 +30,7 @@
   position: static;
   z-index: 1;
   width: 55%;
-  height: min(70svh, 640px);
+  height: min(60svh, 520px);
   border-radius: 12px;
   overflow: hidden;
   padding-top: 1rem;
@@ -76,9 +76,9 @@
     right: auto;
     left: auto;
     top: auto;
-    width: 100%;
-    max-width: 720px;
-    height: min(70svh, 560px);
+    width: 92%;
+    max-width: 420px;
+    height: min(55svh, 420px);
     margin: 0 auto;
   }
 
@@ -98,6 +98,49 @@
   .contact .home-spotlight-bottom-bar p:nth-child(2),
   .contact .home-spotlight-bottom-bar p:nth-child(3) {
     display: none;
+  }
+
+  /* Balance the top/bottom bar symbols on mobile like other pages */
+  .home-spotlight-top-bar .container,
+  .home-spotlight-bottom-bar .container {
+    align-items: center;
+    padding: 1.5rem;
+  }
+
+  .home-spotlight-top-bar .container .symbols-container,
+  .home-spotlight-bottom-bar .container .symbols-container {
+    flex: 1;
+    display: flex;
+  }
+
+  .home-spotlight-top-bar .container .symbols-container:first-child,
+  .home-spotlight-bottom-bar .container .symbols-container:first-child {
+    justify-content: flex-start;
+  }
+
+  .home-spotlight-top-bar .container .symbols-container:last-child,
+  .home-spotlight-bottom-bar .container .symbols-container:last-child {
+    justify-content: flex-end;
+  }
+
+  .symbol {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .symbol {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+@media (max-width: 600px) {
+  .contact .contact-calendly {
+    width: 90%;
+    max-width: 360px;
+    height: min(50svh, 380px);
   }
 }
 
