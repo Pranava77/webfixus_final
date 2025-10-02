@@ -36,7 +36,7 @@
 .services-hero {
   position: relative;
   width: 100vw;
-  height: 100svh;
+  min-height: 100svh; /* Changed to min-height to allow content to expand */
   overflow: hidden;
   background-color: var(--base-100);
   color: var(--base-300);
@@ -690,7 +690,12 @@
   }
 
   .services-grid {
-    padding: clamp(3rem, 5vw, 6rem) 0;
+    padding: clamp(4rem, 8vw, 10rem) 0; /* Increased padding for better visibility */
+    overflow-y: auto; /* Explicitly allow vertical scrolling */
+  }
+
+  .services-content {
+    min-height: 100svh; /* Significantly increased minimum height for content area */
   }
 
   .service-card {
@@ -702,11 +707,15 @@
   }
 
   .service-features {
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Adjusted minmax for features */
     gap: clamp(1rem, 2.5vw, 1.75rem);
   }
 
   .services-cta h2 {
     font-size: clamp(1.8rem, 5vw, 5.5rem);
+  }
+
+  .services-calendly {
+    height: min(75svh, 640px); /* Adjusted Calendly height */
   }
 }
