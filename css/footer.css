@@ -296,13 +296,25 @@ footer .footer-bottom .footer-col:nth-child(2) p.mono {
   opacity: 0.25;
 }
 
-.footer-map {
+/* Dual Maps Container */
+.footer-maps {
   margin: 1.5rem 0 0 0;
+}
+
+.footer-maps-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.footer-map {
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
   filter: grayscale(100%) contrast(1.2) brightness(0.9);
   transition: all 0.3s ease;
+  position: relative;
 }
 
 .footer-map:hover {
@@ -322,6 +334,17 @@ footer .footer-bottom .footer-col:nth-child(2) p.mono {
   height: 100%;
   border: none;
   border-radius: 12px;
+}
+
+.footer-map-label {
+  margin-top: 0.75rem;
+  text-align: center;
+  font-family: "DM Mono";
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: var(--base-100);
+  opacity: 0.6;
 }
 
 footer .footer-copyright {
@@ -347,6 +370,26 @@ footer .footer-copy {
 
 footer a {
   color: var(--base-100);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+footer .footer-copy a {
+  display: inline-block;
+}
+
+footer .footer-copy a:hover {
+  opacity: 0.8;
+  text-decoration: underline;
+}
+
+footer .footer-copy a[href^="tel:"] {
+  color: var(--base-100);
+}
+
+footer .footer-copy a[href^="tel:"]:hover {
+  opacity: 0.8;
 }
 
 @media (max-width: 1000px) {
@@ -413,11 +456,21 @@ footer a {
     gap: 0.25rem;
   }
 
-  .footer-map {
+  .footer-maps {
     margin: 1rem 0 0 0;
+  }
+
+  .footer-maps-container {
+    grid-template-columns: 1fr;
+    gap: 1rem;
   }
 
   .footer-map-container {
     height: 150px;
+  }
+
+  .footer-map-label {
+    font-size: 0.75rem;
+    margin-top: 0.5rem;
   }
 }
