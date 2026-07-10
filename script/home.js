@@ -306,37 +306,41 @@ document.addEventListener("DOMContentLoaded", () => {
       },
     });
   } else {
-    // Mobile home-services animation - simpler version
+    // Mobile home-services animation — one trigger drives the lightning
+    // effect for the whole section, plus per-card entrance triggers so
+    // each card feels like it "spreads in" as it scrolls into view.
     ScrollTrigger.create({
       trigger: ".home-services",
       start: "top bottom",
       end: "bottom top",
-      onEnter: () => {
-        // Animate the cards in with a staggered entrance
-        gsap.fromTo(".home-services .cards .card",
-          {
-            opacity: 0,
-            y: 50,
-            scale: 0.8
-          },
-          {
-            opacity: 1,
-            y: 0,
-            scale: 1,
-            duration: 0.8,
-            stagger: 0.2,
-            ease: "back.out(1.7)"
-          }
-        );
-      },
       onUpdate: (self) => {
         if (window.lightningEffect) {
-          // On mobile, set simulated progress so the effect is active, and track real velocity
           const activeProgress = 0.5 + self.progress * 0.5;
           window.lightningEffect.update(activeProgress, self.getVelocity());
         }
       }
     });
+
+    /* Mobile: cards live in a horizontal scroll-snap deck. Fade the
+       whole deck in as the section enters view — no per-card horizontal
+       motion so we don't fight the user's swipe gesture. */
+    const deck = document.querySelector(".home-services .cards-container");
+    if (deck) {
+      gsap.set(deck, { opacity: 0, y: 40 });
+      ScrollTrigger.create({
+        trigger: ".home-services",
+        start: "top 80%",
+        once: true,
+        onEnter: () => {
+          gsap.to(deck, {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            ease: "power3.out",
+          });
+        },
+      });
+    }
 
     // Mobile-specific card hover animations
     document.querySelectorAll(".home-services .cards .card").forEach((card, index) => {
