@@ -11,6 +11,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  gap: 1.5rem;
 }
 
 .hero .hero-content .hero-header {
@@ -44,18 +45,18 @@
 }
 
 .hero .hero-cards {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 35%;
+  width: 100%;
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 1rem;
+  flex-shrink: 0;
+  margin-top: 5rem;
 }
 
 .hero .hero-cards .card {
-  flex: 1;
+  flex: 0 0 auto;
+  width: clamp(96px, 8vw, 150px);
   position: relative;
   aspect-ratio: 5/7;
   transform: scale(0);
@@ -101,18 +102,6 @@
 
 .hero .hero-cards .card p {
   font-size: 0.8rem;
-}
-
-.hero .hero-cards .card#hero-card-1 {
-  z-index: -1;
-}
-
-.hero .hero-cards .card#hero-card-2 {
-  z-index: -2;
-}
-
-.hero .hero-cards .card#hero-card-3 {
-  z-index: -3;
 }
 
 .hero .hero-cards .card#hero-card-1 .hero-card-inner {
@@ -403,31 +392,40 @@
   top: 0;
   left: 0;
   width: 100vw;
-  height: 300svh;
+  height: 100svh;
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  transform: translateY(5%);
-  will-change: transform;
+  align-items: center;
+  overflow: hidden;
   z-index: -1;
 }
 
-.home-spotlight .home-spotlight-images-row {
-  width: 100%;
-  padding: 2rem;
+.home-spotlight .home-spotlight-track {
   display: flex;
+  align-items: center;
   gap: 2rem;
+  padding: 0 2rem;
+  height: 70svh;
+  width: max-content;
+  will-change: transform;
 }
 
-.home-spotlight .home-spotlight-image {
-  flex: 1;
-  aspect-ratio: 5/7;
+.home-spotlight .home-spotlight-card {
+  width: 30vw;
+  height: 100%;
+  flex-shrink: 0;
   border-radius: 8px;
   overflow: hidden;
+  border: 1px dashed var(--base-secondary-fade);
 }
 
-.home-spotlight .home-spotlight-image.image-holder {
+.home-spotlight .home-spotlight-card.image-holder {
   opacity: 0.75;
+}
+
+.home-spotlight .home-spotlight-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .home-spotlight .spotlight-mask-image-container {
@@ -585,10 +583,6 @@
   .hero .hero-content .hero-header h1 {
     font-size: 11vw;
   }
-
-  .hero .hero-cards {
-    width: 30%;
-  }
 }
 
 @media (max-width: 1200px) {
@@ -600,8 +594,8 @@
     font-size: 16vw;
   }
 
-  .hero .hero-cards {
-    width: 50%;
+  .hero .hero-cards .card {
+    width: clamp(90px, 10vw, 130px);
   }
 }
 
@@ -623,6 +617,14 @@
     justify-content: space-between;
     flex-wrap: wrap;
     gap: 1rem;
+  }
+
+  .hero .hero-cards {
+    gap: 0.75rem;
+  }
+
+  .hero .hero-cards .card {
+    width: clamp(90px, 12vw, 120px);
   }
 
   .hero .hero-cards .card p {
@@ -672,14 +674,14 @@
     text-align: center;
   }
 
-  .home-spotlight .home-spotlight-images {
-    position: absolute;
-    left: -75vw;
-    width: 250vw;
+  .home-spotlight .home-spotlight-track {
+    gap: 1rem;
+    padding: 0 1rem;
+    height: 55svh;
   }
 
-  .home-spotlight .home-spotlight-images-row {
-    gap: 1rem;
+  .home-spotlight .home-spotlight-card {
+    width: 70vw;
   }
 
   .outro h3 {
@@ -701,8 +703,12 @@
 }
 
 @media (max-width: 800px) {
-  .hero .hero-cards {
-    width: 65%;
+  .hero .hero-cards .card {
+    width: clamp(78px, 15vw, 100px);
+  }
+
+  .hero .hero-cards .card .hero-card-inner {
+    padding: 0.75rem;
   }
 }
 
@@ -711,18 +717,8 @@
     font-size: 16vw;
   }
 
-  .hero .hero-content .hero-header .button {
-    position: absolute;
-    bottom: 10rem;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 10;
-    margin: 0;
-  }
-
   .hero .hero-cards {
-    top: 60%;
-    width: 75%;
+    gap: 0.5rem;
   }
 
   .hero .hero-content .hero-footer {
@@ -735,17 +731,12 @@
     font-size: 14vw;
   }
 
-  .hero .hero-content .hero-header .button {
-    position: absolute;
-    bottom: 10rem;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 10;
-    margin: 0;
+  .hero .hero-cards .card {
+    width: clamp(78px, 22vw, 95px);
   }
 
-  .hero .hero-cards {
-    width: 85%;
+  .hero .hero-cards .card .hero-card-inner {
+    padding: 0.6rem;
   }
 }
 
@@ -759,19 +750,8 @@
     gap: 1rem;
   }
 
-  .hero .hero-content .hero-header .button {
-    position: absolute;
-    bottom: 10rem;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 10;
-    margin: 0;
-  }
-
   .hero .hero-cards {
-    width: 90%;
     gap: 0.5rem;
-    top: 55%;
   }
 
   .hero .hero-cards .card p {
@@ -798,19 +778,16 @@
     font-size: 14vw;
   }
 
-  .hero .hero-content .hero-header .button {
-    position: absolute;
-    bottom: 10rem;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 10;
-    margin: 0;
+  .hero .hero-cards {
+    gap: 0.25rem;
   }
 
-  .hero .hero-cards {
-    width: 95%;
-    gap: 0.25rem;
-    top: 50%;
+  .hero .hero-cards .card {
+    width: clamp(72px, 25vw, 88px);
+  }
+
+  .hero .hero-cards .card .hero-card-inner {
+    padding: 0.5rem;
   }
 
   .hero .hero-cards .card p {
@@ -1166,6 +1143,7 @@
   white-space: nowrap;
 }
 
+
 /* Responsive Design for Button */
 @media (max-width: 1000px) {
   .button {
@@ -1442,5 +1420,287 @@
   .border .border-text {
     right: -75px;
     top: -15px;
+  }
+}
+
+/* Home Marquee Section */
+.home-marquee {
+  position: relative;
+  width: 100vw;
+  background-color: var(--base-300);
+  color: var(--base-100);
+  overflow: hidden;
+  z-index: 1;
+  padding: 10rem 0;
+}
+
+.home-marquee .home-marquee-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.home-marquee .marquee-track {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+}
+
+.home-marquee .marquee-group {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding-right: 2rem;
+}
+
+.home-marquee .marquee-left {
+  animation: marquee-scroll 45s linear infinite;
+}
+
+.home-marquee .marquee-right {
+  animation: marquee-scroll 35s linear infinite reverse;
+}
+
+@keyframes marquee-scroll {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.home-marquee .marquee-card {
+  width: 20rem;
+  aspect-ratio: 4 / 3;
+  border-radius: 8px;
+  overflow: hidden;
+  flex-shrink: 0;
+  border: 1px dashed var(--base-secondary-fade);
+}
+
+.home-marquee .marquee-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.85;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.home-marquee .marquee-card:hover img {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+.home-marquee .marquee-right p.mono {
+  color: var(--base-secondary-dark);
+  font-size: 1rem;
+  white-space: nowrap;
+}
+
+.home-marquee .marquee-symbol {
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+}
+
+/* Home Testimonials Section */
+.home-testimonials {
+  position: relative;
+  width: 100vw;
+  background-color: var(--base-100);
+  color: var(--base-300);
+  overflow: hidden;
+  z-index: 1;
+}
+
+.home-testimonials > .container {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  padding-top: 8rem;
+  padding-bottom: 8rem;
+}
+
+.home-testimonials .home-testimonials-header {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 60%;
+}
+
+.home-testimonials .testimonial-cards {
+  display: flex;
+  gap: 2rem;
+}
+
+.home-testimonials .testimonial-card {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 3rem;
+  border-radius: 16px;
+  padding: 1.5rem;
+  color: var(--base-300);
+}
+
+.home-testimonials .testimonial-card.tc-var-1 {
+  background-color: var(--accent-1);
+}
+
+.home-testimonials .testimonial-card.tc-var-2 {
+  background-color: var(--accent-2);
+}
+
+.home-testimonials .testimonial-card.tc-var-3 {
+  background-color: var(--accent-3);
+}
+
+.home-testimonials .testimonial-quote {
+  font-family: "Instrument Serif";
+  font-size: 1.3rem;
+  font-weight: 500;
+}
+
+.home-testimonials .testimonial-meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  border-top: 1px dashed rgba(10, 10, 10, 0.25);
+  padding-top: 1rem;
+}
+
+.home-testimonials .testimonial-meta p.mono {
+  font-size: 0.75rem;
+}
+
+/* Home FAQ Section */
+.home-faq {
+  position: relative;
+  width: 100vw;
+  background-color: var(--base-300);
+  color: var(--base-100);
+  overflow: hidden;
+  z-index: 1;
+}
+
+.home-faq > .container {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  padding-top: 8rem;
+  padding-bottom: 8rem;
+}
+
+.home-faq .home-faq-header {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 60%;
+}
+
+.home-faq .home-faq-header p.mono {
+  color: var(--base-secondary-dark);
+}
+
+.home-faq .faq-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.home-faq .faq-item {
+  border-bottom: 1px dashed var(--base-secondary-fade);
+}
+
+.home-faq .faq-item:first-child {
+  border-top: 1px dashed var(--base-secondary-fade);
+}
+
+.home-faq .faq-question {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 1.5rem 0;
+  color: var(--base-100);
+  text-align: left;
+}
+
+.home-faq .faq-question p.md {
+  color: var(--base-100);
+}
+
+.home-faq .faq-icon {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  transition: transform 0.4s ease;
+}
+
+.home-faq .faq-icon span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 2px;
+  background-color: var(--base-secondary-dark);
+  transform: translate(-50%, -50%);
+}
+
+.home-faq .faq-icon span:nth-child(2) {
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.home-faq .faq-item.open .faq-icon {
+  transform: rotate(45deg);
+}
+
+.home-faq .faq-answer {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.4s ease;
+}
+
+.home-faq .faq-answer-inner {
+  overflow: hidden;
+}
+
+.home-faq .faq-answer-inner p {
+  max-width: 60ch;
+  padding-bottom: 1.5rem;
+  color: var(--base-200);
+}
+
+.home-faq .faq-item.open .faq-answer {
+  grid-template-rows: 1fr;
+}
+
+@media (max-width: 1000px) {
+  .home-testimonials .home-testimonials-header,
+  .home-faq .home-faq-header {
+    width: 100%;
+  }
+
+  .home-testimonials .testimonial-cards {
+    flex-direction: column;
+  }
+
+  .home-marquee {
+    padding: 6rem 0;
+  }
+
+  .home-marquee .marquee-card {
+    width: 14rem;
+  }
+
+  .home-marquee .marquee-group {
+    gap: 1.5rem;
+    padding-right: 1.5rem;
   }
 }

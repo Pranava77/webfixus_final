@@ -1290,3 +1290,75 @@
     font-size: clamp(1.8rem, 5vw, 5.5rem);
   }
 }
+
+/* AI Service "New" Badge */
+.service-card-header .service-badge {
+  flex-shrink: 0;
+  margin-right: clamp(2rem, 4vw, 3.5rem);
+  padding: 4px 10px;
+  border-radius: 6px;
+  background-color: var(--accent-3);
+  color: var(--base-300);
+  font-size: 0.75rem;
+}
+
+/* Services Process Section */
+.services-process {
+  position: relative;
+  width: 100vw;
+  background-color: var(--base-100);
+  color: var(--base-300);
+  overflow: hidden;
+}
+
+.services-process .container {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  padding-top: 8rem;
+  padding-bottom: 4rem;
+}
+
+.services-process .services-process-header {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 60%;
+}
+
+.services-process .services-process-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+}
+
+.services-process .services-process-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  border: 1px dashed var(--accent-1);
+  border-radius: 16px;
+  padding: 1.5rem;
+}
+
+.services-process .services-process-card h4 {
+  font-size: 2rem;
+}
+
+@media (max-width: 1200px) {
+  .services-process .services-process-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 1000px) {
+  .services-process .services-process-header {
+    width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .services-process .services-process-grid {
+    grid-template-columns: 1fr;
+  }
+}

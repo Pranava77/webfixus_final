@@ -373,3 +373,72 @@
     width: 90%;
   }
 }
+
+/* About Values Section */
+.about-values {
+  position: relative;
+  width: 100vw;
+  background-color: var(--base-100);
+  color: var(--base-300);
+  overflow: hidden;
+}
+
+.about-values .container {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  padding-top: 8rem;
+  padding-bottom: 8rem;
+}
+
+.about-values .about-values-header {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 60%;
+}
+
+.about-values .about-values-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+.about-values .about-values-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  border-radius: 16px;
+  padding: 1.5rem;
+  color: var(--base-300);
+}
+
+.about-values .about-values-card h4 {
+  font-size: 2rem;
+}
+
+.about-values .about-values-card p:last-child {
+  max-width: 55ch;
+}
+
+.about-values .about-values-card.av-var-1 {
+  background-color: var(--accent-1);
+}
+
+.about-values .about-values-card.av-var-2 {
+  background-color: var(--accent-2);
+}
+
+.about-values .about-values-card.av-var-3 {
+  background-color: var(--accent-3);
+}
+
+@media (max-width: 1000px) {
+  .about-values .about-values-header {
+    width: 100%;
+  }
+
+  .about-values .about-values-grid {
+    grid-template-columns: 1fr;
+  }
+}

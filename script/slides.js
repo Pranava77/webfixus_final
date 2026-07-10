@@ -1,35 +1,45 @@
+/* Slide images reuse the existing slider imagery for now —
+   drop real project screenshots into /public/work/ to replace them. */
 const slides = [
   {
-    slideTitle: "Brainstorm OS",
+    slideTitle: "Reguru",
     slideDescription:
-      "A concept UI for a neural-thinking workspace. Designed to visualize raw ideas, tangled thoughts, and clean execution — all at once.",
+      "A conversion-focused Shopify storefront with seamless Indian payment integration — Razorpay and Cashfree built in, every template tuned for speed and mobile-first shopping.",
     slideUrl: "/project",
-    slideTags: ["Web Design", "UI/UX", "Concept UI", "Creative Dev"],
+    slideTags: ["E-commerce", "UI/UX Design", "Shopify", "2026"],
     slideImg: "/work/slider-img-1.jpg",
   },
   {
-    slideTitle: "Orange Room",
+    slideTitle: "Techswamy",
     slideDescription:
-      "A surreal microsite exploring control, uniformity, and digital disconnect. Built with scroll-reactive animations and bold, brutalist layout.",
+      "A motion-rich Next.js site with GSAP scroll animations, Lenis smooth scrolling, headless CMS publishing via Payload and Ghost, and built-in Calendly booking.",
     slideUrl: "/project",
-    slideTags: ["Creative Dev", "Scroll UX", "Experimental", "Visual Story"],
+    slideTags: ["Technology", "Next.js", "GSAP", "2024"],
     slideImg: "/work/slider-img-2.jpg",
   },
   {
-    slideTitle: "Futureschool",
+    slideTitle: "BGS HIGH",
     slideDescription:
-      "A quirky concept for a 60s-style AI education platform. Handcrafted visuals meet structured layouts for a playful learning interface.",
+      "A modern, animated WordPress site for one of Bangalore's leading schools — admissions info never more than two clicks away, fully editable by office staff.",
     slideUrl: "/project",
-    slideTags: ["UI Design", "Theme Concept", "Playful UX", "Frontend"],
+    slideTags: ["Education", "UI/UX Design", "WordPress", "2026"],
     slideImg: "/work/slider-img-3.jpg",
   },
   {
-    slideTitle: "Mindwave Grid",
+    slideTitle: "BGS BSCHOOL",
     slideDescription:
-      "A visual identity experiment for a VR-based ideation tool. Dynamic grids, floating modules, and warm tones bring structure to wild thinking.",
+      "A React-enhanced WordPress build for a business school's digital front door — a polished, app-like experience with an interactive program explorer.",
     slideUrl: "/project",
-    slideTags: ["VR Design", "Grid System", "Creative Tech", "3D UI"],
+    slideTags: ["Education", "React", "WordPress", "2026"],
     slideImg: "/work/slider-img-4.jpg",
+  },
+  {
+    slideTitle: "BGS PU",
+    slideDescription:
+      "An animated, parent-friendly site for a pre-university college — structured around the questions parents ask most, with an enquiry CTA on every page.",
+    slideUrl: "/project",
+    slideTags: ["Education", "UI/UX Design", "GSAP", "2025"],
+    slideImg: "/work/slider-img-1.jpg",
   },
 ];
 

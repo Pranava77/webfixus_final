@@ -353,12 +353,16 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  const spotlightImages = document.querySelector(".home-spotlight-images");
-  const containerHeight = spotlightImages.offsetHeight;
-  const viewportHeight = window.innerHeight;
+  const spotlightTrack = document.querySelector(".home-spotlight-track");
 
-  const initialOffset = containerHeight * 0.05;
-  const totalMovement = containerHeight + initialOffset + viewportHeight;
+  const getSpotlightMaxX = () =>
+    spotlightTrack
+      ? Math.max(0, spotlightTrack.scrollWidth - window.innerWidth)
+      : 0;
+  let spotlightMaxX = getSpotlightMaxX();
+  ScrollTrigger.addEventListener("refreshInit", () => {
+    spotlightMaxX = getSpotlightMaxX();
+  });
 
   const spotlightHeader = document.querySelector(".spotlight-mask-header h3");
   let headerSplit = null;
@@ -382,16 +386,11 @@ document.addEventListener("DOMContentLoaded", () => {
     onUpdate: (self) => {
       const progress = self.progress;
 
-      if (progress <= 0.5) {
+      if (progress <= 0.5 && spotlightTrack) {
         const animationProgress = progress / 0.5;
 
-        const startY = 5;
-        const endY = -(totalMovement / containerHeight) * 100;
-
-        const currentY = startY + (endY - startY) * animationProgress;
-
-        gsap.set(spotlightImages, {
-          y: `${currentY}%`,
+        gsap.set(spotlightTrack, {
+          x: -spotlightMaxX * animationProgress,
         });
       }
 
@@ -520,6 +519,20 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       });
     },
+  });
+
+  // FAQ accordion
+  document.querySelectorAll(".faq-item").forEach((item) => {
+    const question = item.querySelector(".faq-question");
+    question.addEventListener("click", () => {
+      const isOpen = item.classList.contains("open");
+      document
+        .querySelectorAll(".faq-item.open")
+        .forEach((openItem) => openItem.classList.remove("open"));
+      if (!isOpen) {
+        item.classList.add("open");
+      }
+    });
   });
 
   // Calendly popup functionality
