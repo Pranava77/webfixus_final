@@ -35,6 +35,10 @@ document.addEventListener("DOMContentLoaded", () => {
       onUpdate: (self) => {
         const progress = self.progress;
 
+        if (window.heroLightningEffect) {
+          window.heroLightningEffect.update(progress, self.getVelocity());
+        }
+
         const heroCardsContainerOpacity = gsap.utils.interpolate(
           1,
           0.5,
@@ -105,6 +109,10 @@ document.addEventListener("DOMContentLoaded", () => {
       scrub: 1,
       onUpdate: (self) => {
         const progress = self.progress;
+
+        if (window.heroLightningEffect) {
+          window.heroLightningEffect.update(progress, self.getVelocity());
+        }
 
         const heroCardsContainerOpacity = gsap.utils.interpolate(
           1,
@@ -186,6 +194,10 @@ document.addEventListener("DOMContentLoaded", () => {
       scrub: 1,
       onUpdate: (self) => {
         const progress = self.progress;
+
+        if (window.lightningEffect) {
+          window.lightningEffect.update(progress, self.getVelocity());
+        }
 
         const headerProgress = gsap.utils.clamp(0, 1, progress / 0.9);
         const headerY = gsap.utils.interpolate(
@@ -316,6 +328,13 @@ document.addEventListener("DOMContentLoaded", () => {
             ease: "back.out(1.7)"
           }
         );
+      },
+      onUpdate: (self) => {
+        if (window.lightningEffect) {
+          // On mobile, set simulated progress so the effect is active, and track real velocity
+          const activeProgress = 0.5 + self.progress * 0.5;
+          window.lightningEffect.update(activeProgress, self.getVelocity());
+        }
       }
     });
 

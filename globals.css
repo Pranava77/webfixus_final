@@ -141,3 +141,42 @@ a span {
     padding: 2rem;
   }
 }
+
+/* Symbol Rotations */
+@keyframes rotate-clockwise {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rotate-counterclockwise {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+/* Apply animations to the symbol images */
+.symbol img[src*="s1"],
+.marquee-symbol img[src*="s1"] {
+  animation: rotate-clockwise 6s linear infinite;
+  transform-origin: center;
+}
+
+.symbol img[src*="s2"],
+.marquee-symbol img[src*="s2"] {
+  animation: rotate-counterclockwise 6s linear infinite;
+  transform-origin: center;
+}
+
+.symbol img[src*="s3"],
+.marquee-symbol img[src*="s3"] {
+  animation: rotate-counterclockwise 9s linear infinite;
+  transform-origin: center;
+}
+
