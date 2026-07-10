@@ -84,8 +84,21 @@ function createLightningInstance(canvas, options = {}) {
     antialias: false,        // slightly cheaper – still looks great
     powerPreference: "high-performance",
   });
-  renderer.setSize(container.clientWidth, container.clientHeight);
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+  /* Size the drawing buffer to the canvas's CSS box (which may be
+     smaller than the parent container — e.g. hero canvas is CSS height:60%).
+     Pass `false` so three.js does not write inline width/height styles
+     that would override our CSS. */
+  function applySize() {
+    const w = canvas.clientWidth;
+    const h = canvas.clientHeight;
+    if (w < 2 || h < 2) return;
+    renderer.setSize(w, h, false);
+    camera.aspect = w / h;
+    camera.updateProjectionMatrix();
+  }
+  applySize();
 
   const gridSize = 8.0;
   const charTexture = getCharTexture();
@@ -252,15 +265,15 @@ function createLightningInstance(canvas, options = {}) {
 
   animate();
 
-  function onResize() {
-    const w = container.clientWidth;
-    const h = container.clientHeight;
-    camera.aspect = w / h;
-    camera.updateProjectionMatrix();
-    renderer.setSize(w, h);
-  }
+  const onResize = () => applySize();
 
   window.addEventListener("resize", onResize);
+
+  /* ResizeObserver catches mobile browser-chrome show/hide (which changes
+     svh), orientation flips, and any layout reflow — window's resize event
+     alone misses these on iOS/Android. */
+  const ro = new ResizeObserver(onResize);
+  ro.observe(canvas);
 
   return {
     update(progress, velocity) {
@@ -269,6 +282,7 @@ function createLightningInstance(canvas, options = {}) {
     },
     destroy() {
       window.removeEventListener("resize", onResize);
+      ro.disconnect();
       renderer.dispose();
     },
   };
