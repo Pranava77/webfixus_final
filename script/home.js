@@ -311,6 +311,13 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   } else {
     console.log("Using MOBILE mode - Tinder card stack");
+    // Add visible test marker
+    const testMarker = document.createElement("div");
+    testMarker.id = "mobile-mode-test";
+    testMarker.textContent = "MOBILE MODE ACTIVE";
+    testMarker.style.cssText = "position:fixed; top:10px; right:10px; background:lime; padding:10px; z-index:9999; font-weight:bold; color:black;";
+    document.body.appendChild(testMarker);
+
     // Mobile home-services animation — one trigger drives the lightning
     // effect for the whole section, plus per-card entrance triggers so
     // each card feels like it "spreads in" as it scrolls into view.
