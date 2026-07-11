@@ -842,6 +842,10 @@
     width: 100%;
     height: max-content;
     padding: 2rem 0;
+    /* Desktop rule puts .cards at z-index: -1 (fixed layer behind the pinned
+       scroll content). On mobile that leaves the deck visible but unreachable
+       by pointer/touch events — every tap lands on the section instead. */
+    z-index: 0;
   }
 
   /* Mobile: three process cards become a draggable, depth-stacked deck
@@ -854,7 +858,7 @@
     height: 0; /* set inline by home.js before first paint of real content */
     margin: 0;
     padding: 0;
-    touch-action: manipulation;
+    touch-action: pan-y; /* vertical scroll stays native; horizontal gestures go to Draggable */
   }
 
   .home-services .cards .cards-container .card {
@@ -870,7 +874,7 @@
     aspect-ratio: auto;
     will-change: transform;
     cursor: grab;
-    touch-action: manipulation;
+    touch-action: pan-y;
     /* transform is owned by GSAP at runtime (xPercent:-50 baseline + x/y/rotation/scale).
        This is just a pre-JS fallback so nothing flashes at the desktop scroll-driven
        transform before home.js runs. */

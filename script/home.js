@@ -310,14 +310,6 @@ document.addEventListener("DOMContentLoaded", () => {
       },
     });
   } else {
-    console.log("Using MOBILE mode - Tinder card stack");
-    // Add visible test marker
-    const testMarker = document.createElement("div");
-    testMarker.id = "mobile-mode-test";
-    testMarker.textContent = "MOBILE MODE ACTIVE";
-    testMarker.style.cssText = "position:fixed; top:10px; right:10px; background:lime; padding:10px; z-index:9999; font-weight:bold; color:black;";
-    document.body.appendChild(testMarker);
-
     // Mobile home-services animation — one trigger drives the lightning
     // effect for the whole section, plus per-card entrance triggers so
     // each card feels like it "spreads in" as it scrolls into view.
@@ -353,7 +345,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const cardEls = Array.from(
       document.querySelectorAll(".home-services .cards-container .card")
     );
-    console.log("Card elements found:", cardEls.length, cardEls);
 
     if (cardEls.length) {
       const TOTAL = cardEls.length;
@@ -396,7 +387,6 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       function handleFrontDrag() {
-        console.log("handleFrontDrag called, this.x:", this.x);
         const distanceThreshold = this.target.offsetWidth * 0.32;
         const progress = gsap.utils.clamp(-1, 1, this.x / distanceThreshold);
 
@@ -458,7 +448,6 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       function handleFrontDragEnd() {
-        console.log("handleFrontDragEnd called, this.x:", this.x);
         const dragX = this.x;
         const velocityX = InertiaPlugin.getVelocity(this.target, "x");
         const distanceThreshold = this.target.offsetWidth * 0.32;
@@ -490,10 +479,7 @@ document.addEventListener("DOMContentLoaded", () => {
           frontDraggable = null;
         }
         const frontCard = getCardAt(0);
-        if (!frontCard) {
-          console.warn("No front card found");
-          return;
-        }
+        if (!frontCard) return;
 
         const big = Math.round(window.innerWidth * 1.5);
         const bounds =
@@ -503,31 +489,15 @@ document.addEventListener("DOMContentLoaded", () => {
             ? { minX: 0, maxX: big }
             : { minX: -big, maxX: big };
 
-        console.log("Setting up Draggable with bounds:", bounds);
-
-        try {
-          frontDraggable = Draggable.create(frontCard, {
-            type: "x",
-            inertia: true,
-            bounds,
-            edgeResistance: 0.65,
-            allowNativeTouchScrolling: true,
-            onPress: function() {
-              console.log("✓ Draggable onPress");
-            },
-            onDrag: function() {
-              console.log("✓ Draggable onDrag, x:", this.x);
-              handleFrontDrag.call(this);
-            },
-            onDragEnd: function() {
-              console.log("✓ Draggable onDragEnd, x:", this.x);
-              handleFrontDragEnd.call(this);
-            },
-          })[0];
-          console.log("✓ Draggable created:", !!frontDraggable);
-        } catch (err) {
-          console.error("✗ Error in Draggable.create:", err);
-        }
+        frontDraggable = Draggable.create(frontCard, {
+          type: "x",
+          inertia: true,
+          bounds,
+          edgeResistance: 0.65,
+          allowNativeTouchScrolling: true,
+          onDrag: handleFrontDrag,
+          onDragEnd: handleFrontDragEnd,
+        })[0];
       }
 
       function syncDeckHeight() {
@@ -535,41 +505,15 @@ document.addEventListener("DOMContentLoaded", () => {
           ".home-services .cards-container"
         );
         const referenceBack = cardEls[0].querySelector(".flip-card-back");
-        if (!deckEl) {
-          console.error("✗ syncDeckHeight: deck element not found");
-          return;
-        }
-        if (!referenceBack) {
-          console.error("✗ syncDeckHeight: referenceBack not found");
-          return;
-        }
+        if (!deckEl || !referenceBack) return;
         const height = referenceBack.getBoundingClientRect().height;
-        console.log("✓ syncDeckHeight measured:", height, "px");
-        if (height > 0) {
-          deckEl.style.height = `${Math.ceil(height)}px`;
-          console.log("✓ Container height set to:", deckEl.style.height);
-        } else {
-          console.warn("⚠ Height is 0 or negative:", height);
-        }
+        if (height > 0) deckEl.style.height = `${Math.ceil(height)}px`;
       }
 
       gsap.set(cardEls, { xPercent: -50, top: 0, pointerEvents: "auto" });
       layoutStack({ animate: false });
       syncDeckHeight();
       setupFrontDraggable();
-      console.log("Front draggable created:", frontDraggable);
-      console.log("Front card width:", cardEls[0].offsetWidth);
-      console.log("Front card height:", cardEls[0].offsetHeight);
-      console.log("Container height:", deck?.style.height);
-      console.log("Window width:", window.innerWidth);
-
-      // Add visual test: if we're on mobile, log it
-      if (window.innerWidth <= 1000) {
-        console.log("MOBILE MODE ACTIVATED");
-        cardEls.forEach((card, i) => {
-          console.log(`Card ${i}:`, card, "computed style:", window.getComputedStyle(card).transform);
-        });
-      }
 
       const deckRO = new ResizeObserver(syncDeckHeight);
       deckRO.observe(cardEls[0].querySelector(".flip-card-back"));
