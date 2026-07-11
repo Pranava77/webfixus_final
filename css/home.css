@@ -855,6 +855,7 @@
     margin: 0;
     padding: 0;
     touch-action: pan-y; /* baseline; Draggable sets pan-y on the live front card itself too */
+    background: rgba(0, 255, 0, 0.05);
   }
 
   .home-services .cards .cards-container .card {
@@ -869,6 +870,9 @@
     padding: 0;
     aspect-ratio: auto;
     will-change: transform;
+    cursor: grab;
+    touch-action: pan-y;
+    border: 2px solid rgba(255, 0, 0, 0.3);
     /* transform is owned by GSAP at runtime (xPercent:-50 baseline + x/y/rotation/scale).
        This is just a pre-JS fallback so nothing flashes at the desktop scroll-driven
        transform before home.js runs. */
