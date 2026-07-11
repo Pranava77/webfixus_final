@@ -1,12 +1,14 @@
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SplitText } from "gsap/SplitText";
+import { Draggable } from "gsap/Draggable";
+import { InertiaPlugin } from "gsap/InertiaPlugin";
 import { initAnimations } from "./anime";
 
 document.addEventListener("DOMContentLoaded", () => {
   initAnimations();
 
-  gsap.registerPlugin(ScrollTrigger, SplitText);
+  gsap.registerPlugin(ScrollTrigger, SplitText, Draggable, InertiaPlugin);
 
   gsap.set(".hero .hero-cards .card", { transformOrigin: "center center" });
 
@@ -321,7 +323,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
 
-    /* Mobile: cards live in a horizontal scroll-snap deck. Fade the
+    /* Mobile: cards live in a draggable, depth-stacked deck. Fade the
        whole deck in as the section enters view — no per-card horizontal
        motion so we don't fight the user's swipe gesture. */
     const deck = document.querySelector(".home-services .cards-container");
@@ -332,48 +334,191 @@ document.addEventListener("DOMContentLoaded", () => {
         start: "top 80%",
         once: true,
         onEnter: () => {
-          gsap.to(deck, {
-            opacity: 1,
-            y: 0,
-            duration: 0.8,
-            ease: "power3.out",
-          });
+          gsap.to(deck, { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" });
         },
       });
     }
 
-    // Mobile-specific card hover animations
-    document.querySelectorAll(".home-services .cards .card").forEach((card, index) => {
-      const innerCard = card.querySelector(".flip-card-inner");
-      
-      card.addEventListener("mouseenter", () => {
-        gsap.to(card, {
-          scale: 1.05,
-          duration: 0.3,
-          ease: "power2.out"
+    // ─── Tinder-style swipeable card stack ────────────────────────────
+    const cardEls = Array.from(
+      document.querySelectorAll(".home-services .cards-container .card")
+    );
+
+    if (cardEls.length) {
+      const TOTAL = cardEls.length;
+      let currentIndex = 0;
+      let frontDraggable = null;
+
+      const REST = {
+        0: { x: 0, y: 0, scale: 1, opacity: 1, rotation: 0, zIndex: 30 },
+        1: { x: 0, y: 16, scale: 0.94, opacity: 1, rotation: 0, zIndex: 20 },
+        2: { x: 0, y: 30, scale: 0.88, opacity: 0.85, rotation: 0, zIndex: 10 },
+      };
+      const PARKED_LEFT = {
+        x: "-120%",
+        y: 0,
+        scale: 0.9,
+        opacity: 0,
+        rotation: -8,
+        zIndex: 0,
+      };
+
+      const targetForOffset = (offset) =>
+        offset < 0 ? PARKED_LEFT : REST[offset] || REST[2];
+
+      const getCardAt = (offset) => cardEls[currentIndex + offset] || null;
+
+      function layoutStack({ animate = true, excluding = null } = {}) {
+        cardEls.forEach((card, i) => {
+          if (card === excluding) return;
+          const offset = i - currentIndex;
+          const vars = {
+            ...targetForOffset(offset),
+            pointerEvents: offset < 0 ? "none" : "auto",
+          };
+          if (animate) {
+            gsap.to(card, { ...vars, duration: 0.5, ease: "back.out(1.6)" });
+          } else {
+            gsap.set(card, vars);
+          }
         });
-        
-        gsap.to(innerCard, {
-          rotationY: 180,
+      }
+
+      function handleFrontDrag() {
+        const distanceThreshold = this.target.offsetWidth * 0.32;
+        const progress = gsap.utils.clamp(-1, 1, this.x / distanceThreshold);
+        gsap.set(this.target, { rotation: progress * 14 });
+
+        const towardOffset = progress < 0 ? 1 : progress > 0 ? -1 : 0;
+
+        cardEls.forEach((card, i) => {
+          if (card === this.target) return;
+          const offset = i - currentIndex;
+          if (offset === 1 && towardOffset === 1) {
+            const p = Math.abs(progress);
+            gsap.set(card, {
+              y: gsap.utils.interpolate(REST[1].y, REST[0].y, p),
+              scale: gsap.utils.interpolate(REST[1].scale, REST[0].scale, p),
+              opacity: 1,
+            });
+          } else if (offset === -1 && towardOffset === -1) {
+            const p = Math.abs(progress);
+            gsap.set(card, {
+              x: gsap.utils.interpolate(-40, 0, p) + "%",
+              scale: gsap.utils.interpolate(PARKED_LEFT.scale, REST[0].scale, p),
+              opacity: p,
+              zIndex: 25,
+            });
+          } else {
+            gsap.set(card, targetForOffset(offset));
+          }
+        });
+      }
+
+      function snapBack() {
+        const frontCard = getCardAt(0);
+        gsap.to(frontCard, {
+          x: 0,
+          rotation: 0,
           duration: 0.6,
-          ease: "power2.out"
+          ease: "elastic.out(1, 0.65)",
         });
+        layoutStack({ animate: true });
+      }
+
+      function commitSwipe(direction) {
+        const outgoingCard = getCardAt(0);
+        currentIndex += direction === "advance" ? 1 : -1;
+
+        gsap.to(outgoingCard, {
+          x: direction === "advance" ? "-130%" : "130%",
+          y: "+=10",
+          rotation: direction === "advance" ? -22 : 22,
+          opacity: 0,
+          duration: 0.42,
+          ease: "power1.in",
+        });
+
+        layoutStack({ animate: true, excluding: outgoingCard });
+        setupFrontDraggable();
+      }
+
+      function handleFrontDragEnd() {
+        const dragX = this.x;
+        const velocityX = InertiaPlugin.getVelocity(this.target, "x");
+        const distanceThreshold = this.target.offsetWidth * 0.32;
+        const velocityThreshold = 600;
+
+        const pastDistance = Math.abs(dragX) > distanceThreshold;
+        const pastVelocity =
+          Math.abs(velocityX) > velocityThreshold &&
+          Math.sign(velocityX) === Math.sign(dragX);
+        const wantsCommit = pastDistance || pastVelocity;
+
+        const draggedLeft = dragX < -4;
+        const draggedRight = dragX > 4;
+        const canAdvance = draggedLeft && currentIndex < TOTAL - 1;
+        const canRetreat = draggedRight && currentIndex > 0;
+
+        if (wantsCommit && canAdvance) {
+          commitSwipe("advance");
+        } else if (wantsCommit && canRetreat) {
+          commitSwipe("retreat");
+        } else {
+          snapBack();
+        }
+      }
+
+      function setupFrontDraggable() {
+        if (frontDraggable) {
+          frontDraggable.kill();
+          frontDraggable = null;
+        }
+        const frontCard = getCardAt(0);
+        if (!frontCard) return;
+
+        const big = Math.round(window.innerWidth * 1.5);
+        const bounds =
+          currentIndex === 0
+            ? { minX: -big, maxX: 0 }
+            : currentIndex === TOTAL - 1
+            ? { minX: 0, maxX: big }
+            : { minX: -big, maxX: big };
+
+        frontDraggable = Draggable.create(frontCard, {
+          type: "x",
+          inertia: true,
+          bounds,
+          edgeResistance: 0.65,
+          allowNativeTouchScrolling: true,
+          onDrag: handleFrontDrag,
+          onDragEnd: handleFrontDragEnd,
+        })[0];
+      }
+
+      function syncDeckHeight() {
+        const deckEl = document.querySelector(
+          ".home-services .cards-container"
+        );
+        const referenceBack = cardEls[0].querySelector(".flip-card-back");
+        if (!deckEl || !referenceBack) return;
+        const height = referenceBack.getBoundingClientRect().height;
+        if (height > 0) deckEl.style.height = `${Math.ceil(height)}px`;
+      }
+
+      gsap.set(cardEls, { xPercent: -50, top: 0 });
+      layoutStack({ animate: false });
+      syncDeckHeight();
+      setupFrontDraggable();
+
+      const deckRO = new ResizeObserver(syncDeckHeight);
+      deckRO.observe(cardEls[0].querySelector(".flip-card-back"));
+
+      window.addEventListener("resize", () => {
+        syncDeckHeight();
+        setupFrontDraggable();
       });
-      
-      card.addEventListener("mouseleave", () => {
-        gsap.to(card, {
-          scale: 1,
-          duration: 0.3,
-          ease: "power2.out"
-        });
-        
-        gsap.to(innerCard, {
-          rotationY: 0,
-          duration: 0.6,
-          ease: "power2.out"
-        });
-      });
-    });
+    }
   }
 
   const spotlightTrack = document.querySelector(".home-spotlight-track");

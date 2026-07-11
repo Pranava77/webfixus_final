@@ -835,9 +835,6 @@
     padding: 6rem 0;
   }
 
-  /* Mobile: turn the three process cards into a horizontal swipe deck.
-     Native scroll-snap keeps it framework-free; touch users flick
-     left/right, one card at a time. */
   .home-services .cards {
     position: relative;
     display: block;
@@ -847,49 +844,51 @@
     padding: 2rem 0;
   }
 
+  /* Mobile: three process cards become a draggable, depth-stacked deck
+     (Tinder-style). Cards are position:absolute so this container can't
+     size itself off their layout — height is measured off the front
+     card and applied by home.js (see syncDeckHeight). */
   .home-services .cards-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: stretch;
-    gap: 1rem;
+    position: relative;
     width: 100%;
-    height: auto;
+    height: 0; /* set inline by home.js before first paint of real content */
     margin: 0;
-    padding: 0 5vw;
-    overflow-x: auto;
-    overflow-y: hidden;
-    overscroll-behavior-x: contain;
-    touch-action: pan-x;
-    scroll-snap-type: x mandatory;
-    scroll-padding-left: 5vw;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-  }
-
-  .home-services .cards-container::-webkit-scrollbar {
-    display: none;
+    padding: 0;
+    touch-action: pan-y; /* baseline; Draggable sets pan-y on the live front card itself too */
   }
 
   .home-services .cards .cards-container .card {
-    flex: 0 0 85vw;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    flex: none;
     max-width: none;
     width: 85vw;
-    min-width: 85vw;
+    min-width: 0;
     margin: 0;
     padding: 0;
-    scroll-snap-align: center;
     aspect-ratio: auto;
-    /* Override the desktop pin-animation initial state so cards start
-       visible on mobile (the deck fades in as a whole via ScrollTrigger). */
-    opacity: 1;
-    transform: none;
+    will-change: transform;
+    /* transform is owned by GSAP at runtime (xPercent:-50 baseline + x/y/rotation/scale).
+       This is just a pre-JS fallback so nothing flashes at the desktop scroll-driven
+       transform before home.js runs. */
+    transform: translate(-50%, 0);
   }
 
-  .home-services .cards #card-1,
-  .home-services .cards #card-2,
+  /* Pre-JS fallback resting stack (currentIndex is always 0 on load) so there's
+     no flash of the desktop pinned-scroll transform/z-index before home.js's
+     layoutStack() takes over. */
+  .home-services .cards #card-1 {
+    z-index: 3;
+  }
+  .home-services .cards #card-2 {
+    z-index: 2;
+    transform: translate(-50%, 16px) scale(0.94);
+  }
   .home-services .cards #card-3 {
-    transform: none;
+    z-index: 1;
+    opacity: 0.85;
+    transform: translate(-50%, 30px) scale(0.88);
   }
 
   .home-services .cards-container .card .card-wrapper {
@@ -934,11 +933,6 @@
     padding: 0.85rem 0.5rem;
   }
 
-  /* Mobile: hide the falling-glyphs canvas entirely. On desktop it lives
-     inside a `position: fixed` parent so it can cover the viewport, but
-     on mobile the parent becomes `position: relative`, which either
-     stretches the canvas to the full card stack (making the effect too
-     sparse to see) or forces it to steal layout space from the cards. */
   #lightning-canvas {
     display: none;
   }
