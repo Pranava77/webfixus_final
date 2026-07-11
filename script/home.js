@@ -408,10 +408,12 @@ document.addEventListener("DOMContentLoaded", () => {
           } else if (offset === -1 && towardOffset === -1) {
             const p = Math.abs(progress);
             gsap.set(card, {
-              x: gsap.utils.interpolate(-40, 0, p) + "%",
+              x:
+                gsap.utils.interpolate(parseFloat(PARKED_LEFT.x), 0, p) + "%",
+              rotation: gsap.utils.interpolate(PARKED_LEFT.rotation, 0, p),
               scale: gsap.utils.interpolate(PARKED_LEFT.scale, REST[0].scale, p),
               opacity: p,
-              zIndex: 25,
+              zIndex: REST[0].zIndex + 5, // returning card slides in on top
             });
           } else {
             gsap.set(card, targetForOffset(offset));
@@ -426,30 +428,47 @@ document.addEventListener("DOMContentLoaded", () => {
           rotation: 0,
           duration: 0.6,
           ease: "elastic.out(1, 0.65)",
+          overwrite: "auto",
         });
         layoutStack({ animate: true });
       }
 
       function commitSwipe(direction) {
         const outgoingCard = getCardAt(0);
-        currentIndex += direction === "advance" ? 1 : -1;
 
-        gsap.to(outgoingCard, {
-          x: direction === "advance" ? "-130%" : "130%",
-          y: "+=10",
-          rotation: direction === "advance" ? -22 : 22,
-          opacity: 0,
-          duration: 0.42,
-          ease: "power1.in",
-        });
+        if (direction === "advance") {
+          currentIndex += 1;
+          gsap.to(outgoingCard, {
+            x: "-130%",
+            y: "+=10",
+            rotation: -22,
+            opacity: 0,
+            duration: 0.42,
+            ease: "power1.in",
+            overwrite: "auto",
+            /* Normalize to the parked slot so the retreat preview can
+               interpolate from known values instead of the fly-out pose. */
+            onComplete: () =>
+              gsap.set(outgoingCard, { ...PARKED_LEFT, pointerEvents: "none" }),
+          });
+          layoutStack({ animate: true, excluding: outgoingCard });
+        } else {
+          /* Retreat: the returning card finishes its slide to the front and
+             the old front tucks back into the stack. Nothing flies off-screen,
+             so the deck stays intact for the next advance. */
+          currentIndex -= 1;
+          layoutStack({ animate: true });
+        }
 
-        layoutStack({ animate: true, excluding: outgoingCard });
         setupFrontDraggable();
       }
 
       function handleFrontDragEnd() {
         const dragX = this.x;
         const velocityX = InertiaPlugin.getVelocity(this.target, "x");
+        /* Kill the inertia throw before starting our own tweens — otherwise
+           both keep writing x and the card stutters/rubber-bands. */
+        if (this.tween) this.tween.kill();
         const distanceThreshold = this.target.offsetWidth * 0.32;
         const velocityThreshold = 600;
 
