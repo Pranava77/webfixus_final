@@ -1730,10 +1730,10 @@
 }
 
 .home-testimonials .testimonial-quote {
-  font-family: "Instrument Serif";
-  font-size: 1.35rem;
+  font-family: "Host Grotesk";
+  font-size: 1.2rem;
   font-weight: 500;
-  line-height: 1.35;
+  line-height: 1.5;
   flex: 1;
 }
 
@@ -1888,6 +1888,9 @@
 }
 
 .home-faq .faq-question p.md {
+  font-family: "Host Grotesk";
+  font-size: 1.15rem;
+  font-weight: 600;
   color: var(--base-100);
   flex: 1;
   transition: color 0.35s ease;
