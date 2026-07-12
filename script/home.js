@@ -356,17 +356,16 @@ document.addEventListener("DOMContentLoaded", () => {
         1: { x: 0, y: 16, scale: 0.94, opacity: 1, rotation: 0, zIndex: 20 },
         2: { x: 0, y: 30, scale: 0.88, opacity: 0.85, rotation: 0, zIndex: 10 },
       };
-      const PARKED_LEFT = {
-        x: "-120%",
-        y: 0,
-        scale: 0.9,
-        opacity: 0,
-        rotation: -8,
-        zIndex: 0,
+      /* Dismissed cards park off-screen on whichever side they were swiped
+         toward. There's no back gesture — Tinder-style, both directions
+         advance the deck. */
+      const PARKED = {
+        left: { x: "-120%", y: 0, scale: 0.9, opacity: 0, rotation: -8, zIndex: 0 },
+        right: { x: "120%", y: 0, scale: 0.9, opacity: 0, rotation: 8, zIndex: 0 },
       };
 
       const targetForOffset = (offset) =>
-        offset < 0 ? PARKED_LEFT : REST[offset] || REST[2];
+        offset < 0 ? PARKED.left : REST[offset] || REST[2];
 
       const getCardAt = (offset) => cardEls[currentIndex + offset] || null;
 
@@ -393,27 +392,16 @@ document.addEventListener("DOMContentLoaded", () => {
         // Only update rotation; Draggable handles x internally
         gsap.set(this.target, { rotation: progress * 14 });
 
-        const towardOffset = progress < 0 ? 1 : progress > 0 ? -1 : 0;
-
+        /* Either drag direction reveals the next card underneath. */
         cardEls.forEach((card, i) => {
           if (card === this.target) return;
           const offset = i - currentIndex;
-          if (offset === 1 && towardOffset === 1) {
+          if (offset === 1) {
             const p = Math.abs(progress);
             gsap.set(card, {
               y: gsap.utils.interpolate(REST[1].y, REST[0].y, p),
               scale: gsap.utils.interpolate(REST[1].scale, REST[0].scale, p),
               opacity: 1,
-            });
-          } else if (offset === -1 && towardOffset === -1) {
-            const p = Math.abs(progress);
-            gsap.set(card, {
-              x:
-                gsap.utils.interpolate(parseFloat(PARKED_LEFT.x), 0, p) + "%",
-              rotation: gsap.utils.interpolate(PARKED_LEFT.rotation, 0, p),
-              scale: gsap.utils.interpolate(PARKED_LEFT.scale, REST[0].scale, p),
-              opacity: p,
-              zIndex: REST[0].zIndex + 5, // returning card slides in on top
             });
           } else {
             gsap.set(card, targetForOffset(offset));
@@ -433,33 +421,24 @@ document.addEventListener("DOMContentLoaded", () => {
         layoutStack({ animate: true });
       }
 
-      function commitSwipe(direction) {
+      function commitSwipe(side) {
         const outgoingCard = getCardAt(0);
+        const parked = PARKED[side];
+        currentIndex += 1;
 
-        if (direction === "advance") {
-          currentIndex += 1;
-          gsap.to(outgoingCard, {
-            x: "-130%",
-            y: "+=10",
-            rotation: -22,
-            opacity: 0,
-            duration: 0.42,
-            ease: "power1.in",
-            overwrite: "auto",
-            /* Normalize to the parked slot so the retreat preview can
-               interpolate from known values instead of the fly-out pose. */
-            onComplete: () =>
-              gsap.set(outgoingCard, { ...PARKED_LEFT, pointerEvents: "none" }),
-          });
-          layoutStack({ animate: true, excluding: outgoingCard });
-        } else {
-          /* Retreat: the returning card finishes its slide to the front and
-             the old front tucks back into the stack. Nothing flies off-screen,
-             so the deck stays intact for the next advance. */
-          currentIndex -= 1;
-          layoutStack({ animate: true });
-        }
+        gsap.to(outgoingCard, {
+          x: side === "left" ? "-130%" : "130%",
+          y: "+=10",
+          rotation: side === "left" ? -22 : 22,
+          opacity: 0,
+          duration: 0.42,
+          ease: "power1.in",
+          overwrite: "auto",
+          onComplete: () =>
+            gsap.set(outgoingCard, { ...parked, pointerEvents: "none" }),
+        });
 
+        layoutStack({ animate: true, excluding: outgoingCard });
         setupFrontDraggable();
       }
 
@@ -480,15 +459,72 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const draggedLeft = dragX < -4;
         const draggedRight = dragX > 4;
-        const canAdvance = draggedLeft && currentIndex < TOTAL - 1;
-        const canRetreat = draggedRight && currentIndex > 0;
+        const canAdvance = currentIndex < TOTAL - 1;
 
-        if (wantsCommit && canAdvance) {
-          commitSwipe("advance");
-        } else if (wantsCommit && canRetreat) {
-          commitSwipe("retreat");
+        if (wantsCommit && canAdvance && (draggedLeft || draggedRight)) {
+          commitSwipe(draggedLeft ? "left" : "right");
         } else {
           snapBack();
+        }
+      }
+
+      /* ── Swipe hint ──────────────────────────────────────────────────
+         Nudge the front card sideways (next card peeking up behind it) a
+         couple of times once the deck scrolls into view, so it reads as
+         swipeable. Killed forever on the first touch. */
+      let hintTl = null;
+      let hintDismissed = false;
+
+      function killSwipeHint() {
+        hintDismissed = true;
+        if (hintTl) {
+          hintTl.kill();
+          hintTl = null;
+        }
+      }
+
+      function playSwipeHint() {
+        if (hintDismissed || hintTl || currentIndex !== 0) return;
+        const front = getCardAt(0);
+        const next = getCardAt(1);
+        if (!front) return;
+
+        hintTl = gsap.timeline({ delay: 1.2, repeat: 2, repeatDelay: 2.4 });
+        hintTl.to(front, {
+          x: -30,
+          rotation: -2.5,
+          duration: 0.4,
+          ease: "power2.inOut",
+        });
+        if (next) {
+          hintTl.to(
+            next,
+            {
+              y: REST[1].y - 6,
+              scale: REST[1].scale + 0.02,
+              duration: 0.4,
+              ease: "power2.inOut",
+            },
+            "<"
+          );
+        }
+        hintTl.to(front, {
+          x: 0,
+          rotation: 0,
+          duration: 0.8,
+          ease: "elastic.out(1, 0.55)",
+        });
+        if (next) {
+          hintTl.to(
+            next,
+            {
+              y: REST[1].y,
+              scale: REST[1].scale,
+              duration: 0.5,
+              ease: "power2.out",
+            },
+            "<"
+          );
         }
       }
 
@@ -501,11 +537,11 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!frontCard) return;
 
         const big = Math.round(window.innerWidth * 1.5);
+        /* Last card can't be dismissed — clamp it so drags just rubber-band
+           via edgeResistance. Every other card drags freely both ways. */
         const bounds =
-          currentIndex === 0
-            ? { minX: -big, maxX: 0 }
-            : currentIndex === TOTAL - 1
-            ? { minX: 0, maxX: big }
+          currentIndex === TOTAL - 1
+            ? { minX: 0, maxX: 0 }
             : { minX: -big, maxX: big };
 
         frontDraggable = Draggable.create(frontCard, {
@@ -514,6 +550,7 @@ document.addEventListener("DOMContentLoaded", () => {
           bounds,
           edgeResistance: 0.65,
           allowNativeTouchScrolling: true,
+          onPress: killSwipeHint,
           onDrag: handleFrontDrag,
           onDragEnd: handleFrontDragEnd,
         })[0];
@@ -533,6 +570,13 @@ document.addEventListener("DOMContentLoaded", () => {
       layoutStack({ animate: false });
       syncDeckHeight();
       setupFrontDraggable();
+
+      ScrollTrigger.create({
+        trigger: ".home-services",
+        start: "top 80%",
+        once: true,
+        onEnter: playSwipeHint,
+      });
 
       const deckRO = new ResizeObserver(syncDeckHeight);
       deckRO.observe(cardEls[0].querySelector(".flip-card-back"));

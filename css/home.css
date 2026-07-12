@@ -1628,20 +1628,44 @@
   width: 60%;
 }
 
-.home-testimonials .testimonial-cards {
+.home-testimonials .testimonials-rating {
   display: flex;
-  gap: 2rem;
+  align-items: center;
+  gap: 0.75rem;
+  color: rgba(10, 10, 10, 0.6);
+}
+
+.home-testimonials .rating-stars {
+  color: var(--base-300);
+  letter-spacing: 0.25em;
+}
+
+.home-testimonials .testimonial-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  align-items: stretch;
 }
 
 .home-testimonials .testimonial-card {
-  flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  gap: 3rem;
-  border-radius: 16px;
-  padding: 1.5rem;
+  gap: 2rem;
+  border-radius: 20px;
+  padding: 2rem;
   color: var(--base-300);
+  border: 1px solid rgba(10, 10, 10, 0.08);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+/* Stagger the middle card down on desktop for a hand-placed feel */
+.home-testimonials .testimonial-card:nth-child(2) {
+  margin-top: 2rem;
+}
+
+.home-testimonials .testimonial-card:hover {
+  transform: translateY(-0.5rem);
+  box-shadow: 0 24px 48px -24px rgba(10, 10, 10, 0.35);
 }
 
 .home-testimonials .testimonial-card.tc-var-1 {
@@ -1656,22 +1680,75 @@
   background-color: var(--accent-3);
 }
 
+.home-testimonials .testimonial-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.home-testimonials .testimonial-mark {
+  font-family: "Instrument Serif";
+  font-size: 4.5rem;
+  line-height: 0.5;
+  padding-top: 0.75rem;
+  color: rgba(10, 10, 10, 0.35);
+  user-select: none;
+}
+
+.home-testimonials .testimonial-stars {
+  font-size: 0.7rem;
+  letter-spacing: 0.25em;
+  color: rgba(10, 10, 10, 0.55);
+}
+
 .home-testimonials .testimonial-quote {
   font-family: "Instrument Serif";
-  font-size: 1.3rem;
+  font-size: 1.35rem;
   font-weight: 500;
+  line-height: 1.35;
+  flex: 1;
 }
 
 .home-testimonials .testimonial-meta {
   display: flex;
-  justify-content: space-between;
+  align-items: center;
   gap: 1rem;
   border-top: 1px dashed rgba(10, 10, 10, 0.25);
-  padding-top: 1rem;
+  padding-top: 1.25rem;
+}
+
+.home-testimonials .testimonial-avatar {
+  flex-shrink: 0;
+  width: 2.75rem;
+  height: 2.75rem;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background-color: rgba(10, 10, 10, 0.85);
+  color: var(--base-100);
+  font-size: 0.7rem;
+  letter-spacing: 0.05em;
+}
+
+.home-testimonials .testimonial-person {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
 }
 
 .home-testimonials .testimonial-meta p.mono {
   font-size: 0.75rem;
+}
+
+.home-testimonials .testimonial-loc {
+  color: rgba(10, 10, 10, 0.55);
+}
+
+/* Mobile-only swipe cue under the carousel */
+.home-testimonials .testimonials-swipe-hint {
+  display: none;
+  color: rgba(10, 10, 10, 0.45);
+  font-size: 0.7rem;
 }
 
 /* Home FAQ Section */
@@ -1692,64 +1769,126 @@
   padding-bottom: 8rem;
 }
 
+.home-faq .faq-layout {
+  display: grid;
+  grid-template-columns: 5fr 7fr;
+  gap: 4rem;
+  align-items: start;
+}
+
 .home-faq .home-faq-header {
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  width: 60%;
+  position: sticky;
+  top: 8rem;
 }
 
 .home-faq .home-faq-header p.mono {
   color: var(--base-secondary-dark);
 }
 
+.home-faq .faq-sub {
+  max-width: 34ch;
+  color: var(--base-200);
+}
+
+.home-faq .faq-cta {
+  align-self: flex-start;
+  border: 1px dashed var(--base-secondary-fade);
+  border-radius: 100px;
+  padding: 0.75rem 1.5rem;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.home-faq .faq-cta p.mono {
+  color: var(--base-secondary-dark);
+  transition: color 0.3s ease;
+}
+
+.home-faq .faq-cta:hover {
+  background-color: var(--base-secondary-dark);
+  border-color: var(--base-secondary-dark);
+}
+
+.home-faq .faq-cta:hover p.mono {
+  color: var(--base-300);
+}
+
 .home-faq .faq-list {
   display: flex;
   flex-direction: column;
+  counter-reset: faq;
 }
 
 .home-faq .faq-item {
+  counter-increment: faq;
   border-bottom: 1px dashed var(--base-secondary-fade);
+  border-radius: 12px;
+  transition: background-color 0.35s ease;
 }
 
 .home-faq .faq-item:first-child {
   border-top: 1px dashed var(--base-secondary-fade);
 }
 
+.home-faq .faq-item.open {
+  background-color: var(--base-400);
+}
+
 .home-faq .faq-question {
   width: 100%;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  gap: 2rem;
+  gap: 1.5rem;
   background: none;
   border: none;
   cursor: pointer;
-  padding: 1.5rem 0;
+  padding: 1.5rem 1rem;
   color: var(--base-100);
   text-align: left;
 }
 
+.home-faq .faq-question::before {
+  content: counter(faq, decimal-leading-zero);
+  font-family: "DM Mono";
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--base-secondary-dark);
+  flex-shrink: 0;
+  transition: color 0.35s ease;
+}
+
 .home-faq .faq-question p.md {
   color: var(--base-100);
+  flex: 1;
+  transition: color 0.35s ease;
+}
+
+.home-faq .faq-item.open .faq-question p.md {
+  color: var(--base-secondary-dark);
 }
 
 .home-faq .faq-icon {
   position: relative;
-  width: 20px;
-  height: 20px;
+  width: 2.25rem;
+  height: 2.25rem;
   flex-shrink: 0;
-  transition: transform 0.4s ease;
+  border: 1px dashed var(--base-secondary-fade);
+  border-radius: 50%;
+  transition: transform 0.4s ease, background-color 0.4s ease,
+    border-color 0.4s ease;
 }
 
 .home-faq .faq-icon span {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 100%;
-  height: 2px;
+  width: 40%;
+  height: 1.5px;
   background-color: var(--base-secondary-dark);
   transform: translate(-50%, -50%);
+  transition: background-color 0.4s ease;
 }
 
 .home-faq .faq-icon span:nth-child(2) {
@@ -1758,6 +1897,12 @@
 
 .home-faq .faq-item.open .faq-icon {
   transform: rotate(45deg);
+  background-color: var(--base-secondary-dark);
+  border-color: var(--base-secondary-dark);
+}
+
+.home-faq .faq-item.open .faq-icon span {
+  background-color: var(--base-300);
 }
 
 .home-faq .faq-answer {
@@ -1772,7 +1917,8 @@
 
 .home-faq .faq-answer-inner p {
   max-width: 60ch;
-  padding-bottom: 1.5rem;
+  /* Indent past the counter so answers align with the question text */
+  padding: 0 3.5rem 1.5rem 3.25rem;
   color: var(--base-200);
 }
 
@@ -1781,13 +1927,73 @@
 }
 
 @media (max-width: 1000px) {
-  .home-testimonials .home-testimonials-header,
-  .home-faq .home-faq-header {
+  .home-testimonials .home-testimonials-header {
     width: 100%;
   }
 
+  /* Testimonials become a swipeable scroll-snap carousel, bleeding to
+     the screen edges (container padding is 2rem at this breakpoint) */
   .home-testimonials .testimonial-cards {
-    flex-direction: column;
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    margin: 0 -2rem;
+    padding: 0.5rem 2rem 1.5rem;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .home-testimonials .testimonial-cards::-webkit-scrollbar {
+    display: none;
+  }
+
+  .home-testimonials .testimonial-card {
+    flex: 0 0 84%;
+    max-width: 22rem;
+    scroll-snap-align: center;
+    padding: 1.5rem;
+  }
+
+  .home-testimonials .testimonial-card:nth-child(2) {
+    margin-top: 0;
+  }
+
+  .home-testimonials .testimonial-card:hover {
+    transform: none;
+    box-shadow: none;
+  }
+
+  .home-testimonials .testimonial-quote {
+    font-size: 1.15rem;
+  }
+
+  .home-testimonials .testimonials-swipe-hint {
+    display: block;
+    text-align: center;
+  }
+
+  .home-faq .faq-layout {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .home-faq .home-faq-header {
+    position: static;
+  }
+
+  .home-faq .faq-question {
+    gap: 1rem;
+    padding: 1.25rem 0.75rem;
+  }
+
+  .home-faq .faq-icon {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .home-faq .faq-answer-inner p {
+    padding: 0 0.75rem 1.25rem 2.75rem;
   }
 
   .home-marquee {
