@@ -1,3 +1,8 @@
-<svg width="800" height="693" viewBox="0 0 800 693" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M800 515.749L501.926 343.832V0H297.482V343.832L0 515.749L101.926 693L399.408 521.084L697.482 693L800 515.749Z" fill="black"/>
+<svg width="1000" height="560" viewBox="0 0 1000 560" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- F -->
+  <polygon points="80,60 340,60 340,170 190,170 190,255 310,255 310,355 190,355 190,500 80,500" fill="black"/>
+  <!-- I (heavy, centered on x=500 so the viewport centre stays covered as the mask grows) -->
+  <rect x="410" y="60" width="180" height="440" fill="black"/>
+  <!-- X -->
+  <polygon points="660,60 775,60 790,205 805,60 920,60 850,280 920,500 805,500 790,355 775,500 660,500 730,280" fill="black"/>
 </svg>
