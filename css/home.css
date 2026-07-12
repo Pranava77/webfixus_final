@@ -1618,6 +1618,40 @@
   transform: scale(1.05);
 }
 
+/* Client logo chips — light chip keeps the mostly dark-coloured logos
+   legible against the dark marquee background. */
+.home-marquee .marquee-logo-card {
+  height: 6rem;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 1.75rem;
+  background-color: var(--base-100);
+  border-radius: 10px;
+  border: 1px solid rgba(10, 10, 10, 0.08);
+}
+
+/* The BGS B-School asset is a white-on-transparent logo, so it needs a
+   dark chip instead of the light one. */
+.home-marquee .marquee-logo-card.is-dark {
+  background-color: var(--base-300);
+  border-color: var(--base-secondary-fade);
+}
+
+.home-marquee .marquee-logo-card img {
+  height: 100%;
+  width: auto;
+  max-width: 13rem;
+  object-fit: contain;
+  opacity: 1;
+  transition: transform 0.3s ease;
+}
+
+.home-marquee .marquee-logo-card:hover img {
+  transform: scale(1.05);
+}
+
 .home-marquee .marquee-right p.mono {
   color: var(--base-secondary-dark);
   font-size: 1rem;
@@ -2033,6 +2067,15 @@
 
   .home-marquee .marquee-card {
     width: 14rem;
+  }
+
+  .home-marquee .marquee-logo-card {
+    height: 4.5rem;
+    padding: 0.75rem 1.25rem;
+  }
+
+  .home-marquee .marquee-logo-card img {
+    max-width: 10rem;
   }
 
   .home-marquee .marquee-group {

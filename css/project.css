@@ -1,8 +1,8 @@
 .project-header {
   position: relative;
   width: 100vw;
-  height: 25vh;
-  height: 25svh;
+  min-height: 25vh;
+  min-height: 25svh;
   overflow: hidden;
 }
 
@@ -225,6 +225,14 @@
   .next-project .next-project-meta,
   .next-project .next-project-meta-col:nth-child(2) {
     flex-direction: column;
+  }
+
+  /* On mobile the meta stacks and grows taller than 25vh, so start the
+     header content below the fixed nav and let the section grow to fit. */
+  .project-header .container {
+    justify-content: flex-start;
+    padding-top: 6.5rem;
+    padding-bottom: 2.5rem;
   }
 
   .project-banner-img {
