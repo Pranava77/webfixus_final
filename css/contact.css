@@ -1,6 +1,7 @@
 .contact {
   position: relative;
   width: 100vw;
+  min-height: 100vh;
   min-height: 100svh;
   overflow: hidden;
   background-color: var(--base-300);
@@ -30,6 +31,7 @@
   position: static;
   z-index: 1;
   width: 55%;
+  height: min(60vh, 520px);
   height: min(60svh, 520px);
   border-radius: 12px;
   overflow: hidden;
@@ -96,6 +98,7 @@
     top: auto;
     width: 92%;
     max-width: 420px;
+    height: min(55vh, 420px);
     height: min(55svh, 420px);
     margin: 0 auto;
   }
@@ -158,6 +161,7 @@
   .contact .contact-calendly {
     width: 90%;
     max-width: 360px;
+    height: min(50vh, 380px);
     height: min(50svh, 380px);
   }
 }
@@ -176,6 +180,7 @@
   .contact .contact-calendly {
     width: 55%;
     margin-left: auto;
+    height: min(75vh, 680px);
     height: min(75svh, 680px);
   }
 }
@@ -192,6 +197,7 @@
 
   .contact .contact-calendly {
     width: 54%;
+    height: min(70vh, 620px);
     height: min(70svh, 620px);
   }
 }
@@ -199,6 +205,7 @@
 /* If the available height is short on laptops, trim Calendly height further */
 @media (min-width: 1001px) and (max-height: 820px) {
   .contact .contact-calendly {
+    height: min(68vh, 580px);
     height: min(68svh, 580px);
   }
 }

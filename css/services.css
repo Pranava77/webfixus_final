@@ -613,6 +613,7 @@
 .services-hero {
   position: relative;
   width: 100vw;
+  height: 100vh;
   height: 100svh;
   overflow: hidden;
   background-color: var(--base-100);
@@ -633,6 +634,7 @@
   width: 90%;
   margin: 0 auto;
   text-align: center;
+  padding-top: 15vh;
   padding-top: 15svh;
   display: flex;
   flex-direction: column;
@@ -661,6 +663,7 @@
 .services-grid {
   position: relative;
   width: 100vw;
+  min-height: 100vh;
   min-height: 100svh;
   background-color: var(--base-300);
   color: var(--base-100);
@@ -904,6 +907,7 @@
 .services-cta {
   position: relative;
   width: 100vw;
+  min-height: 50vh;
   min-height: 50svh;
   background-color: var(--base-100);
   color: var(--base-300);
@@ -1022,6 +1026,7 @@
   }
 
   .services-calendly {
+    height: min(70vh, 560px);
     height: min(70svh, 560px);
   }
 
@@ -1129,6 +1134,7 @@
   }
 
   .services-calendly {
+    height: min(70vh, 520px);
     height: min(70svh, 520px);
   }
 
@@ -1240,6 +1246,7 @@
   }
 
   .services-calendly {
+    height: min(70vh, 480px);
     height: min(70svh, 480px);
   }
 

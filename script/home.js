@@ -180,9 +180,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // Home services scroll animation - desktop only
-  console.log("Home services: window.innerWidth =", window.innerWidth);
   if (window.innerWidth > 1000) {
-    console.log("Using DESKTOP mode");
     ScrollTrigger.create({
       trigger: ".home-services",
       start: "top top",

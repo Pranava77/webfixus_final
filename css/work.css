@@ -1,6 +1,7 @@
 .slider {
   position: relative;
   width: 100vw;
+  height: 100vh;
   height: 100svh;
   background-color: var(--base-100);
   color: var(--base-100);
@@ -12,6 +13,7 @@
   top: 0;
   left: 0;
   width: 100vw;
+  height: 100vh;
   height: 100svh;
 }
 
@@ -21,6 +23,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
   width: calc(100vw - 1.75rem);
+  height: calc(100vh - 1.75rem);
   height: calc(100svh - 1.75rem);
   border-radius: 12px;
   overflow: hidden;

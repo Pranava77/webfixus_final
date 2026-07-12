@@ -1,6 +1,7 @@
 .project-header {
   position: relative;
   width: 100vw;
+  height: 25vh;
   height: 25svh;
   overflow: hidden;
 }
@@ -73,6 +74,7 @@
 .project-snapshots {
   position: relative;
   width: 100vw;
+  height: 100vh;
   height: 100svh;
   background-color: var(--base-300);
   color: var(--base-100);
@@ -82,6 +84,7 @@
 .project-snapshots-wrapper {
   position: relative;
   width: 500vw;
+  height: 100vh;
   height: 100svh;
   display: flex;
   overflow: hidden;
@@ -160,6 +163,7 @@
 .next-project {
   position: relative;
   width: 100vw;
+  height: 100vh;
   height: 100svh;
   background-color: var(--base-300);
   color: var(--base-100);

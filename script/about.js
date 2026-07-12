@@ -396,6 +396,7 @@ document.addEventListener("DOMContentLoaded", () => {
     scrub: 1,
   });
 
+  if (document.querySelector(".about-sticky-cards")) {
   ScrollTrigger.create({
     trigger: ".about-sticky-cards",
     start: "top top",
@@ -442,6 +443,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     },
   });
+  }
 
   const outroHeader = document.querySelector(".outro h3");
   let outroSplit = null;
