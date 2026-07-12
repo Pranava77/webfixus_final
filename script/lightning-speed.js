@@ -203,8 +203,13 @@ function createLightningInstance(canvas, options = {}) {
 
   const clock = new THREE.Clock();
 
+  /* Skip the render loop entirely while the canvas is off-screen (and, for
+     canvases that aren't alwaysActive, faded out) so it doesn't tax the
+     main thread while the user is scrolling elsewhere. */
+  let isNearViewport = false;
+  let rafId = null;
+
   function animate() {
-    requestAnimationFrame(animate);
     const dt = Math.min(clock.getDelta(), 0.1);
 
     const normVelocity = Math.min(Math.abs(scrollVelocity) / 2000.0, 3.5);
@@ -261,11 +266,48 @@ function createLightningInstance(canvas, options = {}) {
     renderer.render(scene, camera);
 
     scrollVelocity += (0 - scrollVelocity) * 0.08;
+
+    /* Keep looping while near the viewport, or while still visibly fading
+       out (alwaysActive canvases stay near-viewport-true and just loop
+       forever, matching prior behavior). Otherwise stop and let the
+       IntersectionObserver restart us when we scroll back into range. */
+    if (isNearViewport || currentOpacity > 0.005) {
+      rafId = requestAnimationFrame(animate);
+    } else {
+      rafId = null;
+    }
   }
 
-  animate();
+  function startLoop() {
+    if (rafId !== null) return;
+    clock.getDelta(); // discard time accumulated while paused
+    rafId = requestAnimationFrame(animate);
+  }
 
-  const onResize = () => applySize();
+  startLoop();
+
+  const io = new IntersectionObserver(
+    (entries) => {
+      isNearViewport = entries[0].isIntersecting;
+      if (isNearViewport) startLoop();
+    },
+    { rootMargin: "200px 0px", threshold: 0 }
+  );
+  io.observe(container);
+
+  /* Debounce resize and ignore height-only changes (mobile address-bar
+     show/hide) so we don't reallocate the WebGL drawing buffer mid-scroll. */
+  let lastCanvasWidth = canvas.clientWidth;
+  let applySizeTimer = null;
+  const onResize = () => {
+    clearTimeout(applySizeTimer);
+    applySizeTimer = setTimeout(() => {
+      const w = canvas.clientWidth;
+      if (w === lastCanvasWidth) return;
+      lastCanvasWidth = w;
+      applySize();
+    }, 180);
+  };
 
   window.addEventListener("resize", onResize);
 
@@ -283,6 +325,9 @@ function createLightningInstance(canvas, options = {}) {
     destroy() {
       window.removeEventListener("resize", onResize);
       ro.disconnect();
+      io.disconnect();
+      if (rafId !== null) cancelAnimationFrame(rafId);
+      clearTimeout(applySizeTimer);
       renderer.dispose();
     },
   };

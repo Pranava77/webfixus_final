@@ -12,14 +12,14 @@ document.addEventListener("DOMContentLoaded", () => {
         direction: "vertical",
         gestureDirection: "vertical",
         smooth: true,
-        smoothTouch: true,
+        smoothTouch: false,
         touchMultiplier: 1.5,
         infinite: false,
         lerp: 0.09,
         wheelMultiplier: 1,
         orientation: "vertical",
         smoothWheel: true,
-        syncTouch: true,
+        syncTouch: false,
       }
     : {
         duration: 1.2,
@@ -61,14 +61,14 @@ document.addEventListener("DOMContentLoaded", () => {
             direction: "vertical",
             gestureDirection: "vertical",
             smooth: true,
-            smoothTouch: true,
+            smoothTouch: false,
             touchMultiplier: 1.5,
             infinite: false,
             lerp: 0.05,
             wheelMultiplier: 1,
             orientation: "vertical",
             smoothWheel: true,
-            syncTouch: true,
+            syncTouch: false,
           }
         : {
             duration: 1.2,

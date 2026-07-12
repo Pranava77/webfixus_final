@@ -705,6 +705,21 @@
     text-align: center;
   }
 
+  /* .home-spotlight-bottom-bar is absolutely positioned within a
+     fixed-padding section (see .home-marquee), so on mobile its two
+     side-by-side p.mono labels can wrap to 2 lines and overflow into the
+     content above/below (e.g. the marquee text track). Stack them instead
+     so each label gets the full width and only needs one line. (Only the
+     bottom bar carries text — the top bar is icon-only across every
+     section that reuses it, so it's left as a horizontal row.) */
+  .home-spotlight-bottom-bar .container {
+    flex-direction: column;
+    gap: 0.5rem;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
   .home-services-header {
     transform: translateY(0%);
   }

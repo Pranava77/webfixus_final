@@ -579,10 +579,26 @@ document.addEventListener("DOMContentLoaded", () => {
       const deckRO = new ResizeObserver(syncDeckHeight);
       deckRO.observe(cardEls[0].querySelector(".flip-card-back"));
 
-      window.addEventListener("resize", () => {
-        syncDeckHeight();
-        setupFrontDraggable();
-      });
+      /* Mobile scrolling toggles the browser address bar, which fires a
+         burst of resize events with height changing but width unchanged.
+         Debounce and ignore height-only resizes so we don't re-layout the
+         deck and rebuild the Draggable mid-scroll. */
+      let lastWidth = window.innerWidth;
+      let resizeDebounceTimer = null;
+      window.addEventListener(
+        "resize",
+        () => {
+          clearTimeout(resizeDebounceTimer);
+          resizeDebounceTimer = setTimeout(() => {
+            const newWidth = window.innerWidth;
+            if (newWidth === lastWidth) return;
+            lastWidth = newWidth;
+            syncDeckHeight();
+            setupFrontDraggable();
+          }, 180);
+        },
+        { passive: true }
+      );
     }
   }
 
