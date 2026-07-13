@@ -9,7 +9,6 @@ const __dirname = fileURLToPath(new URL(".", import.meta.url));
 const rewrites = {
   "/about": "/about.html",
   "/work": "/work.html",
-  "/project": "/project.html",
   "/contact": "/contact.html",
   "/services": "/services.html",
 };
@@ -43,7 +42,6 @@ export default defineConfig({
         main: resolve(__dirname, "index.html"),
         about: resolve(__dirname, "about.html"),
         work: resolve(__dirname, "work.html"),
-        project: resolve(__dirname, "project.html"),
         contact: resolve(__dirname, "contact.html"),
         services: resolve(__dirname, "services.html"),
       },

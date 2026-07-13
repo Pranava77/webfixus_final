@@ -84,16 +84,8 @@ document.addEventListener("DOMContentLoaded", () => {
     p.textContent = slideData.slideDescription;
     slideDescription.appendChild(p);
 
-    const slideLink = document.createElement("div");
-    slideLink.className = "slide-link";
-    const a = document.createElement("a");
-    a.href = slideData.slideUrl;
-    a.textContent = "View Project";
-    slideLink.appendChild(a);
-
     slideHeader.appendChild(slideTitle);
     slideHeader.appendChild(slideDescription);
-    slideHeader.appendChild(slideLink);
 
     const slideInfo = document.createElement("div");
     slideInfo.className = "slide-info";
