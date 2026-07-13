@@ -25,6 +25,11 @@ document.addEventListener("DOMContentLoaded", () => {
     },
   });
 
+  // Flip hero cards on click/tap
+  document.querySelectorAll(".hero .hero-cards .card").forEach((card) => {
+    card.addEventListener("click", () => card.classList.toggle("flipped"));
+  });
+
   const smoothStep = (p) => p * p * (3 - 2 * p);
 
   // Desktop scroll animation
