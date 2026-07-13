@@ -78,7 +78,7 @@ document.addEventListener("DOMContentLoaded", () => {
       trigger: container,
       pin: container,
       start: "top top",
-      end: `+=${window.innerHeight * 4}`,
+      end: `+=${window.innerHeight * 2.4}`,
       pinSpacing: true,
       onUpdate: (self) => {
         const progress = self.progress;
@@ -390,7 +390,7 @@ document.addEventListener("DOMContentLoaded", () => {
   ScrollTrigger.create({
     trigger: ".about-skills",
     start: "top top",
-    end: `+=${window.innerHeight * 3}px`,
+    end: `+=${window.innerHeight * 1.8}px`,
     pin: true,
     pinSpacing: true,
     scrub: 1,
@@ -400,7 +400,7 @@ document.addEventListener("DOMContentLoaded", () => {
   ScrollTrigger.create({
     trigger: ".about-sticky-cards",
     start: "top top",
-    end: `+=${window.innerHeight * 8}px`,
+    end: `+=${window.innerHeight * 4.8}px`,
     pin: true,
     pinSpacing: true,
     scrub: 1,
@@ -463,7 +463,7 @@ document.addEventListener("DOMContentLoaded", () => {
   ScrollTrigger.create({
     trigger: ".outro",
     start: "top top",
-    end: `+=${window.innerHeight * 3}px`,
+    end: `+=${window.innerHeight * 1.8}px`,
     pin: true,
     pinSpacing: true,
     scrub: 1,
@@ -496,7 +496,7 @@ document.addEventListener("DOMContentLoaded", () => {
   ScrollTrigger.create({
     trigger: ".outro",
     start: "top bottom",
-    end: `+=${window.innerHeight * 6}px`,
+    end: `+=${window.innerHeight * 3.6}px`,
     scrub: 1,
     onUpdate: (self) => {
       const progress = self.progress;

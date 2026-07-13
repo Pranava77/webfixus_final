@@ -51,7 +51,7 @@ function initSnapshotsScroll() {
   ScrollTrigger.create({
     trigger: ".project-snapshots",
     start: "top top",
-    end: () => `+=${window.innerHeight * 5}px`,
+    end: () => `+=${window.innerHeight * 3}px`,
     pin: true,
     pinSpacing: true,
     scrub: isSafari && isIOS ? 0.5 : 1,
