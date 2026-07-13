@@ -628,15 +628,15 @@ document.addEventListener("DOMContentLoaded", () => {
   ScrollTrigger.create({
     trigger: ".home-spotlight",
     start: "top top",
-    end: `+=${window.innerHeight * 7}px`,
+    end: `+=${window.innerHeight * 3}px`,
     pin: true,
     pinSpacing: true,
     scrub: 1,
     onUpdate: (self) => {
       const progress = self.progress;
 
-      if (progress <= 0.5 && spotlightTrack) {
-        const animationProgress = progress / 0.5;
+      if (spotlightTrack) {
+        const animationProgress = Math.min(progress / 0.5, 1);
 
         gsap.set(spotlightTrack, {
           x: -spotlightMaxX * animationProgress,
@@ -649,8 +649,8 @@ document.addEventListener("DOMContentLoaded", () => {
       const maskImage = document.querySelector(".spotlight-mask-image");
 
       if (maskContainer && maskImage) {
-        if (progress >= 0.25 && progress <= 0.75) {
-          const maskProgress = (progress - 0.25) / 0.5;
+        if (progress <= 0.55) {
+          const maskProgress = progress / 0.55;
           const maskSize = `${maskProgress * 900}%`;
 
           const imageScale = 1.25 - maskProgress * 0.25;
@@ -661,14 +661,7 @@ document.addEventListener("DOMContentLoaded", () => {
           gsap.set(maskImage, {
             scale: imageScale,
           });
-        } else if (progress < 0.25) {
-          maskContainer.style.setProperty("-webkit-mask-size", "0%");
-          maskContainer.style.setProperty("mask-size", "0%");
-
-          gsap.set(maskImage, {
-            scale: 1.25,
-          });
-        } else if (progress > 0.75) {
+        } else {
           maskContainer.style.setProperty("-webkit-mask-size", "900%");
           maskContainer.style.setProperty("mask-size", "900%");
 
@@ -679,8 +672,8 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       if (headerSplit && headerSplit.words.length > 0) {
-        if (progress >= 0.75 && progress <= 0.95) {
-          const textProgress = (progress - 0.75) / 0.2;
+        if (progress >= 0.55 && progress <= 0.85) {
+          const textProgress = (progress - 0.55) / 0.3;
           const totalWords = headerSplit.words.length;
 
           headerSplit.words.forEach((word, index) => {
@@ -692,9 +685,9 @@ document.addEventListener("DOMContentLoaded", () => {
               gsap.set(word, { opacity: 0 });
             }
           });
-        } else if (progress < 0.75) {
+        } else if (progress < 0.55) {
           gsap.set(headerSplit.words, { opacity: 0 });
-        } else if (progress > 0.95) {
+        } else if (progress > 0.85) {
           gsap.set(headerSplit.words, { opacity: 1 });
         }
       }
