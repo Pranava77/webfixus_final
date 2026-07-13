@@ -605,11 +605,6 @@
   gap: 0.75rem;
 }
 
-.symbol {
-  width: 32px;
-  height: 32px;
-}
-
 .services-hero {
   position: relative;
   width: 100vw;
@@ -1030,10 +1025,6 @@
     height: min(70svh, 560px);
   }
 
-  .symbol {
-    width: 30px;
-    height: 30px;
-  }
 }
 
 /* Mobile */
@@ -1138,10 +1129,6 @@
     height: min(70svh, 520px);
   }
 
-  .symbol {
-    width: 24px;
-    height: 24px;
-  }
 }
 
 /* Small mobile */
@@ -1257,11 +1244,6 @@
     transform: translateX(-50%);
     z-index: 10;
     margin: 0;
-  }
-
-  .symbol {
-    width: 20px;
-    height: 20px;
   }
 
   .home-spotlight-top-bar .container,

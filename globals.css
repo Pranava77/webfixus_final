@@ -32,6 +32,24 @@ img {
   user-select: none;
 }
 
+/* Decorative corner symbols — single source of truth so they render at a
+   consistent 18px square on every page and never stretch. */
+.symbol {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 auto;
+}
+
+.symbol img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+button {
+  font-family: inherit;
+}
+
 h1,
 h2,
 h3,
